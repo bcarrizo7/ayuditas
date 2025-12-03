@@ -322,6 +322,13 @@
       transition: all 0.3s;
     }
 
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
     .glass-card:hover .service-icon {
       transform: scale(1.1) rotate(5deg);
       box-shadow: 0 15px 40px rgba(255, 211, 41, 0.5);
@@ -406,6 +413,21 @@
         font-size: 30px;
         right: 20px;
         bottom: 20px;
+      }
+
+      .stat-box {
+        padding: 0.85rem 0.75rem;
+        border-radius: 16px;
+      }
+
+      .stat-number {
+        font-size: 1.75rem;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+
+      .stat-box p {
+        font-size: 0.8rem;
       }
     }
 
@@ -534,7 +556,7 @@
 
       <div class="text-center mb-16 space-y-4">
         <h2 class="text-5xl md:text-7xl font-black">
-          <span class="gradient-text">Nuestros 10 Servicios Más Solicitados</span>
+          <span class="gradient-text">Nuestros 12 Servicios Más Solicitados</span>
         </h2>
         <p class="text-xl text-gray-400 max-w-3xl mx-auto">
           Recupera tu tiempo delegando tus trámites y mandados cotidianos 💛
@@ -544,7 +566,7 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Servicio 1 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">📄</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Gestión de Documentos
@@ -555,7 +577,7 @@
         </div>
 
         <!-- Servicio 2 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">🛒</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Compras Urgentes
@@ -566,7 +588,7 @@
         </div>
 
         <!-- Servicio 3 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">👴</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Acompañamiento Adulto Mayor
@@ -577,7 +599,7 @@
         </div>
 
         <!-- Servicio 4 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">💻</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Asistencia Digital
@@ -588,7 +610,7 @@
         </div>
 
         <!-- Servicio 5 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">🔧</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Pequeños Arreglos en Casa
@@ -599,7 +621,7 @@
         </div>
 
         <!-- Servicio 6 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">🚚</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Entregas Confiables
@@ -610,7 +632,7 @@
         </div>
 
         <!-- Servicio 7 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">📦</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Ayuda con Mudanzas Ligeras
@@ -621,7 +643,7 @@
         </div>
 
         <!-- Servicio 8 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">🧹</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Limpieza Express (90 min)
@@ -632,7 +654,7 @@
         </div>
 
         <!-- Servicio 9 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">🐕</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Asistencia a Mascotas
@@ -643,13 +665,35 @@
         </div>
 
         <!-- Servicio 10 -->
-        <div class="glass-card group">
+        <div class="glass-card group service-card">
           <div class="service-icon">⏰</div>
           <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
             Esperas Presenciales
           </h3>
           <p class="text-gray-400 leading-relaxed text-sm">
             Recibir técnicos, paquetes o supervisar instalaciones en tu hogar.
+          </p>
+        </div>
+
+        <!-- Servicio 11 -->
+        <div class="glass-card group service-card">
+          <div class="service-icon">🚗</div>
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
+            Rescate Vehicular Express
+          </h3>
+          <p class="text-gray-400 leading-relaxed text-sm">
+            Puente para batería, asistencia por pinchazos, combustible de emergencia y coordinación de grúa.
+          </p>
+        </div>
+
+        <!-- Servicio 12 -->
+        <div class="glass-card group service-card">
+          <div class="service-icon">🎁</div>
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
+            Regalos Express
+          </h3>
+          <p class="text-gray-400 leading-relaxed text-sm">
+            Organización de detalles únicos: decoraciones rápidas, regalos personalizados y experiencias memorables.
           </p>
         </div>
 
