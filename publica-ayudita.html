@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publica tu Ayudita | AYUDITAS Premium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0A0A;
+      color: white;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #FFD329 0%, #F5C542 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 211, 41, 0.25);
+      border-radius: 24px;
+      padding: 1.5rem;
+    }
+
+    .chip-button {
+      border: 1px solid rgba(255, 211, 41, 0.35);
+      background: rgba(255, 211, 41, 0.08);
+      color: #FFD329;
+    }
+
+    .chip-button.active {
+      background: linear-gradient(135deg, #FFD329, #F5C542);
+      color: #0A0A0A;
+      border-color: transparent;
+      font-weight: 800;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 800;
+      box-shadow: 0 15px 40px rgba(255, 211, 41, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 50px rgba(255, 211, 41, 0.45);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen">
+  <div class="max-w-4xl mx-auto px-6 py-12 space-y-6">
+    <div class="flex items-center justify-between">
+      <a href="index.html" class="text-yellow-300 text-sm font-semibold hover:text-yellow-200">← Volver al inicio</a>
+      <span class="text-sm text-gray-400">AYUDITAS Premium</span>
+    </div>
+
+    <div class="text-center space-y-3">
+      <p class="text-sm uppercase tracking-[0.2em] text-yellow-300">Paso 2/2</p>
+      <h1 class="text-4xl md:text-5xl font-black gradient-text">Publica tu Ayudita</h1>
+      <p class="text-gray-400">Describe tu solicitud, ingresa la ubicación y define el presupuesto estimado.</p>
+    </div>
+
+    <div class="glass-card space-y-6">
+      <div class="space-y-2">
+        <label class="text-sm text-gray-400 font-semibold">En pocas palabras, ¿qué necesitas?</label>
+        <textarea id="task-desc" rows="3" maxlength="200"
+          class="w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+          placeholder="Ej: Necesito que me ayuden a trasladar cajas y comprar embalaje"></textarea>
+        <div class="text-right text-xs text-gray-500"><span id="desc-count">0</span>/200</div>
+      </div>
+
+      <div class="space-y-2">
+        <label class="text-sm text-gray-400 font-semibold">Elige cuánto pagar</label>
+        <div class="flex items-center justify-between bg-black/40 border border-yellow-400/30 rounded-2xl p-4">
+          <button id="price2-minus" class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20">-</button>
+          <div class="text-center">
+            <p class="text-gray-400 text-sm">Monto estimado</p>
+            <p id="price2-display" class="text-3xl font-black text-yellow-400">$15.000</p>
+          </div>
+          <button id="price2-plus" class="w-12 h-12 rounded-full bg-yellow-400 text-black text-2xl font-black hover:bg-yellow-300">+</button>
+        </div>
+        <p class="text-xs text-gray-500">El valor inicial es referencia. Ajustamos según el tiempo real del servicio.</p>
+      </div>
+
+      <div class="space-y-3">
+        <label class="text-sm text-gray-400 font-semibold">¿Cuándo necesitas tu ayudita?</label>
+        <div class="flex flex-wrap gap-3">
+          <button class="chip-button rounded-full px-4 py-2 text-sm" data-choice="coordinar">A coordinar</button>
+          <button class="chip-button rounded-full px-4 py-2 text-sm" data-choice="hoy">Hoy</button>
+          <button class="chip-button rounded-full px-4 py-2 text-sm" data-choice="fecha">Elegir fecha</button>
+        </div>
+        <input id="date-input" type="date" class="hidden w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-3 text-white" />
+      </div>
+
+      <div class="space-y-3">
+        <label class="text-sm text-gray-400 font-semibold">¿Dónde será la ayudita?</label>
+        <div class="flex flex-col gap-3">
+          <input id="address-input" type="text"
+            class="w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+            placeholder="Ingresa la dirección o puntos de referencia">
+          <button id="share-location"
+            class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-yellow-400 text-black font-bold hover:bg-yellow-300 w-full sm:w-auto">
+            📍 Compartir mi ubicación
+          </button>
+          <p id="location-status" class="text-xs text-gray-500"></p>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <label class="text-sm text-gray-400 font-semibold">Detalles adicionales (opcional)</label>
+        <textarea id="details-input" rows="3" maxlength="300"
+          class="w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+          placeholder="Incluye horarios, accesos o datos que faciliten la coordinación"></textarea>
+        <div class="text-right text-xs text-gray-500"><span id="details-count">0</span>/300</div>
+      </div>
+
+      <div class="pt-2">
+        <button id="submit-request"
+          class="cta-button w-full justify-center text-lg bg-gradient-to-r from-yellow-400 to-yellow-300 text-black font-extrabold">
+          <span>Continuar</span>
+        </button>
+        <p id="submit-status" class="text-xs text-gray-500 text-center mt-2"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const formatter = new Intl.NumberFormat('es-CL');
+
+    const params = new URLSearchParams(window.location.search);
+    const defaultPrice = parseInt(params.get('price') || '15000', 10);
+    const defaultDesc = params.get('desc') ? decodeURIComponent(params.get('desc')) : '';
+
+    const priceDisplay = document.getElementById('price2-display');
+    const minus = document.getElementById('price2-minus');
+    const plus = document.getElementById('price2-plus');
+    const desc = document.getElementById('task-desc');
+    const descCount = document.getElementById('desc-count');
+    const details = document.getElementById('details-input');
+    const detailsCount = document.getElementById('details-count');
+    const chipButtons = document.querySelectorAll('[data-choice]');
+    const dateInput = document.getElementById('date-input');
+    const addressInput = document.getElementById('address-input');
+    const shareLocation = document.getElementById('share-location');
+    const locationStatus = document.getElementById('location-status');
+    const submitStatus = document.getElementById('submit-status');
+
+    let currentPrice = Math.max(5000, Math.min(200000, defaultPrice));
+    priceDisplay.textContent = `$${formatter.format(currentPrice)}`;
+    if (defaultDesc) {
+      desc.value = defaultDesc;
+      descCount.textContent = desc.value.length;
+    }
+
+    const updatePrice = (delta) => {
+      currentPrice = Math.max(5000, Math.min(200000, currentPrice + delta));
+      priceDisplay.textContent = `$${formatter.format(currentPrice)}`;
+    };
+
+    minus.addEventListener('click', () => updatePrice(-1000));
+    plus.addEventListener('click', () => updatePrice(1000));
+
+    const updateCount = (element, counter) => {
+      counter.textContent = element.value.length;
+    };
+
+    desc.addEventListener('input', () => updateCount(desc, descCount));
+    details.addEventListener('input', () => updateCount(details, detailsCount));
+
+    chipButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        chipButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (btn.dataset.choice === 'fecha') {
+          dateInput.classList.remove('hidden');
+          dateInput.focus();
+        } else {
+          dateInput.classList.add('hidden');
+          dateInput.value = '';
+        }
+      });
+    });
+
+    shareLocation.addEventListener('click', () => {
+      locationStatus.textContent = 'Solicitando ubicación...';
+      if (!navigator.geolocation) {
+        locationStatus.textContent = 'La geolocalización no es compatible con tu dispositivo.';
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const { latitude, longitude } = pos.coords;
+        addressInput.value = `Ubicación compartida: ${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+        locationStatus.textContent = '¡Ubicación agregada! Puedes editar la dirección si lo prefieres.';
+      }, (err) => {
+        locationStatus.textContent = 'No pudimos obtener tu ubicación. Intenta nuevamente o escribe la dirección.';
+        console.error(err);
+      }, { enableHighAccuracy: true, timeout: 10000 });
+    });
+
+    document.getElementById('submit-request').addEventListener('click', () => {
+      submitStatus.textContent = 'Guardaremos tu ayudita con estos datos (demo).';
+    });
+  </script>
+</body>
+
+</html>
