@@ -548,6 +548,82 @@
     </div>
   </section>
 
+  <!-- PIDE TU AYUDITA SECTION -->
+  <section class="px-6 py-20 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+
+        <!-- Left text content -->
+        <div class="space-y-6 order-2 md:order-1">
+          <div class="inline-block">
+            <span class="bg-yellow-400/20 border border-yellow-400/40 text-yellow-300 px-4 py-2 rounded-full text-sm font-semibold">
+              🚀 Publica tu Ayudita en minutos
+            </span>
+          </div>
+
+          <h2 class="text-5xl md:text-6xl font-black leading-tight gradient-text">Pide tu Ayudita</h2>
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Cuéntanos qué necesitas, define tu presupuesto y coordinamos de inmediato con un Ayudante certificado.
+            Mantuvimos el look & feel premium de AYUDITAS, pero optimizado para publicar tu solicitud rápidamente.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="glass-card p-4">
+              <p class="text-yellow-300 font-bold text-lg">🕒 Respuesta ultra rápida</p>
+              <p class="text-sm text-gray-400">Confirmamos tu Ayudante en minutos, 24/7.</p>
+            </div>
+            <div class="glass-card p-4">
+              <p class="text-yellow-300 font-bold text-lg">📍 Cobertura flexible</p>
+              <p class="text-sm text-gray-400">Comparte tu ubicación o dirección para coordinar al instante.</p>
+            </div>
+          </div>
+
+          <div class="pt-2 text-gray-400 text-sm">Simple • Seguro • Personalizado</div>
+        </div>
+
+        <!-- Right form card -->
+        <div class="order-1 md:order-2">
+          <div class="glass-card p-6 md:p-8 shadow-2xl border-yellow-400/40">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-white">Pide tu Ayudita</h3>
+              <span class="text-sm text-yellow-300 font-semibold">1/2</span>
+            </div>
+
+            <div class="space-y-4">
+              <label class="block text-sm text-gray-400 font-semibold">¿Qué necesitas que hagamos?</label>
+              <textarea id="help-request" rows="3" maxlength="160"
+                class="w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                placeholder="Ej: Comprar un regalo y entregarlo en Providencia"></textarea>
+              <div class="text-right text-xs text-gray-500"><span id="help-count">0</span>/160</div>
+            </div>
+
+            <div class="mt-6 space-y-2">
+              <label class="block text-sm text-gray-400 font-semibold">Elige cuánto pagar</label>
+              <div class="flex items-center justify-between bg-black/40 border border-yellow-400/30 rounded-2xl p-4">
+                <button id="price-minus" class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20">-</button>
+                <div class="text-center">
+                  <p class="text-gray-400 text-sm">Monto estimado</p>
+                  <p id="price-display" class="text-3xl font-black text-yellow-400">$15.000</p>
+                </div>
+                <button id="price-plus" class="w-12 h-12 rounded-full bg-yellow-400 text-black text-2xl font-black hover:bg-yellow-300">+</button>
+              </div>
+              <p class="text-xs text-gray-500">Puedes ajustar el valor luego según el tiempo real.</p>
+            </div>
+
+            <div class="mt-6">
+              <button id="continue-request"
+                class="cta-button w-full justify-center text-lg" aria-label="Continuar para publicar tu ayudita">
+                <span>Continuar</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <div class="divider"></div>
 
   <!-- SERVICIOS SECTION -->
@@ -989,6 +1065,49 @@
         }
       });
     });
+
+    // Pide tu Ayudita interactions
+    const priceDisplay = document.getElementById('price-display');
+    const priceMinus = document.getElementById('price-minus');
+    const pricePlus = document.getElementById('price-plus');
+    const continueBtn = document.getElementById('continue-request');
+    const helpRequest = document.getElementById('help-request');
+    const helpCount = document.getElementById('help-count');
+
+    if (priceDisplay && priceMinus && pricePlus && continueBtn) {
+      let currentPrice = 15000;
+      const formatter = new Intl.NumberFormat('es-CL');
+
+      const updatePrice = () => {
+        priceDisplay.textContent = `$${formatter.format(currentPrice)}`;
+      };
+
+      const clampPrice = (value) => Math.max(5000, Math.min(200000, value));
+
+      priceMinus.addEventListener('click', () => {
+        currentPrice = clampPrice(currentPrice - 1000);
+        updatePrice();
+      });
+
+      pricePlus.addEventListener('click', () => {
+        currentPrice = clampPrice(currentPrice + 1000);
+        updatePrice();
+      });
+
+      updatePrice();
+
+      continueBtn.addEventListener('click', () => {
+        const description = helpRequest ? encodeURIComponent(helpRequest.value.trim()) : '';
+        const url = `publica-ayudita.html?price=${currentPrice}${description ? `&desc=${description}` : ''}`;
+        window.location.href = url;
+      });
+    }
+
+    if (helpRequest && helpCount) {
+      helpRequest.addEventListener('input', () => {
+        helpCount.textContent = helpRequest.value.length;
+      });
+    }
   </script>
 </body>
 
