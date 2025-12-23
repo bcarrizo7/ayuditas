@@ -182,6 +182,34 @@
         <div class="text-right text-xs text-gray-500"><span id="details-count">0</span>/300</div>
       </div>
 
+      <!-- Datos Personales -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+        <div class="space-y-2">
+          <label class="text-sm text-gray-400 font-semibold">Nombre</label>
+          <input id="nombre-input" type="text"
+            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+            placeholder="Tu nombre">
+        </div>
+        <div class="space-y-2">
+          <label class="text-sm text-gray-400 font-semibold">Apellido Paterno</label>
+          <input id="apellido-p-input" type="text"
+            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+            placeholder="Tu apellido paterno">
+        </div>
+        <div class="space-y-2">
+          <label class="text-sm text-gray-400 font-semibold">Apellido Materno</label>
+          <input id="apellido-m-input" type="text"
+            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+            placeholder="Tu apellido materno">
+        </div>
+        <div class="space-y-2">
+          <label class="text-sm text-gray-400 font-semibold">RUT</label>
+          <input id="rut-input" type="text"
+            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+            placeholder="12.345.678-9">
+        </div>
+      </div>
+
       <div class="pt-2">
         <button id="submit-request"
           class="cta-button w-full justify-center text-lg bg-gradient-to-r from-primary to-secondary text-black font-extrabold">
@@ -306,6 +334,11 @@
       const date = dateInput.value;
       const time = timeInput.value;
 
+      const nombre = document.getElementById('nombre-input').value;
+      const apellidoP = document.getElementById('apellido-p-input').value;
+      const apellidoM = document.getElementById('apellido-m-input').value;
+      const rut = document.getElementById('rut-input').value;
+
       let whenText = when;
       // Usamos códigos Unicode para asegurar que los emojis se procesen bien en cualquier navegador
       const emojiRocket = '\u{1F680}';
@@ -314,8 +347,12 @@
       const emojiCalendar = '\u{1F4C5}';
       const emojiLocation = '\u{1F4CD}';
       const emojiSearch = '\u{1F50D}';
+      const emojiUser = '\u{1F464}';
+      const emojiID = '\u{1F194}';
 
       const rawMessage = `${emojiRocket} *Nueva Solicitud de Ayudita*\n\n` +
+        `${emojiUser} *Solicitante:* ${nombre} ${apellidoP} ${apellidoM}\n` +
+        `${emojiID} *RUT:* ${rut}\n\n` +
         `${emojiTask} *Tarea:* ${desc.value}\n` +
         `${emojiPrice} *Presupuesto:* $${formatter.format(currentPrice)}\n` +
         `${emojiCalendar} *Cuándo:* ${whenText}\n` +
