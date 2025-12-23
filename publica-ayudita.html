@@ -6,6 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Publica tu Ayudita | Ayuditas Premium</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF8B5B',
+            secondary: '#82C1B9',
+            dark: '#0A0F12',
+          }
+        }
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -13,9 +26,15 @@
     rel="stylesheet">
   <link rel="icon" type="image/png" href="./assets/images/Logo%20ayuditas%20sin%20fondo.png">
   <style>
+    :root {
+      --primary: #FF8B5B;
+      --secondary: #82C1B9;
+      --dark: #0A0F12;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: #0A0A0A;
+      background: var(--dark);
       color: white;
     }
 
@@ -26,7 +45,7 @@
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #FFD329 0%, #F5C542 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -35,40 +54,41 @@
     .glass-card {
       background: rgba(255, 255, 255, 0.04);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 211, 41, 0.25);
+      border: 1px solid rgba(130, 193, 185, 0.2);
       border-radius: 24px;
       padding: 1.5rem;
     }
 
     .chip-button {
-      border: 1px solid rgba(255, 211, 41, 0.35);
-      background: rgba(255, 211, 41, 0.08);
-      color: #FFD329;
+      border: 1px solid rgba(130, 193, 185, 0.3);
+      background: rgba(130, 193, 185, 0.05);
+      color: var(--secondary);
     }
 
     .chip-button.active {
-      background: linear-gradient(135deg, #FFD329, #F5C542);
-      color: #0A0A0A;
+      background: linear-gradient(135deg, var(--primary), #FF7A45);
+      color: white;
       border-color: transparent;
       font-weight: 800;
     }
 
     .cta-button {
+      background: linear-gradient(135deg, var(--primary), #FF7A45);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 800;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      width: 100%;
-      padding: 1rem 1.5rem;
-      border-radius: 9999px;
-      font-weight: 800;
-      box-shadow: 0 15px 40px rgba(255, 211, 41, 0.35);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 15px 35px rgba(255, 139, 91, 0.25);
     }
 
     .cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 20px 50px rgba(255, 211, 41, 0.45);
+      box-shadow: 0 20px 45px rgba(255, 139, 91, 0.35);
     }
   </style>
 </head>
@@ -76,12 +96,12 @@
 <body class="min-h-screen">
   <div class="max-w-4xl mx-auto px-6 py-12 space-y-6">
     <div class="flex items-center justify-between">
-      <a href="index.html" class="text-yellow-300 text-sm font-semibold hover:text-yellow-200">← Volver al inicio</a>
+      <a href="index.html" class="text-secondary text-sm font-semibold hover:text-secondary/50">← Volver al inicio</a>
       <span class="text-sm text-gray-400">Ayuditas Premium</span>
     </div>
 
     <div class="text-center space-y-3">
-      <p class="text-sm uppercase tracking-[0.2em] text-yellow-300">Paso 2/2</p>
+      <p class="text-sm uppercase tracking-[0.2em] text-secondary">Paso 2/2</p>
       <h1 class="text-4xl md:text-5xl font-black gradient-text">Publica tu Ayudita</h1>
       <p class="text-gray-400">Describe tu solicitud, ingresa la ubicación y define el presupuesto estimado.</p>
     </div>
@@ -90,42 +110,64 @@
       <div class="space-y-2">
         <label class="text-sm text-gray-400 font-semibold">En pocas palabras, ¿qué necesitas?</label>
         <textarea id="task-desc" rows="3" maxlength="200"
-          class="w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+          class="w-full bg-black/40 border border-primary/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
           placeholder="Ej: Necesito que me ayuden a trasladar cajas y comprar embalaje"></textarea>
         <div class="text-right text-xs text-gray-500"><span id="desc-count">0</span>/200</div>
       </div>
 
       <div class="space-y-2">
         <label class="text-sm text-gray-400 font-semibold">Elige cuánto pagar</label>
-        <div class="flex items-center justify-between bg-black/40 border border-yellow-400/30 rounded-2xl p-4">
-          <button id="price2-minus" class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20">-</button>
+        <div class="flex items-center justify-between bg-black/40 border border-primary/30 rounded-2xl p-4">
+          <button id="price2-minus"
+            class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20">-</button>
           <div class="text-center">
             <p class="text-gray-400 text-sm">Monto estimado</p>
-            <p id="price2-display" class="text-3xl font-black text-yellow-400">$15.000</p>
+            <div class="flex items-center justify-center text-3xl font-black text-primary">
+              <span>$</span>
+              <input id="price-input" type="text" value="15.000"
+                class="bg-transparent border-none outline-none w-32 text-center focus:ring-0">
+            </div>
           </div>
-          <button id="price2-plus" class="w-12 h-12 rounded-full bg-yellow-400 text-black text-2xl font-black hover:bg-yellow-300">+</button>
+          <button id="price2-plus"
+            class="w-12 h-12 rounded-full bg-primary text-black text-2xl font-black hover:bg-secondary">+</button>
         </div>
-        <p class="text-xs text-gray-500">El valor inicial es referencia. Ajustamos según el tiempo real del servicio.</p>
+        <p class="text-xs text-gray-500">El valor inicial es referencia. Ajustamos según el tiempo real del servicio.
+        </p>
       </div>
 
       <div class="space-y-3">
         <label class="text-sm text-gray-400 font-semibold">¿Cuándo necesitas tu ayudita?</label>
-        <div class="flex flex-wrap gap-3">
-          <button class="chip-button rounded-full px-4 py-2 text-sm" data-choice="coordinar">A coordinar</button>
-          <button class="chip-button rounded-full px-4 py-2 text-sm" data-choice="hoy">Hoy</button>
-          <button class="chip-button rounded-full px-4 py-2 text-sm" data-choice="fecha">Elegir fecha</button>
+        <div class="flex flex-wrap gap-2">
+          <button class="chip-button rounded-full px-4 py-2 text-xs sm:text-sm" data-choice="ahora">Ahora</button>
+          <button class="chip-button rounded-full px-4 py-2 text-xs sm:text-sm" data-choice="hoy">Hoy</button>
+          <button class="chip-button rounded-full px-4 py-2 text-xs sm:text-sm" data-choice="fecha">Elegir
+            fecha</button>
+          <button class="chip-button rounded-full px-4 py-2 text-xs sm:text-sm" data-choice="coordinar">A
+            coordinar</button>
         </div>
-        <input id="date-input" type="date" class="hidden w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-3 text-white" />
+
+        <div id="additional-time" class="hidden space-y-4 mt-4 p-4 bg-primary/5 rounded-2xl border border-primary/10">
+          <div id="date-wrapper" class="hidden">
+            <label class="text-xs text-gray-500 mb-2 block uppercase tracking-wider font-bold">Selecciona fecha</label>
+            <input id="date-input" type="date"
+              class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:ring-2 focus:ring-secondary outline-none" />
+          </div>
+          <div id="time-wrapper">
+            <label class="text-xs text-gray-500 mb-2 block uppercase tracking-wider font-bold">¿A qué hora?</label>
+            <input id="time-input" type="time"
+              class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:ring-2 focus:ring-secondary outline-none" />
+          </div>
+        </div>
       </div>
 
       <div class="space-y-3">
         <label class="text-sm text-gray-400 font-semibold">¿Dónde será la ayudita?</label>
         <div class="flex flex-col gap-3">
           <input id="address-input" type="text"
-            class="w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
             placeholder="Ingresa la dirección o puntos de referencia">
           <button id="share-location"
-            class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-yellow-400 text-black font-bold hover:bg-yellow-300 w-full sm:w-auto">
+            class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-primary text-black font-bold hover:bg-secondary w-full sm:w-auto">
             📍 Compartir mi ubicación
           </button>
           <p id="location-status" class="text-xs text-gray-500"></p>
@@ -135,14 +177,14 @@
       <div class="space-y-2">
         <label class="text-sm text-gray-400 font-semibold">Detalles adicionales (opcional)</label>
         <textarea id="details-input" rows="3" maxlength="300"
-          class="w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+          class="w-full bg-black/40 border border-primary/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
           placeholder="Incluye horarios, accesos o datos que faciliten la coordinación"></textarea>
         <div class="text-right text-xs text-gray-500"><span id="details-count">0</span>/300</div>
       </div>
 
       <div class="pt-2">
         <button id="submit-request"
-          class="cta-button w-full justify-center text-lg bg-gradient-to-r from-yellow-400 to-yellow-300 text-black font-extrabold">
+          class="cta-button w-full justify-center text-lg bg-gradient-to-r from-primary to-secondary text-black font-extrabold">
           <span>Continuar</span>
         </button>
         <p id="submit-status" class="text-xs text-gray-500 text-center mt-2"></p>
@@ -157,7 +199,7 @@
     const defaultPrice = parseInt(params.get('price') || '15000', 10);
     const defaultDesc = params.get('desc') ? decodeURIComponent(params.get('desc')) : '';
 
-    const priceDisplay = document.getElementById('price2-display');
+    const priceInput = document.getElementById('price-input');
     const minus = document.getElementById('price2-minus');
     const plus = document.getElementById('price2-plus');
     const desc = document.getElementById('task-desc');
@@ -165,26 +207,53 @@
     const details = document.getElementById('details-input');
     const detailsCount = document.getElementById('details-count');
     const chipButtons = document.querySelectorAll('[data-choice]');
+    const additionalTime = document.getElementById('additional-time');
+    const dateWrapper = document.getElementById('date-wrapper');
     const dateInput = document.getElementById('date-input');
+    const timeInput = document.getElementById('time-input');
     const addressInput = document.getElementById('address-input');
     const shareLocation = document.getElementById('share-location');
     const locationStatus = document.getElementById('location-status');
     const submitStatus = document.getElementById('submit-status');
 
     let currentPrice = Math.max(5000, Math.min(200000, defaultPrice));
-    priceDisplay.textContent = `$${formatter.format(currentPrice)}`;
+
+    const updateDisplay = () => {
+      priceInput.value = formatter.format(currentPrice);
+    };
+
+    const clampPrice = (value) => Math.max(5000, Math.min(200000, value));
+
+    const parsePrice = (val) => {
+      return parseInt(val.replace(/\D/g, '')) || 0;
+    };
+
     if (defaultDesc) {
       desc.value = defaultDesc;
       descCount.textContent = desc.value.length;
     }
 
-    const updatePrice = (delta) => {
-      currentPrice = Math.max(5000, Math.min(200000, currentPrice + delta));
-      priceDisplay.textContent = `$${formatter.format(currentPrice)}`;
-    };
+    minus.addEventListener('click', () => {
+      currentPrice = clampPrice(currentPrice - 1000);
+      updateDisplay();
+    });
 
-    minus.addEventListener('click', () => updatePrice(-1000));
-    plus.addEventListener('click', () => updatePrice(1000));
+    plus.addEventListener('click', () => {
+      currentPrice = clampPrice(currentPrice + 1000);
+      updateDisplay();
+    });
+
+    priceInput.addEventListener('change', () => {
+      currentPrice = clampPrice(parsePrice(priceInput.value));
+      updateDisplay();
+    });
+
+    priceInput.addEventListener('blur', () => {
+      currentPrice = clampPrice(parsePrice(priceInput.value));
+      updateDisplay();
+    });
+
+    updateDisplay();
 
     const updateCount = (element, counter) => {
       counter.textContent = element.value.length;
@@ -197,12 +266,19 @@
       btn.addEventListener('click', () => {
         chipButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        if (btn.dataset.choice === 'fecha') {
-          dateInput.classList.remove('hidden');
-          dateInput.focus();
-        } else {
-          dateInput.classList.add('hidden');
-          dateInput.value = '';
+
+        const choice = btn.dataset.choice;
+
+        // Reset visibility
+        additionalTime.classList.add('hidden');
+        dateWrapper.classList.add('hidden');
+
+        if (choice === 'hoy') {
+          additionalTime.classList.remove('hidden');
+          dateWrapper.classList.add('hidden');
+        } else if (choice === 'fecha') {
+          additionalTime.classList.remove('hidden');
+          dateWrapper.classList.remove('hidden');
         }
       });
     });
@@ -225,7 +301,31 @@
     });
 
     document.getElementById('submit-request').addEventListener('click', () => {
-      submitStatus.textContent = 'Guardaremos tu ayudita con estos datos (demo).';
+      const activeChoice = document.querySelector('[data-choice].active');
+      const when = activeChoice ? activeChoice.textContent : 'No especificado';
+      const date = dateInput.value;
+      const time = timeInput.value;
+
+      let whenText = when;
+      // Usamos códigos Unicode para asegurar que los emojis se procesen bien en cualquier navegador
+      const emojiRocket = '\u{1F680}';
+      const emojiTask = '\u{1F4DD}';
+      const emojiPrice = '\u{1F4B0}';
+      const emojiCalendar = '\u{1F4C5}';
+      const emojiLocation = '\u{1F4CD}';
+      const emojiSearch = '\u{1F50D}';
+
+      const rawMessage = `${emojiRocket} *Nueva Solicitud de Ayudita*\n\n` +
+        `${emojiTask} *Tarea:* ${desc.value}\n` +
+        `${emojiPrice} *Presupuesto:* $${formatter.format(currentPrice)}\n` +
+        `${emojiCalendar} *Cuándo:* ${whenText}\n` +
+        `${emojiLocation} *Dónde:* ${addressInput.value}\n` +
+        `${emojiSearch} *Detalles:* ${details.value || 'Sin detalles adicionales'}`;
+
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=56982550861&text=${encodeURIComponent(rawMessage)}`;
+
+      submitStatus.textContent = 'Redirigiendo a WhatsApp...';
+      window.open(whatsappUrl, '_blank');
     });
   </script>
 </body>
