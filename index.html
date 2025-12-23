@@ -4,8 +4,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ayuditas Premium - Asistencia Express #1 en Chile</title>
+  <title>Ayuditas Premium - Asistencia Personalizada #1 en Chile</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF8B5B',
+            secondary: '#82C1B9',
+            dark: '#0A0F12',
+          }
+        }
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -15,10 +28,9 @@
 
   <style>
     :root {
-      --yellow: #FFD329;
-      --gold: #F5C542;
-      --dark: #0A0A0A;
-      --white: #FFFFFF;
+      --primary: #FF8B5B;
+      --secondary: #82C1B9;
+      --dark: #0A0F12;
     }
 
     * {
@@ -29,7 +41,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #0A0A0A;
+      background: var(--dark);
       color: white;
       overflow-x: hidden;
     }
@@ -49,49 +61,73 @@
       height: 100%;
       z-index: 0;
       pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, #151515 0%, #0A0A0A 100%);
+      overflow: hidden;
+    }
+
+    .nebula {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.15;
+      z-index: 1;
+      animation: nebula-float 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes nebula-float {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(10%, 10%) scale(1.2);
+      }
     }
 
     .particle {
       position: absolute;
-      background: var(--yellow);
+      background: var(--primary);
       border-radius: 50%;
-      opacity: 0.1;
-      animation: float-particle linear infinite;
+      opacity: 0;
+      z-index: 2;
+      box-shadow: 0 0 10px var(--primary);
+      animation: float-particle linear infinite, flicker 3s ease-in-out infinite;
+    }
+
+    @keyframes flicker {
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 0.8;
+      }
     }
 
     @keyframes float-particle {
       0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-
-      10% {
-        opacity: 0.1;
-      }
-
-      90% {
-        opacity: 0.1;
+        transform: translateY(110vh) translateX(0);
       }
 
       100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
+        transform: translateY(-10vh) translateX(20px);
       }
     }
 
     /* Glowing text effect */
     .glow-text {
-      text-shadow: 0 0 20px rgba(255, 211, 41, 0.5),
-        0 0 40px rgba(255, 211, 41, 0.3),
-        0 0 60px rgba(255, 211, 41, 0.2);
+      text-shadow: 0 0 20px rgba(255, 139, 91, 0.4),
+        0 0 40px rgba(255, 139, 91, 0.2);
     }
 
     /* Neon border effect */
     .neon-border {
       position: relative;
-      border: 2px solid var(--yellow);
-      box-shadow: 0 0 10px var(--yellow),
-        inset 0 0 10px var(--yellow);
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 10px var(--primary),
+        inset 0 0 10px var(--primary);
     }
 
     .neon-border::before {
@@ -101,7 +137,7 @@
       left: -2px;
       right: -2px;
       bottom: -2px;
-      background: linear-gradient(45deg, var(--yellow), var(--gold), var(--yellow));
+      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary));
       border-radius: inherit;
       z-index: -1;
       filter: blur(10px);
@@ -115,9 +151,9 @@
 
     /* Glass morphism cards */
     .glass-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 211, 41, 0.2);
+      border: 1px solid rgba(130, 193, 185, 0.15);
       border-radius: 24px;
       padding: 2rem;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -132,7 +168,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 211, 41, 0.1), transparent);
+      background: linear-gradient(90deg, transparent, rgba(130, 193, 185, 0.1), transparent);
       transition: left 0.5s;
     }
 
@@ -142,13 +178,13 @@
 
     .glass-card:hover {
       transform: translateY(-10px) scale(1.02);
-      border-color: var(--yellow);
-      box-shadow: 0 20px 60px rgba(255, 211, 41, 0.3);
+      border-color: var(--secondary);
+      box-shadow: 0 20px 60px rgba(130, 193, 185, 0.2);
     }
 
     /* Gradient text */
     .gradient-text {
-      background: linear-gradient(135deg, var(--yellow) 0%, var(--gold) 50%, var(--yellow) 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       background-size: 200% 200%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -226,20 +262,20 @@
 
       0%,
       100% {
-        box-shadow: 0 0 20px rgba(255, 211, 41, 0.4),
-          0 0 40px rgba(255, 211, 41, 0.2);
+        box-shadow: 0 0 20px rgba(255, 139, 91, 0.4),
+          0 0 40px rgba(255, 139, 91, 0.2);
       }
 
       50% {
-        box-shadow: 0 0 30px rgba(255, 211, 41, 0.6),
-          0 0 60px rgba(255, 211, 41, 0.4);
+        box-shadow: 0 0 30px rgba(255, 139, 91, 0.6),
+          0 0 60px rgba(255, 139, 91, 0.4);
       }
     }
 
     /* CTA Button */
     .cta-button {
-      background: linear-gradient(135deg, var(--yellow) 0%, var(--gold) 100%);
-      color: var(--dark);
+      background: linear-gradient(135deg, var(--primary) 0%, #FF7A45 100%);
+      color: white;
       padding: 1.2rem 3rem;
       border-radius: 50px;
       font-weight: 800;
@@ -248,7 +284,7 @@
       align-items: center;
       gap: 0.5rem;
       transition: all 0.3s;
-      box-shadow: 0 10px 40px rgba(255, 211, 41, 0.4);
+      box-shadow: 0 10px 40px rgba(255, 139, 91, 0.3);
       position: relative;
       overflow: hidden;
       border: none;
@@ -275,7 +311,7 @@
 
     .cta-button:hover {
       transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 50px rgba(255, 211, 41, 0.6);
+      box-shadow: 0 15px 50px rgba(255, 139, 91, 0.4);
     }
 
     .cta-button span {
@@ -312,14 +348,14 @@
     .service-icon {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, var(--yellow), var(--gold));
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 10px 30px rgba(255, 211, 41, 0.3);
+      box-shadow: 0 10px 30px rgba(255, 139, 91, 0.3);
       transition: all 0.3s;
     }
 
@@ -332,13 +368,13 @@
 
     .glass-card:hover .service-icon {
       transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 15px 40px rgba(255, 211, 41, 0.5);
+      box-shadow: 0 15px 40px rgba(255, 139, 91, 0.4);
     }
 
     /* Stats counter */
     .stat-box {
-      background: linear-gradient(135deg, rgba(255, 211, 41, 0.1), rgba(245, 197, 66, 0.1));
-      border: 1px solid rgba(255, 211, 41, 0.3);
+      background: linear-gradient(135deg, rgba(255, 139, 91, 0.1), rgba(130, 193, 185, 0.1));
+      border: 1px solid rgba(255, 139, 91, 0.3);
       border-radius: 20px;
       padding: 1.5rem;
       text-align: center;
@@ -347,37 +383,47 @@
 
     .stat-box:hover {
       transform: translateY(-5px);
-      border-color: var(--yellow);
-      background: linear-gradient(135deg, rgba(255, 211, 41, 0.2), rgba(245, 197, 66, 0.2));
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(255, 139, 91, 0.2), rgba(130, 193, 185, 0.2));
     }
 
     .stat-number {
       font-size: 3rem;
       font-weight: 900;
-      background: linear-gradient(135deg, var(--yellow), var(--gold));
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1.2;
     }
 
-    /* Divider line */
+    /* Divider line with transparent center for the logo */
     .divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 211, 41, 0.5), transparent);
+      background: linear-gradient(90deg,
+          transparent 0%,
+          rgba(130, 193, 185, 0.4) 40%,
+          transparent 40%,
+          transparent 60%,
+          rgba(130, 193, 185, 0.4) 60%,
+          transparent 100%);
       margin: 5rem 0;
       position: relative;
     }
 
     .divider::after {
-      content: '✨';
+      content: '';
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background: var(--dark);
-      padding: 0.5rem;
-      font-size: 1.2rem;
+      width: 60px;
+      height: 60px;
+      background-image: url('./assets/images/Logo%20ayuditas%20sin%20fondo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: drop-shadow(0 0 10px rgba(255, 139, 91, 0.3));
     }
 
     /* Scroll indicator */
@@ -440,14 +486,233 @@
       z-index: 999;
       background: rgba(10, 10, 10, 0.8);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 211, 41, 0.1);
+      border-bottom: 1px solid rgba(255, 139, 91, 0.1);
       padding: 1rem 0;
       transition: all 0.3s;
     }
 
     .navbar.scrolled {
       background: rgba(10, 10, 10, 0.95);
-      border-bottom-color: rgba(255, 211, 41, 0.3);
+      border-bottom-color: rgba(255, 139, 91, 0.3);
+    }
+
+    .hover-glow {
+      transition: all 0.5s ease-in-out;
+      display: inline-block;
+    }
+
+    .hover-glow:hover {
+      animation: wave-float 2s ease-in-out infinite;
+      filter: brightness(1.2) drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+    }
+
+    @keyframes wave-float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      25% {
+        transform: translateY(-4px) rotate(1deg);
+      }
+
+      75% {
+        transform: translateY(-2px) rotate(-1deg);
+      }
+    }
+
+    /* Hamburger Menu Styles */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1001;
+      padding: 10px;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--primary);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 2px;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-nav-overlay.active {
+      right: 0;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .mobile-nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .mobile-nav-overlay.active .mobile-nav-links a {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered animation for links */
+    .mobile-nav-overlay.active .mobile-nav-links a:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+
+    .mobile-nav-overlay.active .mobile-nav-links a:nth-child(2) {
+      transition-delay: 0.2s;
+    }
+
+    .mobile-nav-overlay.active .mobile-nav-links a:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+
+    .mobile-nav-overlay.active .mobile-nav-links a:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+
+    .mobile-nav-links a:hover {
+      color: var(--primary);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 1024px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+    }
+
+    /* Footer Styles */
+    .footer-link {
+      color: #9CA3AF;
+      transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 139, 91, 0.1);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .social-icon:hover {
+      background: var(--primary);
+      color: black;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255, 139, 91, 0.2);
+    }
+
+    /* Collage effect */
+    .collage-container {
+      position: relative;
+      height: 500px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .collage-img {
+      position: absolute;
+      width: 65%;
+      max-width: 300px;
+      border-radius: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      border: 4px solid rgba(255, 139, 91, 0.6);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .collage-container:hover .collage-img {
+      border-color: rgba(255, 139, 91, 1);
+      box-shadow: 0 0 30px rgba(255, 139, 91, 0.4), 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    .img-main {
+      z-index: 10;
+      transform: rotate(-4deg) translateX(-45%);
+    }
+
+    .img-secondary {
+      z-index: 5;
+      transform: rotate(4deg) translateX(45%) translateY(8%);
+    }
+
+    .collage-container:hover .img-main {
+      transform: rotate(-2deg) translateX(-40%) scale(1.05);
+      z-index: 20;
+    }
+
+    .collage-container:hover .img-secondary {
+      transform: rotate(2deg) translateX(40%) translateY(4%) scale(1.05);
+    }
+
+    /* Mobile adjustments for collage */
+    @media (max-width: 768px) {
+      .collage-container {
+        height: 250px;
+        margin-top: -30px;
+      }
+
+      .collage-img {
+        max-width: 160px;
+      }
     }
   </style>
 </head>
@@ -460,16 +725,49 @@
   <nav class="navbar">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <img src="./assets/images/Logo%20ayuditas%20sin%20fondo.png" alt="Ayuditas Premium logo" class="h-10 w-10 object-contain">
-        <h1 class="text-2xl font-bold gradient-text">Ayuditas Premium</h1>
+        <a href="#" class="flex items-center gap-3">
+          <img src="./assets/images/Logo%20ayuditas%20sin%20fondo.png" alt="Ayuditas Premium logo"
+            class="h-10 w-10 object-contain">
+          <h1 class="text-2xl font-bold gradient-text">Ayuditas Premium</h1>
+        </a>
       </div>
-      <a href="https://wa.me/56990810434" target="_blank" class="hidden md:block">
-        <button class="bg-yellow-400 text-black px-6 py-2 rounded-full font-bold hover:bg-yellow-300 transition">
-          📱 Contactar
-        </button>
-      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="desktop-nav hidden lg:flex items-center gap-8">
+        <a href="#solicitar" class="text-gray-300 hover:var(--primary) font-medium transition">Pedir Ayudita</a>
+        <a href="#servicios" class="text-gray-300 hover:var(--primary) font-medium transition">Servicios</a>
+        <a href="#tarifas" class="text-gray-300 hover:var(--primary) font-medium transition">Tarifas</a>
+        <a href="https://wa.me/56982550861" target="_blank">
+          <button class="bg-primary text-black px-6 py-2 rounded-full font-bold hover:bg-secondary transition">
+            📱 Contactar
+          </button>
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <div class="mobile-menu-btn" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-nav-overlay" id="menuOverlay">
+    <nav class="mobile-nav-links">
+      <a href="#solicitar">Pedir Ayudita</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#tarifas">Tarifas</a>
+      <a href="#postular">Ser Ayudante</a>
+      <div class="pt-8">
+        <a href="https://wa.me/56982550861" target="_blank"
+          class="bg-primary text-black px-10 py-4 rounded-full font-bold text-xl inline-block hover:bg-secondary transition">
+          📱 Contactar
+        </a>
+      </div>
+    </nav>
+  </div>
 
   <!-- HERO SECTION -->
   <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12">
@@ -480,25 +778,29 @@
         <div class="space-y-8 relative z-10">
           <div class="inline-block">
             <span
-              class="bg-yellow-400/20 border border-yellow-400/50 text-yellow-400 px-6 py-2 rounded-full text-sm font-semibold">
-              🌟 Asistencia Express #1 en Chile
+              class="bg-primary/20 border border-primary/50 var(--primary) px-6 py-2 rounded-full text-sm font-semibold">
+              🌟 Asistencia Personalizada #1 en Chile
             </span>
           </div>
 
           <h1 class="text-6xl md:text-8xl font-black leading-none">
             <span class="gradient-text glow-text">AYUDITAS</span>
-            <span class="text-4xl md:text-5xl block mt-2 premium-shine">Premium</span>
           </h1>
 
           <p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
-            <span class="text-yellow-400 font-bold">Nuestro propósito es ayudarte</span>
+            <span class="premium-shine font-bold">Nuestro propósito es ayudarte</span>
           </p>
 
           <!-- Mobile GIF - appears between subtitle and text on mobile only -->
-          <div class="relative md:hidden">
-            <div class="absolute inset-0 bg-yellow-400/20 blur-[100px] rounded-full"></div>
-            <img src="assets/images/video-inicial_gufy no background official.gif" alt="Ayuditas Logo"
-              class="w-full max-w-md mx-auto relative z-10 float drop-shadow-2xl">
+          <!-- Mobile Collage -->
+          <div class="md:hidden py-2">
+            <a href="https://www.instagram.com/ayuditas.cl/" target="_blank" class="collage-container">
+              <div class="absolute inset-0 bg-primary/10 blur-[80px] rounded-full"></div>
+              <img src="assets/images/ayuditas_pense_que_era_solo_una_compra.jpeg" alt="Ayuditas servicio"
+                class="collage-img img-main">
+              <img src="assets/images/ayuditas_pero_termino_siendo_mucho_mas.jfif" alt="Ayuditas acompañamiento"
+                class="collage-img img-secondary">
+            </a>
           </div>
 
           <p class="text-lg text-gray-400">
@@ -507,9 +809,9 @@
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 pt-4">
-            <a href="https://wa.me/56990810434" target="_blank">
+            <a href="#solicitar">
               <button class="cta-button">
-                <span>Contáctanos ahora</span>
+                <span>Pide tu Ayudita ahora!</span>
                 <span>→</span>
               </button>
             </a>
@@ -518,7 +820,7 @@
           <!-- Stats -->
           <div class="grid grid-cols-3 gap-4 pt-8">
             <div class="stat-box">
-              <div class="stat-number">100+</div>
+              <div class="stat-number">1+</div>
               <p class="text-gray-400 text-sm font-medium">Clientes</p>
             </div>
             <div class="stat-box">
@@ -532,32 +834,36 @@
           </div>
         </div>
 
-        <!-- Right content - Image (Desktop only) -->
-        <div class="relative hidden md:block">
-          <div class="absolute inset-0 bg-yellow-400/20 blur-[100px] rounded-full"></div>
-          <img src="assets/images/video-inicial_gufy no background official.gif" alt="Ayuditas Logo"
-            class="w-full max-w-md mx-auto relative z-10 float drop-shadow-2xl scale-1050">
-        </div>
+        <a href="https://www.instagram.com/ayuditas.cl/" target="_blank" class="hidden md:block">
+          <div class="collage-container">
+            <div class="absolute inset-0 bg-primary/20 blur-[120px] rounded-full"></div>
+            <img src="assets/images/ayuditas_pense_que_era_solo_una_compra.jpeg" alt="Ayuditas servicio"
+              class="collage-img img-main">
+            <img src="assets/images/ayuditas_pero_termino_siendo_mucho_mas.jfif" alt="Ayuditas acompañamiento"
+              class="collage-img img-secondary">
+          </div>
+        </a>
       </div>
     </div>
 
     <!-- Scroll indicator -->
     <div class="scroll-indicator">
-      <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-8 h-8 var(--primary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
     </div>
   </section>
 
   <!-- PIDE TU AYUDITA SECTION -->
-  <section class="px-6 py-20 relative z-10">
+  <section id="solicitar" class="px-6 py-20 relative z-10">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
 
         <!-- Left text content -->
         <div class="space-y-6 order-2 md:order-1">
           <div class="hidden md:inline-block">
-            <span class="bg-yellow-400/20 border border-yellow-400/40 text-yellow-300 px-4 py-2 rounded-full text-sm font-semibold">
+            <span
+              class="bg-primary/20 border border-primary/40 var(--secondary) px-4 py-2 rounded-full text-sm font-semibold">
               🚀 Publica tu Ayudita en minutos
             </span>
           </div>
@@ -565,66 +871,75 @@
           <h2 class="text-5xl md:text-6xl font-black leading-tight gradient-text">Pide tu Ayudita</h2>
           <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-semibold">
             Cuéntanos qué necesitas, define tu presupuesto y coordinamos de inmediato con un Ayudante certificado.
-            Los ayudantes son <span class="text-yellow-300 font-bold">universitarios</span> o
-            <span class="text-yellow-300 font-bold">egresados</span> que pasaron una
-            <span class="text-yellow-300 font-bold">entrevista psicológica</span> y fueron
-            <span class="text-yellow-300 font-bold">capacitados</span> por una
-            <span class="text-yellow-300 font-bold">psicopedagoga</span> con experiencia.
+            Los ayudantes son <span class="var(--secondary) font-bold">universitarios</span> o
+            <span class="var(--secondary) font-bold">egresados</span> que pasaron una
+            <span class="var(--secondary) font-bold">entrevista psicológica</span> y fueron
+            <span class="var(--secondary) font-bold">capacitados</span> por una
+            <span class="var(--secondary) font-bold">psicopedagoga</span> con experiencia.
           </p>
 
 
           <div class="grid sm:grid-cols-2 gap-4">
             <div class="glass-card p-4">
-              <p class="text-yellow-300 font-bold text-lg">🕒 Respuesta ultra rápida</p>
+              <p class="var(--secondary) font-bold text-lg">🕒 Respuesta ultra rápida</p>
               <p class="text-sm text-gray-400">Confirmamos tu Ayudante en minutos, 24/7.</p>
             </div>
             <div class="glass-card p-4">
-              <p class="text-yellow-300 font-bold text-lg">📍 Cobertura flexible</p>
+              <p class="var(--secondary) font-bold text-lg">📍 Cobertura flexible</p>
               <p class="text-sm text-gray-400">Comparte tu ubicación o dirección para coordinar al instante.</p>
             </div>
           </div>
 
-          <div class="pt-2 text-gray-400 text-sm">Simple • Seguro • Personalizado</div>
+          <div class="pt-4 premium-shine text-xl font-bold hover-glow cursor-default">
+            Confiable • Ágil • Humano
+          </div>
         </div>
 
         <!-- Right form card -->
         <div class="order-1 md:order-2">
           <div class="md:hidden mb-4 flex justify-center">
-            <span class="bg-yellow-400/20 border border-yellow-400/40 text-yellow-300 px-4 py-2 rounded-full text-sm font-semibold">
+            <span
+              class="bg-primary/20 border border-primary/40 var(--secondary) px-4 py-2 rounded-full text-sm font-semibold">
               🚀 Publica tu Ayudita en minutos
             </span>
           </div>
 
-          <div class="glass-card p-6 md:p-8 shadow-2xl border-yellow-400/40">
+          <div class="glass-card p-6 md:p-8 shadow-2xl border-primary/40">
             <div class="flex items-center justify-between mb-4">
               <h3 class="text-2xl font-bold text-white">Pide tu Ayudita</h3>
-              <span class="text-sm text-yellow-300 font-semibold">1/2</span>
+              <span class="text-sm var(--secondary) font-semibold">1/2</span>
             </div>
 
             <div class="space-y-4">
               <label class="block text-sm text-gray-400 font-semibold">¿Qué necesitas que hagamos?</label>
               <textarea id="help-request" rows="3" maxlength="160"
-                class="w-full bg-black/40 border border-yellow-400/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                class="w-full bg-black/40 border border-primary/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                 placeholder="Ej: Comprar un regalo y entregarlo en Providencia"></textarea>
               <div class="text-right text-xs text-gray-500"><span id="help-count">0</span>/160</div>
             </div>
 
             <div class="mt-6 space-y-2">
               <label class="block text-sm text-gray-400 font-semibold">Elige cuánto pagar</label>
-              <div class="flex items-center justify-between bg-black/40 border border-yellow-400/30 rounded-2xl p-4">
-                <button id="price-minus" class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20">-</button>
+              <div class="flex items-center justify-between bg-black/40 border border-primary/30 rounded-2xl p-4">
+                <button id="price-minus"
+                  class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20">-</button>
                 <div class="text-center">
                   <p class="text-gray-400 text-sm">Monto estimado</p>
-                  <p id="price-display" class="text-3xl font-black text-yellow-400">$15.000</p>
+                  <div class="flex items-center justify-center text-3xl font-black var(--primary)">
+                    <span>$</span>
+                    <input id="price-input" type="text" value="15.000"
+                      class="bg-transparent border-none outline-none w-32 text-center focus:ring-0">
+                  </div>
                 </div>
-                <button id="price-plus" class="w-12 h-12 rounded-full bg-yellow-400 text-black text-2xl font-black hover:bg-yellow-300">+</button>
+                <button id="price-plus"
+                  class="w-12 h-12 rounded-full bg-primary text-black text-2xl font-black hover:bg-secondary">+</button>
               </div>
               <p class="text-xs text-gray-500">Puedes ajustar el valor luego según el tiempo real.</p>
             </div>
 
             <div class="mt-6">
-              <button id="continue-request"
-                class="cta-button w-full justify-center text-lg" aria-label="Continuar para publicar tu ayudita">
+              <button id="continue-request" class="cta-button w-full justify-center text-lg"
+                aria-label="Continuar para publicar tu ayudita">
                 <span>Continuar</span>
                 <span>→</span>
               </button>
@@ -639,7 +954,7 @@
   <div class="divider"></div>
 
   <!-- SERVICIOS SECTION -->
-  <section class="px-6 py-20 relative z-10">
+  <section id="servicios" class="px-6 py-20 relative z-10">
     <div class="max-w-7xl mx-auto">
 
       <div class="text-center mb-16 space-y-4">
@@ -656,7 +971,7 @@
         <!-- Servicio 1 -->
         <div class="glass-card group service-card">
           <div class="service-icon">🛒</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
             Compras Urgentes
           </h3>
           <p class="text-gray-400 leading-relaxed text-sm">
@@ -667,7 +982,7 @@
         <!-- Servicio 2 -->
         <div class="glass-card group service-card">
           <div class="service-icon">⚡️</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
             Trámites Rápidos
           </h3>
           <p class="text-gray-400 leading-relaxed text-sm">
@@ -678,7 +993,7 @@
         <!-- Servicio 3 -->
         <div class="glass-card group service-card">
           <div class="service-icon">👴</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
             Acompañamiento a Trámites Adulto Mayor
           </h3>
           <p class="text-gray-400 leading-relaxed text-sm">
@@ -689,7 +1004,7 @@
         <!-- Servicio 4 -->
         <div class="glass-card group service-card">
           <div class="service-icon">🚖</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
             Choferes Personalizado
           </h3>
           <p class="text-gray-400 leading-relaxed text-sm">
@@ -700,7 +1015,7 @@
         <!-- Servicio 5 -->
         <div class="glass-card group service-card">
           <div class="service-icon">🚗</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
             Rescate Vehicular
           </h3>
           <p class="text-gray-400 leading-relaxed text-sm">
@@ -711,7 +1026,7 @@
         <!-- Servicio 6 -->
         <div class="glass-card group service-card">
           <div class="service-icon">🏠</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-yellow-400 transition">
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
             Tareas Domésticas y Asistencia a Empresas
           </h3>
           <p class="text-gray-400 leading-relaxed text-sm">
@@ -726,7 +1041,7 @@
   <div class="divider"></div>
 
   <!-- PRICING SECTION -->
-  <section class="px-6 py-20 relative z-10">
+  <section id="tarifas" class="px-6 py-20 relative z-10">
     <div class="max-w-7xl mx-auto">
 
       <div class="text-center mb-16">
@@ -747,37 +1062,40 @@
           <div class="overflow-x-auto">
             <table class="w-full text-left">
               <thead>
-                <tr class="border-b border-yellow-400/30">
-                  <th class="py-4 px-4 text-yellow-400 font-bold">Concepto</th>
-                  <th class="py-4 px-4 text-yellow-400 font-bold">Precio</th>
-                  <th class="py-4 px-4 text-yellow-400 font-bold">Detalle</th>
+                <tr class="border-b border-primary/30">
+                  <th class="py-4 px-4 var(--primary) font-bold">Concepto</th>
+                  <th class="py-4 px-4 var(--primary) font-bold">Precio</th>
+                  <th class="py-4 px-4 var(--primary) font-bold">Detalle</th>
                 </tr>
               </thead>
               <tbody class="text-gray-300">
-                <tr class="border-b border-yellow-400/10">
+                <tr class="border-b border-primary/10">
                   <td class="py-4 px-4 font-semibold">Monto publicado por el Ayudad@</td>
-                  <td class="py-4 px-4 text-2xl font-bold text-yellow-400">Tú decides</td>
-                  <td class="py-4 px-4 text-sm">Define el pago que ofreces; los Ayudantes eligen si aceptan la ayudita.</td>
+                  <td class="py-4 px-4 text-2xl font-bold var(--primary)">Tú decides</td>
+                  <td class="py-4 px-4 text-sm">Define el pago que ofreces; los Ayudantes eligen si aceptan la ayudita.
+                  </td>
                 </tr>
-                <tr class="border-b border-yellow-400/10">
+                <tr class="border-b border-primary/10">
                   <td class="py-4 px-4 font-semibold">Comisión por ayudita completada</td>
-                  <td class="py-4 px-4 text-2xl font-bold text-yellow-400">4%</td>
+                  <td class="py-4 px-4 text-2xl font-bold var(--primary)">4%</td>
                   <td class="py-4 px-4 text-sm">Solo se aplica cuando la ayudita se realiza exitosamente.</td>
                 </tr>
                 <tr>
                   <td class="py-4 px-4 font-semibold">Bonificación por invitar ayudantes</td>
-                  <td class="py-4 px-4 text-2xl font-bold text-yellow-400">10 ayudas sin comisión</td>
-                  <td class="py-4 px-4 text-sm">Invita a un amigo. Cuando hace su primera ayuda, acumulas 10 ayuditas libres de
+                  <td class="py-4 px-4 text-2xl font-bold var(--primary)">10 ayudas sin comisión</td>
+                  <td class="py-4 px-4 text-sm">Invita a un amigo. Cuando hace su primera ayuda, acumulas 10 ayuditas
+                    libres de
                     comisión. ¡Motiva a tu red a sumarse! </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div class="mt-6 p-4 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
+          <div class="mt-6 p-4 bg-primary/10 border border-primary/30 rounded-xl">
             <p class="text-sm text-gray-300">
-              <span class="font-bold text-yellow-400">💯 Transparencia total:</span> Publica tu oferta, conversa con tu
-              Ayudante y paga solo con la comisión acordada. Las bonificaciones por referir ayudantes se acumulan y te dan
+              <span class="font-bold var(--primary)">💯 Transparencia total:</span> Publica tu oferta, conversa con tu
+              Ayudante y paga solo con la comisión acordada. Las bonificaciones por referir ayudantes se acumulan y te
+              dan
               más ayuditas sin comisión.
             </p>
           </div>
@@ -789,17 +1107,17 @@
   <div class="divider"></div>
 
   <!-- RECRUITMENT SECTION -->
-  <section class="px-6 py-20 relative z-10">
+  <section id="postular" class="px-6 py-20 relative z-10">
     <div class="max-w-6xl mx-auto">
 
       <div class="glass-card"
-        style="background: linear-gradient(135deg, rgba(255, 211, 41, 0.1), rgba(245, 197, 66, 0.05)); border: 2px solid rgba(255, 211, 41, 0.3);">
+        style="background: linear-gradient(135deg, rgba(255, 139, 91, 0.1), rgba(245, 197, 66, 0.05)); border: 2px solid rgba(255, 139, 91, 0.3);">
         <div class="grid md:grid-cols-2 gap-12 items-center">
 
           <!-- Left content -->
           <div class="space-y-6">
             <div class="inline-block">
-              <span class="bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-bold">
+              <span class="bg-primary text-black px-4 py-2 rounded-full text-sm font-bold">
                 💼 ¡Estamos Contratando!
               </span>
             </div>
@@ -808,7 +1126,7 @@
               <span class="gradient-text">Buscamos Ayudantes</span>
             </h2>
 
-            <p class="text-2xl text-yellow-400 font-bold">
+            <p class="text-2xl var(--primary) font-bold">
               ¿Necesitas dinero extra?
             </p>
 
@@ -818,11 +1136,11 @@
 
             <p class="text-lg text-gray-400 leading-relaxed">
               Únete a nuestro equipo y comienza a generar ingresos con jornadas laborales <span
-                class="text-yellow-400 font-semibold">100% flexibles</span>. Tú decides cuándo y cuánto trabajar.
+                class="var(--primary) font-semibold">100% flexibles</span>. Tú decides cuándo y cuánto trabajar.
             </p>
 
             <div class="pt-4 hidden md:block">
-              <a href="https://wa.me/56990810434?text=Hola!%20Quiero%20ser%20Ayudante" target="_blank">
+              <a href="https://wa.me/56982550861?text=Hola!%20Quiero%20ser%20Ayudante" target="_blank">
                 <button class="cta-button">
                   <span>📝 Postular Ahora</span>
                   <span>→</span>
@@ -837,7 +1155,7 @@
 
             <div class="space-y-4">
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-yellow-400/20 hover:border-yellow-400/50 transition">
+                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">✅</div>
                 <div>
                   <h4 class="font-bold text-white mb-1">Entre 18 y 35 años</h4>
@@ -846,7 +1164,7 @@
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-yellow-400/20 hover:border-yellow-400/50 transition">
+                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">❤️</div>
                 <div>
                   <h4 class="font-bold text-white mb-1">Ganas de ayudar</h4>
@@ -855,7 +1173,7 @@
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-yellow-400/20 hover:border-yellow-400/50 transition">
+                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🛡️</div>
                 <div>
                   <h4 class="font-bold text-white mb-1">Sin antecedentes penales</h4>
@@ -864,7 +1182,7 @@
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-yellow-400/20 hover:border-yellow-400/50 transition">
+                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🎓</div>
                 <div>
                   <h4 class="font-bold text-white mb-1">Certificado de alumna regular o egreso</h4>
@@ -873,7 +1191,7 @@
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-yellow-400/20 hover:border-yellow-400/50 transition">
+                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🧠</div>
                 <div>
                   <h4 class="font-bold text-white mb-1">Evaluación de psicología laboral</h4>
@@ -882,7 +1200,7 @@
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-yellow-400/20 hover:border-yellow-400/50 transition">
+                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🚀</div>
                 <div>
                   <h4 class="font-bold text-white mb-1">¡Y listo!</h4>
@@ -891,9 +1209,9 @@
               </div>
             </div>
 
-            <div class="mt-6 p-4 bg-yellow-400/10 border border-yellow-400/30 rounded-xl">
+            <div class="mt-6 p-4 bg-primary/10 border border-primary/30 rounded-xl">
               <p class="text-sm text-gray-300 text-center">
-                <span class="font-bold text-yellow-400">💰 Gana dinero extra</span> ayudando a tu comunidad con horarios
+                <span class="font-bold var(--primary)">💰 Gana dinero extra</span> ayudando a tu comunidad con horarios
                 que se adaptan a ti
               </p>
             </div>
@@ -901,7 +1219,7 @@
 
           <!-- Mobile CTA placed at the bottom -->
           <div class="pt-8 text-center md:hidden">
-            <a href="https://wa.me/56990810434?text=Hola!%20Quiero%20ser%20Ayudante" target="_blank">
+            <a href="https://wa.me/56982550861?text=Hola!%20Quiero%20ser%20Ayudante" target="_blank">
               <button class="cta-button w-full max-w-md">
                 <span>📝 Postular Ahora</span>
                 <span>→</span>
@@ -930,7 +1248,7 @@
 
         <!-- FAQ 1 -->
         <div class="glass-card">
-          <h3 class="text-2xl font-bold mb-3 text-yellow-400">¿Necesitan vehículo para las entregas?</h3>
+          <h3 class="text-2xl font-bold mb-3 var(--primary)">¿Necesitan vehículo para las entregas?</h3>
           <p class="text-gray-300 leading-relaxed">
             El 80% de nuestros traslados se realizan de forma eficiente a pie, en metro o en bicicleta. Solo aceptamos
             objetos pequeños y medianos para garantizar rapidez y eficiencia.
@@ -939,7 +1257,7 @@
 
         <!-- FAQ 2 -->
         <div class="glass-card">
-          <h3 class="text-2xl font-bold mb-3 text-yellow-400">¿Tienen planes semanales?</h3>
+          <h3 class="text-2xl font-bold mb-3 var(--primary)">¿Tienen planes semanales?</h3>
           <p class="text-gray-300 leading-relaxed">
             Sí. Ofrecemos planes desde 1 a 3 Ayuditas semanales (hasta 60 min c/u) o nuestro atractivo <span
               class="font-bold text-white">Plan Ilimitado Ligero</span> (una Ayudita diaria de hasta 30 min) para un
@@ -949,7 +1267,7 @@
 
         <!-- FAQ 3 -->
         <div class="glass-card">
-          <h3 class="text-2xl font-bold mb-3 text-yellow-400">¿Qué me garantiza la confiabilidad?</h3>
+          <h3 class="text-2xl font-bold mb-3 var(--primary)">¿Qué me garantiza la confiabilidad?</h3>
           <p class="text-gray-300 leading-relaxed">
             Todos nuestros Ayudantes son <span class="font-bold text-white">preevaluados por psicóloga laboral</span> y
             coordinamos con evidencia fotográfica y de ubicación del inicio y término de cada servicio.
@@ -966,21 +1284,22 @@
   <section class="px-6 py-32 relative z-10">
     <div class="max-w-5xl mx-auto text-center space-y-8">
 
-      <div class="inline-block">
-        <span class="text-6xl mb-4 block">✨</span>
+      <div class="flex justify-center mb-6">
+        <img src="./assets/images/Logo%20ayuditas%20sin%20fondo.png" alt="Ayuditas Logo"
+          class="h-32 w-32 object-contain">
       </div>
 
       <h2 class="text-5xl md:text-7xl font-black leading-tight">
-        <span class="gradient-text glow-text">La Mejor Ayuda Express de Chile</span>
+        <span class="gradient-text glow-text">La Mejor Ayuda Personalizada de Chile</span>
       </h2>
 
       <p class="text-2xl text-gray-300 max-w-2xl mx-auto">
         Delegamos tus trámites y mandados cotidianos.<br />
-        <span class="text-yellow-400 font-bold">Asistencia personalizada, confiable y profesional.</span>
+        <span class="var(--primary) font-bold">Asistencia personalizada, confiable y profesional.</span>
       </p>
 
       <div class="pt-8">
-        <a href="https://wa.me/56990810434" target="_blank">
+        <a href="https://wa.me/56982550861" target="_blank">
           <button class="cta-button text-2xl">
             <span>💬 Enviar WhatsApp</span>
           </button>
@@ -1014,39 +1333,156 @@
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-yellow-400/20 py-8 px-6 mt-20">
-    <div class="max-w-7xl mx-auto text-center">
-      <p class="text-gray-500 text-sm">
-        © 2024 AYUDITAS Premium - Asistencia Express #1 en Chile ✨
-      </p>
-      <p class="text-gray-600 text-xs mt-2">
-        Ayudantes evaluados por psicóloga laboral | Servicio profesional y confiable
-      </p>
+  <footer class="relative z-10 pt-20 pb-10 px-6 border-t border-primary/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+        <!-- Brand Column -->
+        <div class="space-y-6">
+          <div class="flex items-center gap-3">
+            <img src="./assets/images/Logo%20ayuditas%20sin%20fondo.png" alt="Ayuditas Logo"
+              class="h-12 w-12 object-contain">
+            <h2 class="text-2xl font-bold gradient-text">Ayuditas Premium</h2>
+          </div>
+          <p class="text-gray-400 leading-relaxed">
+            Nuestra misión es devolverte el tiempo, encargándonos de lo que te distrae. Confianza y profesionalismo en
+            cada servicio.
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z"></path>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/ayuditas.cl/" target="_blank" class="social-icon" aria-label="Instagram">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                </path>
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="TikTok">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1 .05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.025-3.064-1.866-3.064-1.868 0-2.155 1.46-2.155 2.968v5.7h-3v-11h2.88v1.503h.042c.4-.759 1.381-1.56 2.839-1.56 3.039 0 3.599 2.001 3.599 4.603v6.458z">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Column -->
+        <div class="space-y-6">
+          <h3 class="text-white font-bold text-xl">Explora</h3>
+          <ul class="flex flex-col gap-4">
+            <li><a href="#servicios" class="footer-link flex items-center gap-2"><span>→</span> Servicios</a></li>
+            <li><a href="#tarifas" class="footer-link flex items-center gap-2"><span>→</span> Tarifas</a></li>
+            <li><a href="#solicitar" class="footer-link flex items-center gap-2"><span>→</span> Pedir Ayudita</a></li>
+            <li><a href="#postular" class="footer-link flex items-center gap-2"><span>→</span> Ser Ayudante</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="space-y-6">
+          <h3 class="text-white font-bold text-xl">Contacto</h3>
+          <ul class="flex flex-col gap-4">
+            <li class="flex items-start gap-3">
+              <span class="var(--primary) mt-1">📱</span>
+              <div class="text-gray-400">
+                <p class="text-white font-medium">+56 9 8255 0861</p>
+                <p class="text-xs">WhatsApp Business</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="var(--primary) mt-1">📧</span>
+              <div class="text-gray-400">
+                <p class="text-white font-medium">ayuditas.cl@gmail.com</p>
+                <p class="text-xs">Soporte y Consultas</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="var(--primary) mt-1">🌙</span>
+              <div class="text-gray-400">
+                <p class="text-white font-medium">Servicio 24/7</p>
+                <p class="text-xs">Siempre disponibles para ti</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Location/Info Column -->
+        <div class="space-y-6">
+          <h3 class="text-white font-bold text-xl">Región</h3>
+          <div class="p-6 bg-primary/5 border border-primary/10 rounded-2xl">
+            <p class="var(--primary) font-bold mb-2">🇨🇱 Chile Central</p>
+            <p class="text-gray-400 text-sm italic leading-relaxed">
+              "Ayudamos a que las familias recuperen su tranquilidad coordinando traslados, compras y mandados
+              cotidianos."
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-10 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-gray-500 text-sm text-center md:text-left">
+          <p>© 2024 AYUDITAS Premium. Todos los derechos reservados.</p>
+          <p class="text-xs mt-1">Desarrollado con ❤️ para Chile.</p>
+        </div>
+        <div class="flex gap-8 text-xs text-gray-500">
+          <a href="#" class="hover:var(--primary) transition">Términos y Condiciones</a>
+          <a href="#" class="hover:var(--primary) transition">Política de Privacidad</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <!-- WhatsApp floating button -->
-  <a href="https://wa.me/56990810434" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <a href="https://wa.me/56982550861" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
     <span>💬</span>
   </a>
 
   <!-- JavaScript for particles and scroll effects -->
   <script>
-    // Create floating particles
-    function createParticles() {
+    // Create professional background effects
+    function initBackground() {
       const container = document.getElementById('particles');
-      const particleCount = 30;
 
+      // Create Nebulas (large glows)
+      const nebulaColors = ['rgba(255, 139, 91, 0.1)', 'rgba(245, 197, 66, 0.05)', 'rgba(255, 255, 255, 0.05)'];
+      for (let i = 0; i < 4; i++) {
+        const nebula = document.createElement('div');
+        nebula.classList.add('nebula');
+        const size = Math.random() * 400 + 300;
+        nebula.style.width = size + 'px';
+        nebula.style.height = size + 'px';
+        nebula.style.background = nebulaColors[i % nebulaColors.length];
+        nebula.style.left = Math.random() * 100 + '%';
+        nebula.style.top = Math.random() * 100 + '%';
+        nebula.style.animationDelay = (Math.random() * 10) + 's';
+        nebula.style.animationDuration = (Math.random() * 20 + 20) + 's';
+        container.appendChild(nebula);
+      }
+
+      // Create micro-particles (sparkles)
+      const particleCount = 50;
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
 
-        const size = Math.random() * 50 + 20;
+        const size = Math.random() * 3 + 1; // Elegant small size
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
         particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+        particle.style.animationDelay = Math.random() * 10 + 's';
 
         container.appendChild(particle);
       }
@@ -1062,8 +1498,29 @@
       }
     });
 
+    // Mobile Menu Logic
+    const menuToggle = document.getElementById('menuToggle');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuLinks = document.querySelectorAll('.mobile-nav-links a');
+
+    function toggleMenu() {
+      menuToggle.classList.toggle('active');
+      menuOverlay.classList.toggle('active');
+      document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (menuOverlay.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+    });
+
     // Initialize
-    createParticles();
+    initBackground();
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1077,34 +1534,49 @@
     });
 
     // Pide tu Ayudita interactions
-    const priceDisplay = document.getElementById('price-display');
+    const priceInput = document.getElementById('price-input');
     const priceMinus = document.getElementById('price-minus');
     const pricePlus = document.getElementById('price-plus');
     const continueBtn = document.getElementById('continue-request');
     const helpRequest = document.getElementById('help-request');
     const helpCount = document.getElementById('help-count');
 
-    if (priceDisplay && priceMinus && pricePlus && continueBtn) {
+    if (priceInput && priceMinus && pricePlus && continueBtn) {
       let currentPrice = 15000;
       const formatter = new Intl.NumberFormat('es-CL');
 
-      const updatePrice = () => {
-        priceDisplay.textContent = `$${formatter.format(currentPrice)}`;
+      const updateDisplay = () => {
+        priceInput.value = formatter.format(currentPrice);
       };
 
       const clampPrice = (value) => Math.max(5000, Math.min(200000, value));
 
+      const parsePrice = (val) => {
+        return parseInt(val.replace(/\D/g, '')) || 0;
+      };
+
       priceMinus.addEventListener('click', () => {
         currentPrice = clampPrice(currentPrice - 1000);
-        updatePrice();
+        updateDisplay();
       });
 
       pricePlus.addEventListener('click', () => {
         currentPrice = clampPrice(currentPrice + 1000);
-        updatePrice();
+        updateDisplay();
       });
 
-      updatePrice();
+      priceInput.addEventListener('change', () => {
+        currentPrice = clampPrice(parsePrice(priceInput.value));
+        updateDisplay();
+      });
+
+      // Also update on keyup for immediate feedback if desired, or just on blur/change
+      priceInput.addEventListener('blur', () => {
+        currentPrice = clampPrice(parsePrice(priceInput.value));
+        updateDisplay();
+      });
+
+      updateDisplay();
 
       continueBtn.addEventListener('click', () => {
         const description = helpRequest ? encodeURIComponent(helpRequest.value.trim()) : '';
@@ -1122,7 +1594,3 @@
 </body>
 
 </html>
-
-
-
-
