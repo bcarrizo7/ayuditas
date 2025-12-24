@@ -11,7 +11,7 @@
       theme: {
         extend: {
           colors: {
-            primary: '#FF8B5B',
+            primary: '#F05414',
             secondary: '#82C1B9',
             dark: '#0A0F12',
           }
@@ -28,7 +28,7 @@
 
   <style>
     :root {
-      --primary: #FF8B5B;
+      --primary: #F05414;
       --secondary: #82C1B9;
       --dark: #0A0F12;
     }
@@ -118,8 +118,8 @@
 
     /* Glowing text effect */
     .glow-text {
-      text-shadow: 0 0 20px rgba(255, 139, 91, 0.4),
-        0 0 40px rgba(255, 139, 91, 0.2);
+      text-shadow: 0 0 20px rgba(255, 90, 0, 0.4),
+        0 0 40px rgba(255, 90, 0, 0.2);
     }
 
     /* Neon border effect */
@@ -274,7 +274,7 @@
 
     /* CTA Button */
     .cta-button {
-      background: linear-gradient(135deg, var(--primary) 0%, #FF7A45 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, #D44410 100%);
       color: white;
       padding: 1.2rem 3rem;
       border-radius: 50px;
@@ -284,7 +284,7 @@
       align-items: center;
       gap: 0.5rem;
       transition: all 0.3s;
-      box-shadow: 0 10px 40px rgba(255, 139, 91, 0.3);
+      box-shadow: 0 10px 40px rgba(255, 90, 0, 0.3);
       position: relative;
       overflow: hidden;
       border: none;
@@ -311,7 +311,7 @@
 
     .cta-button:hover {
       transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 50px rgba(255, 139, 91, 0.4);
+      box-shadow: 0 15px 50px rgba(255, 90, 0, 0.4);
     }
 
     .cta-button span {
@@ -355,7 +355,7 @@
       justify-content: center;
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 10px 30px rgba(255, 139, 91, 0.3);
+      box-shadow: 0 10px 30px rgba(255, 90, 0, 0.3);
       transition: all 0.3s;
     }
 
@@ -368,13 +368,13 @@
 
     .glass-card:hover .service-icon {
       transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 15px 40px rgba(255, 139, 91, 0.4);
+      box-shadow: 0 15px 40px rgba(255, 90, 0, 0.4);
     }
 
     /* Stats counter */
     .stat-box {
-      background: linear-gradient(135deg, rgba(255, 139, 91, 0.1), rgba(130, 193, 185, 0.1));
-      border: 1px solid rgba(255, 139, 91, 0.3);
+      background: linear-gradient(135deg, rgba(255, 90, 0, 0.1), rgba(130, 193, 185, 0.1));
+      border: 1px solid rgba(255, 90, 0, 0.3);
       border-radius: 20px;
       padding: 1.5rem;
       text-align: center;
@@ -384,7 +384,7 @@
     .stat-box:hover {
       transform: translateY(-5px);
       border-color: var(--primary);
-      background: linear-gradient(135deg, rgba(255, 139, 91, 0.2), rgba(130, 193, 185, 0.2));
+      background: linear-gradient(135deg, rgba(255, 90, 0, 0.2), rgba(130, 193, 185, 0.2));
     }
 
     .stat-number {
@@ -788,7 +788,7 @@
           </h1>
 
           <p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
-            <span class="premium-shine font-bold">Nuestro propósito es ayudarte</span>
+            <span class="premium-shine font-bold">Tu ayudante puede estar más cerca de lo que crees.</span>
           </p>
 
           <!-- Mobile GIF - appears between subtitle and text on mobile only -->
@@ -804,8 +804,8 @@
           </div>
 
           <p class="text-lg text-gray-400">
-            Somos un servicio de ayudantes premium, evaluados y capacitados, con especial enfoque en el trato a adultos
-            mayores. Entregamos servicios confiables y de alta calidad para ti y tu familia 👴👪🧓.
+            Conectamos ayudantes universitarios y egresados confiables y capacitados con personas que necesitan apoyo en
+            su día a día.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 pt-4">
@@ -959,79 +959,97 @@
 
       <div class="text-center mb-16 space-y-4">
         <h2 class="text-5xl md:text-7xl font-black">
-          <span class="gradient-text">Nuestros 6 Servicios Más Solicitados</span>
+          <span class="gradient-text">Nuestros Servicios Premium</span>
         </h2>
         <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-          Recupera tu tiempo delegando tus trámites y mandados cotidianos 💛
+          Asistencia personalizada diseñada para simplificar tu vida y la de tus seres queridos 💛
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <!-- Servicio 1 -->
-        <div class="glass-card group service-card">
-          <div class="service-icon">🛒</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
-            Compras Urgentes
-          </h3>
-          <p class="text-gray-400 leading-relaxed text-sm">
-            Medicamentos, insumos o regalos entregados en minutos con seguimiento en tiempo real.
-          </p>
-        </div>
-
-        <!-- Servicio 2 -->
-        <div class="glass-card group service-card">
-          <div class="service-icon">⚡️</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
-            Trámites Rápidos
-          </h3>
-          <p class="text-gray-400 leading-relaxed text-sm">
-            Hacemos filas, pagos y gestiones en notarías, municipalidades o servicios públicos por ti.
-          </p>
-        </div>
-
-        <!-- Servicio 3 -->
-        <div class="glass-card group service-card">
+        <!-- Servicio 1: Adulto Mayor -->
+        <div class="glass-card group service-card items-start text-left">
           <div class="service-icon">👴</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
-            Acompañamiento a Trámites Adulto Mayor
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+            Acompañamiento Adulto Mayor
           </h3>
-          <p class="text-gray-400 leading-relaxed text-sm">
-            Guía y compañía segura para citas médicas, gestiones digitales o presenciales de personas mayores.
-          </p>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Trámites y compras</li>
+            <li class="flex items-center gap-2"><span>•</span> Horas médicas (no clínico)</li>
+            <li class="flex items-center gap-2"><span>•</span> Gestiones digitales simples</li>
+            <li class="flex items-center gap-2"><span>•</span> Compañía y apoyo cotidiano</li>
+          </ul>
         </div>
 
-        <!-- Servicio 4 -->
-        <div class="glass-card group service-card">
-          <div class="service-icon">🚖</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
-            Choferes Personalizado
+        <!-- Servicio 2: Compras y Trámites -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">🛍️</div>
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+            Compras y Trámites Simples
           </h3>
-          <p class="text-gray-400 leading-relaxed text-sm">
-            Conductores de confianza para traslados puntuales, itinerarios a medida y esperas programadas.
-          </p>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Supermercados y farmacias</li>
+            <li class="flex items-center gap-2"><span>•</span> Pago de cuentas y filas</li>
+            <li class="flex items-center gap-2"><span>•</span> Retiro de documentos</li>
+            <li class="flex items-center gap-2"><span>•</span> Sin poderes ni firmas</li>
+          </ul>
         </div>
 
-        <!-- Servicio 5 -->
-        <div class="glass-card group service-card">
-          <div class="service-icon">🚗</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
-            Rescate Vehicular
+        <!-- Servicio 3: Familia y Niños -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">👨‍👩‍👧‍👦</div>
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+            Apoyo a la Familia y Niños
           </h3>
-          <p class="text-gray-400 leading-relaxed text-sm">
-            Partida a batería, apoyo por pinchazos, combustible de emergencia y coordinación inmediata de grúa.
-          </p>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Traslados y acompañamientos</li>
+            <li class="flex items-center gap-2"><span>•</span> Cuidado puntual de niños</li>
+            <li class="flex items-center gap-2"><span>•</span> Apoyo en eventos familiares</li>
+            <li class="flex items-center gap-2"><span>•</span> Orden y preparación básica</li>
+          </ul>
         </div>
 
-        <!-- Servicio 6 -->
-        <div class="glass-card group service-card">
-          <div class="service-icon">🏠</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:var(--primary) transition">
-            Tareas Domésticas y Asistencia a Empresas
+        <!-- Servicio 4: Estudiantes -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">🎓</div>
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+            Apoyo a Estudiantes
           </h3>
-          <p class="text-gray-400 leading-relaxed text-sm">
-            Orden, limpieza ligera y apoyo operativo exprés para hogares, oficinas o equipos que necesiten refuerzo.
-          </p>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Profesores particulares básicos</li>
+            <li class="flex items-center gap-2"><span>•</span> Tutores para universitarios</li>
+            <li class="flex items-center gap-2"><span>•</span> Apoyo en ramos específicos</li>
+            <li class="flex items-center gap-2"><span>•</span> Mentoría académica</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 5: Hogar -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">🧹</div>
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+            Ayuda en el Hogar
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Orden y limpieza ligera</li>
+            <li class="flex items-center gap-2"><span>•</span> Organización de espacios</li>
+            <li class="flex items-center gap-2"><span>•</span> Tareas domésticas pequeñas</li>
+            <li class="flex items-center gap-2"><span>•</span> Pequeños mandados del hogar</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 6: Empresas y Asilos -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">🏢</div>
+          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+            Operativo Empresas y Asilos
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Refuerzo presencial puntual</li>
+            <li class="flex items-center gap-2"><span>•</span> Apoyo en eventos y logística</li>
+            <li class="flex items-center gap-2"><span>•</span> Tareas presenciales básicas</li>
+            <li class="flex items-center gap-2"><span>•</span> Logística simple y asilos</li>
+          </ul>
         </div>
 
       </div>
@@ -1111,7 +1129,7 @@
     <div class="max-w-6xl mx-auto">
 
       <div class="glass-card"
-        style="background: linear-gradient(135deg, rgba(255, 139, 91, 0.1), rgba(245, 197, 66, 0.05)); border: 2px solid rgba(255, 139, 91, 0.3);">
+        style="background: linear-gradient(135deg, rgba(255, 90, 0, 0.1), rgba(245, 197, 66, 0.05)); border: 2px solid rgba(255, 90, 0, 0.3);">
         <div class="grid md:grid-cols-2 gap-12 items-center">
 
           <!-- Left content -->
@@ -1194,8 +1212,8 @@
                 class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🧠</div>
                 <div>
-                  <h4 class="font-bold text-white mb-1">Evaluación de psicología laboral</h4>
-                  <p class="text-sm text-gray-400">Aprobación por nuestro equipo de expertas</p>
+                  <h4 class="font-bold text-white mb-1">Capacitación en el trato humano y protocolos de servicios</h4>
+                  <p class="text-sm text-gray-400">Método de selección elaborado en conjunto con psicóloga laboral</p>
                 </div>
               </div>
 
