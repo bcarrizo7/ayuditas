@@ -632,7 +632,7 @@
 
     /* Footer Styles */
     .footer-link {
-      color: #9CA3AF;
+      color: #4b5563;
       transition: all 0.3s ease;
     }
 
@@ -641,16 +641,18 @@
       transform: translateX(5px);
     }
 
-    .text-gray-300 {
-      color: #111827;
-    }
+    @layer utilities {
+      .text-gray-300 {
+        color: #1f2937 !important;
+      }
 
-    .text-gray-400 {
-      color: #1f2937;
-    }
+      .text-gray-400 {
+        color: #374151 !important;
+      }
 
-    .text-gray-500 {
-      color: #374151;
+      .text-gray-500 {
+        color: #4b5563 !important;
+      }
     }
 
     .social-icon {
