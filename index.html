@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ayuditas Premium - Asistencia Personalizada #1 en Chile</title>
+  <title>Ayuditas - Asistencia Personalizada #1 en Chile</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -41,8 +41,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--dark);
-      color: white;
+      background: #ffffff;
+      color: #0A0F12;
       overflow-x: hidden;
     }
 
@@ -61,7 +61,7 @@
       height: 100%;
       z-index: 0;
       pointer-events: none;
-      background: radial-gradient(circle at 50% 50%, #151515 0%, #0A0A0A 100%);
+      background: radial-gradient(circle at 50% 50%, #f5f5f5 0%, #ffffff 100%);
       overflow: hidden;
     }
 
@@ -151,9 +151,10 @@
 
     /* Glass morphism cards */
     .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(130, 193, 185, 0.15);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(10, 15, 18, 0.08);
+      box-shadow: 0 20px 40px rgba(10, 15, 18, 0.08);
       border-radius: 24px;
       padding: 2rem;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -179,7 +180,7 @@
     .glass-card:hover {
       transform: translateY(-10px) scale(1.02);
       border-color: var(--secondary);
-      box-shadow: 0 20px 60px rgba(130, 193, 185, 0.2);
+      box-shadow: 0 24px 70px rgba(10, 15, 18, 0.12);
     }
 
     /* Gradient text */
@@ -204,24 +205,17 @@
       }
     }
 
-    /* Silver Premium shine effect */
+    /* Silver shine effect */
     .premium-shine {
-      background: linear-gradient(135deg,
-          #ffffff 0%,
-          #e8e8e8 20%,
-          #ffffff 40%,
-          #d4d4d4 60%,
-          #ffffff 80%,
-          #f0f0f0 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       background-size: 200% 200%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: silver-shine 3s ease-in-out infinite;
-      text-shadow: 0 0 30px rgba(255, 255, 255, 0.5),
-        0 0 60px rgba(255, 255, 255, 0.3),
-        0 0 90px rgba(255, 255, 255, 0.2);
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+      text-shadow: 0 10px 20px rgba(240, 84, 20, 0.2),
+        0 10px 30px rgba(130, 193, 185, 0.2);
+      filter: drop-shadow(0 8px 16px rgba(130, 193, 185, 0.2));
     }
 
     @keyframes silver-shine {
@@ -496,6 +490,14 @@
       border-bottom-color: rgba(255, 139, 91, 0.3);
     }
 
+    .navbar a {
+      color: #f8fafc;
+    }
+
+    .navbar a:hover {
+      color: var(--primary);
+    }
+
     .hover-glow {
       transition: all 0.5s ease-in-out;
       display: inline-block;
@@ -639,17 +641,29 @@
       transform: translateX(5px);
     }
 
+    .text-gray-300 {
+      color: #1f2937;
+    }
+
+    .text-gray-400 {
+      color: #4b5563;
+    }
+
+    .text-gray-500 {
+      color: #6b7280;
+    }
+
     .social-icon {
       width: 40px;
       height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 139, 91, 0.1);
+      background: rgba(10, 15, 18, 0.04);
+      border: 1px solid rgba(10, 15, 18, 0.08);
       border-radius: 12px;
       transition: all 0.3s ease;
-      color: white;
+      color: #0A0F12;
     }
 
     .social-icon:hover {
@@ -726,9 +740,9 @@
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <a href="#" class="flex items-center gap-3">
-          <img src="./assets/images/Logo%20ayuditas%20sin%20fondo.png" alt="Ayuditas Premium logo"
+          <img src="./assets/images/Logo%20ayuditas%20sin%20fondo.png" alt="Ayuditas logo"
             class="h-10 w-10 object-contain">
-          <h1 class="text-2xl font-bold gradient-text">Ayuditas Premium</h1>
+          <h1 class="text-2xl font-bold gradient-text">Ayuditas</h1>
         </a>
       </div>
 
@@ -777,9 +791,8 @@
         <!-- Left content -->
         <div class="space-y-8 relative z-10">
           <div class="inline-block">
-            <span
-              class="bg-primary/20 border border-primary/50 var(--primary) px-6 py-2 rounded-full text-sm font-semibold">
-              🌟 Asistencia Personalizada #1 en Chile
+            <span class="bg-primary/15 border border-primary/30 text-primary px-6 py-2 rounded-full text-sm font-semibold">
+              Estamos busnado ayudantes en:
             </span>
           </div>
 
@@ -906,23 +919,23 @@
 
           <div class="glass-card p-6 md:p-8 shadow-2xl border-primary/40">
             <div class="flex items-center justify-between mb-4">
-              <h3 class="text-2xl font-bold text-white">Pide tu Ayudita</h3>
+              <h3 class="text-2xl font-bold text-gray-900">Pide tu Ayudita</h3>
               <span class="text-sm var(--secondary) font-semibold">1/2</span>
             </div>
 
             <div class="space-y-4">
               <label class="block text-sm text-gray-400 font-semibold">¿Qué necesitas que hagamos?</label>
               <textarea id="help-request" rows="3" maxlength="160"
-                class="w-full bg-black/40 border border-primary/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+                class="w-full bg-white/90 border border-primary/30 rounded-2xl p-4 text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary"
                 placeholder="Ej: Comprar un regalo y entregarlo en Providencia"></textarea>
               <div class="text-right text-xs text-gray-500"><span id="help-count">0</span>/160</div>
             </div>
 
             <div class="mt-6 space-y-2">
               <label class="block text-sm text-gray-400 font-semibold">Elige cuánto pagar</label>
-              <div class="flex items-center justify-between bg-black/40 border border-primary/30 rounded-2xl p-4">
+              <div class="flex items-center justify-between bg-white/90 border border-primary/30 rounded-2xl p-4">
                 <button id="price-minus"
-                  class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20">-</button>
+                  class="w-12 h-12 rounded-full bg-gray-100 text-2xl font-bold text-gray-900 hover:bg-gray-200">-</button>
                 <div class="text-center">
                   <p class="text-gray-400 text-sm">Monto estimado</p>
                   <div class="flex items-center justify-center text-3xl font-black var(--primary)">
@@ -959,7 +972,7 @@
 
       <div class="text-center mb-16 space-y-4">
         <h2 class="text-5xl md:text-7xl font-black">
-          <span class="gradient-text">Nuestros Servicios Premium</span>
+          <span class="gradient-text">Nuestros Servicios</span>
         </h2>
         <p class="text-xl text-gray-400 max-w-3xl mx-auto">
           Asistencia personalizada diseñada para simplificar tu vida y la de tus seres queridos 💛
@@ -971,7 +984,7 @@
         <!-- Servicio 1: Adulto Mayor -->
         <div class="glass-card group service-card items-start text-left">
           <div class="service-icon">👴</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
             Acompañamiento Adulto Mayor
           </h3>
           <ul class="text-gray-400 space-y-2 text-sm">
@@ -985,7 +998,7 @@
         <!-- Servicio 2: Compras y Trámites -->
         <div class="glass-card group service-card items-start text-left">
           <div class="service-icon">🛍️</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
             Compras y Trámites Simples
           </h3>
           <ul class="text-gray-400 space-y-2 text-sm">
@@ -999,7 +1012,7 @@
         <!-- Servicio 3: Familia y Niños -->
         <div class="glass-card group service-card items-start text-left">
           <div class="service-icon">👨‍👩‍👧‍👦</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
             Apoyo a la Familia y Niños
           </h3>
           <ul class="text-gray-400 space-y-2 text-sm">
@@ -1013,7 +1026,7 @@
         <!-- Servicio 4: Estudiantes -->
         <div class="glass-card group service-card items-start text-left">
           <div class="service-icon">🎓</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
             Apoyo a Estudiantes
           </h3>
           <ul class="text-gray-400 space-y-2 text-sm">
@@ -1027,7 +1040,7 @@
         <!-- Servicio 5: Hogar -->
         <div class="glass-card group service-card items-start text-left">
           <div class="service-icon">🧹</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
             Ayuda en el Hogar
           </h3>
           <ul class="text-gray-400 space-y-2 text-sm">
@@ -1041,7 +1054,7 @@
         <!-- Servicio 6: Empresas y Asilos -->
         <div class="glass-card group service-card items-start text-left">
           <div class="service-icon">🏢</div>
-          <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary transition">
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
             Operativo Empresas y Asilos
           </h3>
           <ul class="text-gray-400 space-y-2 text-sm">
@@ -1149,7 +1162,7 @@
             </p>
 
             <p class="text-xl text-gray-300 leading-relaxed">
-              En <span class="text-white font-bold">AYUDITAS</span> te damos una mano! 🤝
+              En <span class="text-gray-900 font-bold">AYUDITAS</span> te damos una mano! 🤝
             </p>
 
             <p class="text-lg text-gray-400 leading-relaxed">
@@ -1169,59 +1182,59 @@
 
           <!-- Right content - Requirements -->
           <div class="space-y-6">
-            <h3 class="text-2xl font-bold text-white mb-6">Requisitos Simples:</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Requisitos Simples:</h3>
 
             <div class="space-y-4">
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
+                class="flex items-start gap-4 p-4 bg-white/80 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">✅</div>
                 <div>
-                  <h4 class="font-bold text-white mb-1">Entre 18 y 35 años</h4>
+                  <h4 class="font-bold text-gray-900 mb-1">Entre 18 y 35 años</h4>
                   <p class="text-sm text-gray-400">Rango de edad para postular</p>
                 </div>
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
+                class="flex items-start gap-4 p-4 bg-white/80 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">❤️</div>
                 <div>
-                  <h4 class="font-bold text-white mb-1">Ganas de ayudar</h4>
+                  <h4 class="font-bold text-gray-900 mb-1">Ganas de ayudar</h4>
                   <p class="text-sm text-gray-400">Actitud positiva y servicial</p>
                 </div>
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
+                class="flex items-start gap-4 p-4 bg-white/80 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🛡️</div>
                 <div>
-                  <h4 class="font-bold text-white mb-1">Sin antecedentes penales</h4>
+                  <h4 class="font-bold text-gray-900 mb-1">Sin antecedentes penales</h4>
                   <p class="text-sm text-gray-400">Certificado de antecedentes al día</p>
                 </div>
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
+                class="flex items-start gap-4 p-4 bg-white/80 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🎓</div>
                 <div>
-                  <h4 class="font-bold text-white mb-1">Certificado de alumna regular o egreso</h4>
+                  <h4 class="font-bold text-gray-900 mb-1">Certificado de alumna regular o egreso</h4>
                   <p class="text-sm text-gray-400">Documento vigente que acredite tu condición académica</p>
                 </div>
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
+                class="flex items-start gap-4 p-4 bg-white/80 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🧠</div>
                 <div>
-                  <h4 class="font-bold text-white mb-1">Capacitación en el trato humano y protocolos de servicios</h4>
+                  <h4 class="font-bold text-gray-900 mb-1">Capacitación en el trato humano y protocolos de servicios</h4>
                   <p class="text-sm text-gray-400">Método de selección elaborado en conjunto con psicóloga laboral</p>
                 </div>
               </div>
 
               <div
-                class="flex items-start gap-4 p-4 bg-black/30 rounded-xl border border-primary/20 hover:border-primary/50 transition">
+                class="flex items-start gap-4 p-4 bg-white/80 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🚀</div>
                 <div>
-                  <h4 class="font-bold text-white mb-1">¡Y listo!</h4>
+                  <h4 class="font-bold text-gray-900 mb-1">¡Y listo!</h4>
                   <p class="text-sm text-gray-400">Comienza tu jornada laboral flexible</p>
                 </div>
               </div>
@@ -1278,7 +1291,7 @@
           <h3 class="text-2xl font-bold mb-3 var(--primary)">¿Tienen planes semanales?</h3>
           <p class="text-gray-300 leading-relaxed">
             Sí. Ofrecemos planes desde 1 a 3 Ayuditas semanales (hasta 60 min c/u) o nuestro atractivo <span
-              class="font-bold text-white">Plan Ilimitado Ligero</span> (una Ayudita diaria de hasta 30 min) para un
+              class="font-bold text-gray-900">Plan Ilimitado Ligero</span> (una Ayudita diaria de hasta 30 min) para un
             acompañamiento total.
           </p>
         </div>
@@ -1287,7 +1300,7 @@
         <div class="glass-card">
           <h3 class="text-2xl font-bold mb-3 var(--primary)">¿Qué me garantiza la confiabilidad?</h3>
           <p class="text-gray-300 leading-relaxed">
-            Todos nuestros Ayudantes son <span class="font-bold text-white">preevaluados por psicóloga laboral</span> y
+            Todos nuestros Ayudantes son <span class="font-bold text-gray-900">preevaluados por psicóloga laboral</span> y
             coordinamos con evidencia fotográfica y de ubicación del inicio y término de cada servicio.
           </p>
         </div>
@@ -1360,7 +1373,7 @@
           <div class="flex items-center gap-3">
             <img src="./assets/images/Logo%20ayuditas%20sin%20fondo.png" alt="Ayuditas Logo"
               class="h-12 w-12 object-contain">
-            <h2 class="text-2xl font-bold gradient-text">Ayuditas Premium</h2>
+            <h2 class="text-2xl font-bold gradient-text">Ayuditas</h2>
           </div>
           <p class="text-gray-400 leading-relaxed">
             Nuestra misión es devolverte el tiempo, encargándonos de lo que te distrae. Confianza y profesionalismo en
@@ -1398,7 +1411,7 @@
 
         <!-- Links Column -->
         <div class="space-y-6">
-          <h3 class="text-white font-bold text-xl">Explora</h3>
+          <h3 class="text-gray-900 font-bold text-xl">Explora</h3>
           <ul class="flex flex-col gap-4">
             <li><a href="#servicios" class="footer-link flex items-center gap-2"><span>→</span> Servicios</a></li>
             <li><a href="#tarifas" class="footer-link flex items-center gap-2"><span>→</span> Tarifas</a></li>
@@ -1409,26 +1422,26 @@
 
         <!-- Contact Column -->
         <div class="space-y-6">
-          <h3 class="text-white font-bold text-xl">Contacto</h3>
+          <h3 class="text-gray-900 font-bold text-xl">Contacto</h3>
           <ul class="flex flex-col gap-4">
             <li class="flex items-start gap-3">
               <span class="var(--primary) mt-1">📱</span>
               <div class="text-gray-400">
-                <p class="text-white font-medium">+56 9 8255 0861</p>
+                <p class="text-gray-900 font-medium">+56 9 8255 0861</p>
                 <p class="text-xs">WhatsApp Business</p>
               </div>
             </li>
             <li class="flex items-start gap-3">
               <span class="var(--primary) mt-1">📧</span>
               <div class="text-gray-400">
-                <p class="text-white font-medium">ayuditas.cl@gmail.com</p>
+                <p class="text-gray-900 font-medium">ayuditas.cl@gmail.com</p>
                 <p class="text-xs">Soporte y Consultas</p>
               </div>
             </li>
             <li class="flex items-start gap-3">
               <span class="var(--primary) mt-1">🌙</span>
               <div class="text-gray-400">
-                <p class="text-white font-medium">Servicio 24/7</p>
+                <p class="text-gray-900 font-medium">Servicio 24/7</p>
                 <p class="text-xs">Siempre disponibles para ti</p>
               </div>
             </li>
@@ -1437,7 +1450,7 @@
 
         <!-- Location/Info Column -->
         <div class="space-y-6">
-          <h3 class="text-white font-bold text-xl">Región</h3>
+          <h3 class="text-gray-900 font-bold text-xl">Región</h3>
           <div class="p-6 bg-primary/5 border border-primary/10 rounded-2xl">
             <p class="var(--primary) font-bold mb-2">🇨🇱 Chile Central</p>
             <p class="text-gray-400 text-sm italic leading-relaxed">
@@ -1452,7 +1465,7 @@
       <!-- Bottom Bar -->
       <div class="pt-10 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="text-gray-500 text-sm text-center md:text-left">
-          <p>© 2024 AYUDITAS Premium. Todos los derechos reservados.</p>
+          <p>© 2024 AYUDITAS. Todos los derechos reservados.</p>
           <p class="text-xs mt-1">Desarrollado con ❤️ para Chile.</p>
         </div>
         <div class="flex gap-8 text-xs text-gray-500">
