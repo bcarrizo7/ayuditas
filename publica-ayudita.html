@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Publica tu Ayudita | Ayuditas Premium</title>
+  <title>Publica tu Ayudita | Vecinos ayudando a vecinos
+  </title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -100,6 +101,95 @@
         color: #94a3b8 !important;
       }
     }
+
+    /* Entrance Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-scale.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .stagger-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-zoom {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .reveal-zoom.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .glass-card {
+      transition: all 0.4s ease;
+    }
+
+    .glass-card:focus-within {
+      border-color: rgba(130, 193, 185, 0.5);
+      box-shadow: 0 0 30px rgba(130, 193, 185, 0.1);
+    }
+
+    .chip-button {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .chip-button:hover:not(.active) {
+      background: rgba(130, 193, 185, 0.15);
+      transform: scale(1.05);
+    }
+
+    .cta-button:active {
+      transform: scale(0.98);
+    }
   </style>
 </head>
 
@@ -107,7 +197,8 @@
   <div class="max-w-4xl mx-auto px-6 py-12 space-y-6">
     <div class="flex items-center justify-between">
       <a href="index.html" class="text-secondary text-sm font-semibold hover:text-secondary/50">← Volver al inicio</a>
-      <span class="text-sm text-gray-400">Ayuditas Premium</span>
+      <span class="text-sm text-gray-400">Vecinos ayudando a vecinos
+      </span>
     </div>
 
     <div class="text-center space-y-3">
@@ -125,24 +216,46 @@
         <div class="text-right text-xs text-gray-500"><span id="desc-count">0</span>/200</div>
       </div>
 
-      <div class="space-y-2">
-        <label class="text-sm text-gray-400 font-semibold">Elige cuánto pagar</label>
+      <div class="space-y-4">
+        <label class="text-sm text-gray-400 font-semibold block text-center">Modalidad de pago</label>
+        <div class="flex gap-2 p-1 bg-white/5 border border-primary/20 rounded-2xl mb-2">
+          <button type="button" id="mode-fixed"
+            class="flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-black shadow-lg">
+            Precio Fijo
+          </button>
+          <button type="button" id="mode-time"
+            class="flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white/10">
+            Por Tiempo
+          </button>
+        </div>
+
+        <!-- Sub-selector de Unidad (Solo visible en Por Tiempo) -->
+        <div id="unit-selector" class="hidden flex justify-center gap-4 mb-4">
+          <button type="button" id="unit-hour"
+            class="text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-black shadow-md transition-all">Por
+            Hora</button>
+          <button type="button" id="unit-minute"
+            class="text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-white/10 text-gray-500 hover:bg-white transition-all">Por
+            Minuto</button>
+        </div>
+
         <div class="flex items-center justify-between bg-black/40 border border-primary/30 rounded-2xl p-4">
           <button id="price2-minus"
-            class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20">-</button>
+            class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20 transition-colors">-</button>
           <div class="text-center">
-            <p class="text-gray-400 text-sm">Monto estimado</p>
+            <p id="price-label" class="text-gray-400 text-sm">Monto total</p>
             <div class="flex items-center justify-center text-3xl font-black text-primary">
               <span>$</span>
               <input id="price-input" type="text" value="15.000"
                 class="bg-transparent border-none outline-none w-32 text-center focus:ring-0">
             </div>
+            <p id="price-suffix" class="hidden text-[10px] text-primary/70 font-bold uppercase tracking-widest mt-1">por
+              hora</p>
           </div>
           <button id="price2-plus"
-            class="w-12 h-12 rounded-full bg-primary text-black text-2xl font-black hover:bg-secondary">+</button>
+            class="w-12 h-12 rounded-full bg-primary text-black text-2xl font-black hover:bg-secondary transition-colors">+</button>
         </div>
-        <p class="text-xs text-gray-500">El valor inicial es referencia. Ajustamos según el tiempo real del servicio.
-        </p>
+        <p id="price-info" class="text-xs text-gray-500 text-center italic">Monto fijo acordado por la misión.</p>
       </div>
 
       <div class="space-y-3">
@@ -235,32 +348,92 @@
 
     const params = new URLSearchParams(window.location.search);
     const defaultPrice = parseInt(params.get('price') || '15000', 10);
+    const defaultMode = params.get('mode') || 'fixed';
+    const defaultUnit = params.get('unit') || 'hour';
     const defaultDesc = params.get('desc') ? decodeURIComponent(params.get('desc')) : '';
 
     const priceInput = document.getElementById('price-input');
     const minus = document.getElementById('price2-minus');
     const plus = document.getElementById('price2-plus');
+    const modeFixedBtn = document.getElementById('mode-fixed');
+    const modeTimeBtn = document.getElementById('mode-time');
+    const unitSelector = document.getElementById('unit-selector');
+    const unitHourBtn = document.getElementById('unit-hour');
+    const unitMinuteBtn = document.getElementById('unit-minute');
+    const priceLabel = document.getElementById('price-label');
+    const priceSuffix = document.getElementById('price-suffix');
+    const priceInfo = document.getElementById('price-info');
     const desc = document.getElementById('task-desc');
     const descCount = document.getElementById('desc-count');
-    const details = document.getElementById('details-input');
-    const detailsCount = document.getElementById('details-count');
-    const chipButtons = document.querySelectorAll('[data-choice]');
     const additionalTime = document.getElementById('additional-time');
     const dateWrapper = document.getElementById('date-wrapper');
     const dateInput = document.getElementById('date-input');
     const timeInput = document.getElementById('time-input');
-    const addressInput = document.getElementById('address-input');
+    const chipButtons = document.querySelectorAll('.chip-button');
     const shareLocation = document.getElementById('share-location');
+    const addressInput = document.getElementById('address-input');
     const locationStatus = document.getElementById('location-status');
+    const details = document.getElementById('details-input');
+    const detailsCount = document.getElementById('details-count');
     const submitStatus = document.getElementById('submit-status');
 
-    let currentPrice = Math.max(5000, Math.min(200000, defaultPrice));
+
+    let currentPrice = defaultPrice;
+    let currentMode = defaultMode;
+    let currentTimeUnit = defaultUnit;
+
+    const updateTimeUnit = (unit) => {
+      currentTimeUnit = unit;
+      if (unit === 'hour') {
+        unitHourBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-black shadow-md transition-all';
+        unitMinuteBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-white/10 text-gray-500 hover:bg-white transition-all';
+        priceSuffix.textContent = 'por hora';
+      } else {
+        unitMinuteBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-black shadow-md transition-all';
+        unitHourBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-white/10 text-gray-500 hover:bg-white transition-all';
+        priceSuffix.textContent = 'por minuto';
+      }
+      updateDisplay();
+    };
+
+    const updateMode = (mode) => {
+      currentMode = mode;
+      if (mode === 'fixed') {
+        modeFixedBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-black shadow-lg';
+        modeTimeBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white/10';
+        priceLabel.textContent = 'Monto total';
+        priceSuffix.classList.add('hidden');
+        unitSelector.classList.add('hidden');
+        priceInfo.textContent = 'Monto fijo acordado por la misión.';
+      } else {
+        modeTimeBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-black shadow-lg';
+        modeFixedBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white/10';
+        priceLabel.textContent = 'Monto por tiempo';
+        priceSuffix.classList.remove('hidden');
+        unitSelector.classList.remove('hidden');
+        priceInfo.textContent = 'Pago proporcional según el tiempo real utilizado.';
+        updateTimeUnit(currentTimeUnit);
+      }
+      updateDisplay();
+    };
+
+    if (modeFixedBtn) modeFixedBtn.addEventListener('click', () => updateMode('fixed'));
+    if (modeTimeBtn) modeTimeBtn.addEventListener('click', () => updateMode('time'));
+    if (unitHourBtn) unitHourBtn.addEventListener('click', () => updateTimeUnit('hour'));
+    if (unitMinuteBtn) unitMinuteBtn.addEventListener('click', () => updateTimeUnit('minute'));
 
     const updateDisplay = () => {
       priceInput.value = formatter.format(currentPrice);
     };
 
-    const clampPrice = (value) => Math.max(5000, Math.min(200000, value));
+    const clampPrice = (value) => {
+      if (currentMode === 'fixed') return Math.max(5000, Math.min(200000, value));
+      if (currentTimeUnit === 'hour') return Math.max(1000, Math.min(50000, value));
+      return Math.max(100, Math.min(5000, value));
+    };
+
+    // Init from URL
+    updateMode(defaultMode);
 
     const parsePrice = (val) => {
       return parseInt(val.replace(/\D/g, '')) || 0;
@@ -272,12 +445,16 @@
     }
 
     minus.addEventListener('click', () => {
-      currentPrice = clampPrice(currentPrice - 1000);
+      let step = 1000;
+      if (currentMode === 'time' && currentTimeUnit === 'minute') step = 50;
+      currentPrice = clampPrice(currentPrice - step);
       updateDisplay();
     });
 
     plus.addEventListener('click', () => {
-      currentPrice = clampPrice(currentPrice + 1000);
+      let step = 1000;
+      if (currentMode === 'time' && currentTimeUnit === 'minute') step = 50;
+      currentPrice = clampPrice(currentPrice + step);
       updateDisplay();
     });
 
@@ -341,16 +518,12 @@
     document.getElementById('submit-request').addEventListener('click', () => {
       const activeChoice = document.querySelector('[data-choice].active');
       const when = activeChoice ? activeChoice.textContent : 'No especificado';
-      const date = dateInput.value;
-      const time = timeInput.value;
 
       const nombre = document.getElementById('nombre-input').value;
       const apellidoP = document.getElementById('apellido-p-input').value;
       const apellidoM = document.getElementById('apellido-m-input').value;
       const rut = document.getElementById('rut-input').value;
 
-      let whenText = when;
-      // Usamos códigos Unicode para asegurar que los emojis se procesen bien en cualquier navegador
       const emojiRocket = '\u{1F680}';
       const emojiTask = '\u{1F4DD}';
       const emojiPrice = '\u{1F4B0}';
@@ -360,19 +533,59 @@
       const emojiUser = '\u{1F464}';
       const emojiID = '\u{1F194}';
 
+      const taskValue = document.getElementById('task-desc').value;
+      const addressValue = document.getElementById('address-input').value;
+      const detailsValue = document.getElementById('details-input').value;
+
       const rawMessage = `${emojiRocket} *Nueva Solicitud de Ayudita*\n\n` +
         `${emojiUser} *Solicitante:* ${nombre} ${apellidoP} ${apellidoM}\n` +
         `${emojiID} *RUT:* ${rut}\n\n` +
-        `${emojiTask} *Tarea:* ${desc.value}\n` +
-        `${emojiPrice} *Presupuesto:* $${formatter.format(currentPrice)}\n` +
-        `${emojiCalendar} *Cuándo:* ${whenText}\n` +
-        `${emojiLocation} *Dónde:* ${addressInput.value}\n` +
-        `${emojiSearch} *Detalles:* ${details.value || 'Sin detalles adicionales'}`;
+        `${emojiTask} *Tarea:* ${taskValue}\n` +
+        `${emojiPrice} *Pago:* $${formatter.format(currentPrice)} ${currentMode === 'fixed' ? '(Monto Fijo)' : `(Por ${currentTimeUnit === 'hour' ? 'Hora' : 'Minuto'})`}\n` +
+        `${emojiCalendar} *Cuándo:* ${when}\n` +
+        `${emojiLocation} *Dónde:* ${addressValue}\n` +
+        `${emojiSearch} *Detalles:* ${detailsValue || 'Sin detalles adicionales'}`;
 
       const whatsappUrl = `https://api.whatsapp.com/send?phone=56982550861&text=${encodeURIComponent(rawMessage)}`;
 
       submitStatus.textContent = 'Redirigiendo a WhatsApp...';
       window.open(whatsappUrl, '_blank');
+    });
+
+    // Entrance Animations Controller
+    document.addEventListener('DOMContentLoaded', () => {
+      // Reveal header
+      const headerTitle = document.querySelector('.text-center.space-y-3');
+      if (headerTitle) {
+        headerTitle.classList.add('reveal-zoom');
+        setTimeout(() => headerTitle.classList.add('active'), 100);
+      }
+
+      // Reveal main card
+      const mainCard = document.querySelector('.glass-card');
+      if (mainCard) {
+        mainCard.classList.add('reveal-scale');
+        setTimeout(() => mainCard.classList.add('active'), 300);
+      }
+
+      // Stagger children with mixed directions
+      const formGroups = document.querySelectorAll('.glass-card > div');
+      formGroups.forEach((group, index) => {
+        group.classList.add('stagger-item');
+        // Alternar direcciones
+        if (index % 3 === 0) group.classList.add('reveal-left');
+        else if (index % 3 === 1) group.classList.add('reveal-right');
+        else group.classList.add('reveal-zoom');
+
+        setTimeout(() => group.classList.add('active'), 500 + (index * 100));
+      });
+
+      // Fallback: If after 2 seconds things are still hidden, show them
+      setTimeout(() => {
+        document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-zoom, .stagger-item').forEach(el => {
+          el.classList.add('active');
+        });
+      }, 2000);
     });
   </script>
 </body>
