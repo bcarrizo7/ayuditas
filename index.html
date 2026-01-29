@@ -149,6 +149,219 @@
       opacity: 0.7;
     }
 
+    /* Professional Entrance Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal-scale.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .stagger-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-zoom {
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .reveal-zoom.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ===== HERO SECTION ENTRANCE ANIMATIONS (Pure CSS) ===== */
+    @keyframes hero-title-entrance {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.9);
+        filter: blur(10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes hero-subtitle-entrance {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes hero-text-entrance {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes hero-cta-entrance {
+      0% {
+        opacity: 0;
+        transform: translateX(30px) scale(0.95);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    @keyframes hero-stats-entrance {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes hero-collage-entrance {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-5deg);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .hero-title-anim {
+      animation: hero-title-entrance 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+    }
+
+    .hero-subtitle-anim {
+      animation: hero-subtitle-entrance 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both;
+    }
+
+    .hero-text-anim {
+      animation: hero-text-entrance 0.7s ease-out 0.7s both;
+    }
+
+    .hero-cta-anim {
+      animation: hero-cta-entrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s both;
+    }
+
+    .hero-stats-anim {
+      animation: hero-stats-entrance 0.8s ease-out 1.1s both;
+    }
+
+    .hero-collage-anim {
+      animation: hero-collage-entrance 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+    }
+
+    /* Hover Micro-Interactions */
+    .hover-pro {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+
+    .hover-pro:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .glass-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(130, 193, 185, 0.4);
+      transform: translateY(-5px);
+    }
+
+    .cta-button:active {
+      transform: scale(0.95);
+    }
+
+    .modal-unit-btn {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Pulse effect for key actions */
+    @keyframes pulse-soft {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 139, 91, 0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(255, 139, 91, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 139, 91, 0);
+      }
+    }
+
+    .pulse-btn {
+      animation: pulse-soft 2s infinite;
+    }
+
     /* Glass morphism cards */
     .glass-card {
       background: rgba(255, 255, 255, 0.9);
@@ -183,14 +396,24 @@
       box-shadow: 0 24px 70px rgba(10, 15, 18, 0.12);
     }
 
-    /* Gradient text */
+    /* Gradient text - Default */
     .gradient-text {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       background-size: 200% 200%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      /* background-clip: text; - standard property already present below */
       animation: gradient-shift 3s ease infinite;
+    }
+
+    /* Hero Title Specific - Two-tone Orange for Elegance */
+    .hero-title-gradient {
+      background: linear-gradient(135deg, #F05414 0%, #FF8B5B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      /* No animation for more stability/elegance */
     }
 
     @keyframes gradient-shift {
@@ -342,15 +565,16 @@
     .service-icon {
       width: 80px;
       height: 80px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 20px;
+      background: #ffffff;
+      border: 3px solid var(--primary);
+      border-radius: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 10px 30px rgba(255, 90, 0, 0.3);
-      transition: all 0.3s;
+      box-shadow: 0 10px 25px rgba(240, 84, 20, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .service-card {
@@ -361,8 +585,14 @@
     }
 
     .glass-card:hover .service-icon {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 15px 40px rgba(255, 90, 0, 0.4);
+      transform: scale(1.1) rotate(8deg);
+      border-color: var(--secondary);
+      box-shadow: 0 15px 35px rgba(130, 193, 185, 0.25);
+    }
+
+    .extra-service {
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     /* Stats counter */
@@ -719,7 +949,125 @@
       transform: rotate(2deg) translateX(40%) translateY(4%) scale(1.05);
     }
 
-    /* Mobile adjustments for collage */
+    .insta-label {
+      position: absolute;
+      bottom: 18%;
+      left: 50%;
+      transform: translate(-50%, 20px) rotate(-2deg);
+      background: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 99px;
+      font-weight: 900;
+      font-size: 1rem;
+      z-index: 50;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      white-space: nowrap;
+      border: 2px solid #E4405F;
+      color: #E4405F;
+    }
+
+    .insta-label svg {
+      transition: color 0.3s;
+    }
+
+    .insta-icon {
+      width: 24px;
+      height: 24px;
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: #E4405F;
+      /* Fallback */
+    }
+
+    .collage-container:hover .insta-label {
+      opacity: 1;
+      transform: translate(-50%, 0) rotate(0deg);
+    }
+
+    /* Mobile and Tablet: Ultra-Premium Floating Style */
+    @media (max-width: 1024px) {
+      .insta-label {
+        opacity: 1;
+        bottom: 8%;
+        transform: translate(-50%, 0);
+        padding: 0;
+        width: 60px;
+        /* Un poco mas compacto */
+        height: 60px;
+        border-radius: 50%;
+        justify-content: center;
+        pointer-events: auto;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        /* Borde de cristal mas nitido */
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        box-shadow: 0 15px 45px rgba(228, 64, 95, 0.5),
+          inset 0 0 15px rgba(255, 255, 255, 0.2);
+        /* Brillo interno de cristal */
+        animation: insta-premium-pulse 3s ease-in-out infinite;
+        overflow: hidden;
+      }
+
+      /* Efecto de brillo de cristal pasando sobre el boton */
+      .insta-label::after {
+        content: '';
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        animation: glass-shine 4s infinite;
+      }
+
+      .insta-label svg {
+        color: white !important;
+        width: 30px;
+        height: 30px;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        z-index: 2;
+      }
+
+      .insta-text {
+        display: none;
+      }
+    }
+
+    @keyframes insta-premium-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 10px 30px rgba(228, 64, 95, 0.5);
+        transform: translate(-50%, 0) scale(1);
+      }
+
+      50% {
+        box-shadow: 0 15px 50px rgba(228, 64, 95, 0.7);
+        transform: translate(-50%, 0) scale(1.04);
+        /* Pulso mas sutil y elegante */
+      }
+    }
+
+    @keyframes glass-shine {
+      0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      }
+
+      20%,
+      100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+      }
+    }
+
+    /* Mobile adjustments for collage height and size */
     @media (max-width: 768px) {
       .collage-container {
         height: 250px;
@@ -792,40 +1140,42 @@
 
         <!-- Left content -->
         <div class="space-y-8 relative z-10">
-          <div class="inline-block">
-            <span class="bg-primary/15 border border-primary/30 text-primary px-6 py-2 rounded-full text-sm font-semibold">
-              Estamos busnado ayudantes en:
-            </span>
-          </div>
-
-          <h1 class="text-6xl md:text-8xl font-black leading-none">
-            <span class="gradient-text glow-text">AYUDITAS</span>
+          <h1 class="text-6xl md:text-[8.5rem] font-black leading-none tracking-tight hero-title-anim">
+            <span class="hero-title-gradient glow-text">AYUDITAS</span>
           </h1>
 
-          <p class="text-xl md:text-2xl text-gray-300 leading-relaxed">
+          <p class="text-xl md:text-2xl text-gray-300 leading-relaxed hero-subtitle-anim">
             <span class="premium-shine font-bold">Tu ayudante puede estar más cerca de lo que crees.</span>
           </p>
 
           <!-- Mobile GIF - appears between subtitle and text on mobile only -->
           <!-- Mobile Collage -->
-          <div class="md:hidden py-2">
+          <div class="md:hidden py-2 hero-collage-anim">
             <a href="https://www.instagram.com/ayuditas.cl/" target="_blank" class="collage-container">
               <div class="absolute inset-0 bg-primary/10 blur-[80px] rounded-full"></div>
               <img src="assets/images/ayuditas_pense_que_era_solo_una_compra.jpeg" alt="Ayuditas servicio"
                 class="collage-img img-main">
               <img src="assets/images/ayuditas_pero_termino_siendo_mucho_mas.jfif" alt="Ayuditas acompañamiento"
                 class="collage-img img-secondary">
+              <div class="insta-label">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                  </path>
+                </svg>
+                <span class="insta-text">Instagram</span>
+              </div>
             </a>
           </div>
 
-          <p class="text-lg text-gray-400">
+          <p class="text-lg text-gray-400 hero-text-anim">
             Conectamos ayudantes universitarios y egresados confiables y capacitados con personas que necesitan apoyo en
             su día a día.
           </p>
 
-          <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <div class="flex flex-col sm:flex-row gap-4 pt-4 hero-cta-anim">
             <a href="#solicitar">
-              <button class="cta-button">
+              <button class="cta-button pulse-btn">
                 <span>Pide tu Ayudita ahora!</span>
                 <span>→</span>
               </button>
@@ -833,7 +1183,7 @@
           </div>
 
           <!-- Stats -->
-          <div class="grid grid-cols-3 gap-4 pt-8">
+          <div class="grid grid-cols-3 gap-4 pt-8 hero-stats-anim">
             <div class="stat-box">
               <div class="stat-number">1+</div>
               <p class="text-gray-400 text-sm font-medium">Clientes</p>
@@ -856,6 +1206,14 @@
               class="collage-img img-main">
             <img src="assets/images/ayuditas_pero_termino_siendo_mucho_mas.jfif" alt="Ayuditas acompañamiento"
               class="collage-img img-secondary">
+            <div class="insta-label">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style="color: #E4405F;">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z">
+                </path>
+              </svg>
+              <span class="insta-text" style="color: #E4405F;">Instagram</span>
+            </div>
           </div>
         </a>
       </div>
@@ -879,7 +1237,7 @@
           <div class="hidden md:inline-block">
             <span
               class="bg-primary/20 border border-primary/40 var(--secondary) px-4 py-2 rounded-full text-sm font-semibold">
-              🚀 Publica tu Ayudita en minutos
+              Publica tu Ayudita en minutos 🚀
             </span>
           </div>
 
@@ -915,7 +1273,7 @@
           <div class="md:hidden mb-4 flex justify-center">
             <span
               class="bg-primary/20 border border-primary/40 var(--secondary) px-4 py-2 rounded-full text-sm font-semibold">
-              🚀 Publica tu Ayudita en minutos
+              Publica tu Ayudita en minutos 🚀
             </span>
           </div>
 
@@ -933,23 +1291,48 @@
               <div class="text-right text-xs text-gray-500"><span id="help-count">0</span>/160</div>
             </div>
 
-            <div class="mt-6 space-y-2">
-              <label class="block text-sm text-gray-400 font-semibold">Elige cuánto pagar</label>
-              <div class="flex items-center justify-between bg-white/90 border border-primary/30 rounded-2xl p-4">
+            <div class="mt-6 space-y-4">
+              <label class="block text-sm text-gray-400 font-semibold text-center mb-2">Modalidad de pago</label>
+              <div class="flex gap-2 p-1 bg-white/50 border border-primary/20 rounded-2xl mb-4">
+                <button type="button" id="mode-fixed"
+                  class="flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-black shadow-lg">
+                  Precio Fijo
+                </button>
+                <button type="button" id="mode-time"
+                  class="flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white/50">
+                  Por Tiempo
+                </button>
+              </div>
+
+              <!-- Sub-selector de Unidad (Solo visible en Por Tiempo) -->
+              <div id="unit-selector" class="hidden flex justify-center gap-4 mb-4">
+                <button type="button" id="unit-hour"
+                  class="text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-black shadow-md transition-all">Por
+                  Hora</button>
+                <button type="button" id="unit-minute"
+                  class="text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-white/50 text-gray-500 hover:bg-white transition-all">Por
+                  Minuto</button>
+              </div>
+
+              <div
+                class="flex items-center justify-between bg-white/90 border border-primary/30 rounded-2xl p-4 shadow-sm">
                 <button id="price-minus"
-                  class="w-12 h-12 rounded-full bg-gray-100 text-2xl font-bold text-gray-900 hover:bg-gray-200">-</button>
+                  class="w-12 h-12 rounded-full bg-gray-100 text-2xl font-bold text-gray-900 hover:bg-gray-200 transition-colors">-</button>
                 <div class="text-center">
-                  <p class="text-gray-400 text-sm">Monto estimado</p>
+                  <p id="price-label" class="text-gray-400 text-sm font-medium">Monto total</p>
                   <div class="flex items-center justify-center text-3xl font-black var(--primary)">
                     <span>$</span>
                     <input id="price-input" type="text" value="15.000"
                       class="bg-transparent border-none outline-none w-32 text-center focus:ring-0">
                   </div>
+                  <p id="price-suffix"
+                    class="hidden text-[10px] text-primary/70 font-bold uppercase tracking-widest mt-1">por hora</p>
                 </div>
                 <button id="price-plus"
-                  class="w-12 h-12 rounded-full bg-primary text-black text-2xl font-black hover:bg-secondary">+</button>
+                  class="w-12 h-12 rounded-full bg-primary text-black text-2xl font-black hover:bg-secondary transition-colors">+</button>
               </div>
-              <p class="text-xs text-gray-500">Puedes ajustar el valor luego según el tiempo real.</p>
+              <p id="price-info" class="text-xs text-gray-500 text-center italic">Monto fijo total acordado por la
+                misión.</p>
             </div>
 
             <div class="mt-6">
@@ -981,8 +1364,7 @@
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
         <!-- Servicio 1: Adulto Mayor -->
         <div class="glass-card group service-card items-start text-left">
           <div class="service-icon">👴</div>
@@ -1025,17 +1407,17 @@
           </ul>
         </div>
 
-        <!-- Servicio 4: Estudiantes -->
+        <!-- Servicio 4: Mascotas (Ahora siempre visible) -->
         <div class="glass-card group service-card items-start text-left">
-          <div class="service-icon">🎓</div>
+          <div class="service-icon">🐶</div>
           <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Apoyo a Estudiantes
+            Apoyo con Mascotas
           </h3>
           <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Profesores particulares básicos</li>
-            <li class="flex items-center gap-2"><span>•</span> Tutores para universitarios</li>
-            <li class="flex items-center gap-2"><span>•</span> Apoyo en ramos específicos</li>
-            <li class="flex items-center gap-2"><span>•</span> Mentoría académica</li>
+            <li class="flex items-center gap-2"><span>•</span> Paseos cortos y compañía</li>
+            <li class="flex items-center gap-2"><span>•</span> Compra de alimento</li>
+            <li class="flex items-center gap-2"><span>•</span> Traslados a veterinaria</li>
+            <li class="flex items-center gap-2"><span>•</span> Rutinas básicas de cuidado</li>
           </ul>
         </div>
 
@@ -1067,111 +1449,102 @@
           </ul>
         </div>
 
-      </div>
-
-      <div class="text-center mt-10">
-        <button id="toggle-services" class="cta-button text-lg" type="button" aria-expanded="false"
-          aria-controls="servicios-extra">
-          Ver más
-        </button>
-      </div>
-
-      <div id="servicios-extra" class="hidden mt-10">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <!-- Servicio 7: Mascotas -->
-          <div class="glass-card group service-card items-start text-left">
-            <div class="service-icon">🐶</div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-              Apoyo con Mascotas
-            </h3>
-            <ul class="text-gray-400 space-y-2 text-sm">
-              <li class="flex items-center gap-2"><span>•</span> Paseos cortos y compañía</li>
-              <li class="flex items-center gap-2"><span>•</span> Compra de alimento</li>
-              <li class="flex items-center gap-2"><span>•</span> Traslados a veterinaria</li>
-              <li class="flex items-center gap-2"><span>•</span> Rutinas básicas de cuidado</li>
-            </ul>
-          </div>
-
-          <!-- Servicio 8: Mudanzas Ligeras -->
-          <div class="glass-card group service-card items-start text-left">
-            <div class="service-icon">📦</div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-              Mudanzas Ligeras
-            </h3>
-            <ul class="text-gray-400 space-y-2 text-sm">
-              <li class="flex items-center gap-2"><span>•</span> Orden y embalaje rápido</li>
-              <li class="flex items-center gap-2"><span>•</span> Traslado de cajas pequeñas</li>
-              <li class="flex items-center gap-2"><span>•</span> Armado y desarmado simple</li>
-              <li class="flex items-center gap-2"><span>•</span> Apoyo en cambios de oficina</li>
-            </ul>
-          </div>
-
-          <!-- Servicio 9: Acompañamientos -->
-          <div class="glass-card group service-card items-start text-left">
-            <div class="service-icon">🤝</div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-              Acompañamientos Puntuales
-            </h3>
-            <ul class="text-gray-400 space-y-2 text-sm">
-              <li class="flex items-center gap-2"><span>•</span> Citas, trámites o eventos</li>
-              <li class="flex items-center gap-2"><span>•</span> Esperas y apoyo en filas</li>
-              <li class="flex items-center gap-2"><span>•</span> Traslados cortos</li>
-              <li class="flex items-center gap-2"><span>•</span> Seguimiento y seguridad</li>
-            </ul>
-          </div>
-
-          <!-- Servicio 10: Soporte Digital -->
-          <div class="glass-card group service-card items-start text-left">
-            <div class="service-icon">💻</div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-              Soporte Digital Básico
-            </h3>
-            <ul class="text-gray-400 space-y-2 text-sm">
-              <li class="flex items-center gap-2"><span>•</span> Configurar apps y cuentas</li>
-              <li class="flex items-center gap-2"><span>•</span> Pagos y trámites online</li>
-              <li class="flex items-center gap-2"><span>•</span> Videollamadas y correo</li>
-              <li class="flex items-center gap-2"><span>•</span> Guías paso a paso</li>
-            </ul>
-          </div>
-
-          <!-- Servicio 11: Eventos -->
-          <div class="glass-card group service-card items-start text-left">
-            <div class="service-icon">🎉</div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-              Apoyo en Eventos
-            </h3>
-            <ul class="text-gray-400 space-y-2 text-sm">
-              <li class="flex items-center gap-2"><span>•</span> Montaje y desmontaje</li>
-              <li class="flex items-center gap-2"><span>•</span> Atención a invitados</li>
-              <li class="flex items-center gap-2"><span>•</span> Logística y compras</li>
-              <li class="flex items-center gap-2"><span>•</span> Orden y limpieza ligera</li>
-            </ul>
-          </div>
-
-          <!-- Servicio 12: Recados Exprés -->
-          <div class="glass-card group service-card items-start text-left">
-            <div class="service-icon">⚡</div>
-            <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-              Recados Exprés
-            </h3>
-            <ul class="text-gray-400 space-y-2 text-sm">
-              <li class="flex items-center gap-2"><span>•</span> Entregas pequeñas</li>
-              <li class="flex items-center gap-2"><span>•</span> Retiro y devolución</li>
-              <li class="flex items-center gap-2"><span>•</span> Compras de último minuto</li>
-              <li class="flex items-center gap-2"><span>•</span> Gestiones rápidas</li>
-            </ul>
-          </div>
-
+        <!-- Servicios Extra (Ocultos inicialmente) -->
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">🎓</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Apoyo a Estudiantes
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Profesores particulares básicos</li>
+            <li class="flex items-center gap-2"><span>•</span> Tutores para universitarios</li>
+            <li class="flex items-center gap-2"><span>•</span> Apoyo en ramos específicos</li>
+            <li class="flex items-center gap-2"><span>•</span> Mentoría académica</li>
+          </ul>
         </div>
+
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">📦</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Mudanzas Ligeras
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Orden y embalaje rápido</li>
+            <li class="flex items-center gap-2"><span>•</span> Traslado de cajas pequeñas</li>
+            <li class="flex items-center gap-2"><span>•</span> Armado y desarmado simple</li>
+            <li class="flex items-center gap-2"><span>•</span> Apoyo en cambios de oficina</li>
+          </ul>
+        </div>
+
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">🤝</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Acompañamientos Puntuales
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Citas, trámites o eventos</li>
+            <li class="flex items-center gap-2"><span>•</span> Esperas y apoyo en filas</li>
+            <li class="flex items-center gap-2"><span>•</span> Traslados cortos</li>
+            <li class="flex items-center gap-2"><span>•</span> Seguimiento y seguridad</li>
+          </ul>
+        </div>
+
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">💻</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Soporte Digital Básico
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Configurar apps y cuentas</li>
+            <li class="flex items-center gap-2"><span>•</span> Pagos y trámites online</li>
+            <li class="flex items-center gap-2"><span>•</span> Videollamadas y correo</li>
+            <li class="flex items-center gap-2"><span>•</span> Guías paso a paso</li>
+          </ul>
+        </div>
+
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">🎉</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Apoyo en Eventos
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Montaje y desmontaje</li>
+            <li class="flex items-center gap-2"><span>•</span> Atención a invitados</li>
+            <li class="flex items-center gap-2"><span>•</span> Logística y compras</li>
+            <li class="flex items-center gap-2"><span>•</span> Orden y limpieza ligera</li>
+          </ul>
+        </div>
+
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">⚡</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Recados Exprés
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Entregas pequeñas</li>
+            <li class="flex items-center gap-2"><span>•</span> Retiro y devolución</li>
+            <li class="flex items-center gap-2"><span>•</span> Compras de último minuto</li>
+            <li class="flex items-center gap-2"><span>•</span> Gestiones rápidas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <button id="toggle-services" class="cta-button text-lg group" type="button" aria-expanded="false">
+          <span>Ver todos los servicios</span>
+          <svg class="w-5 h-5 transition-transform duration-300 group-aria-expanded:rotate-180" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider hidden"></div>
 
   <!-- PRICING SECTION -->
-  <section id="tarifas" class="px-6 py-20 relative z-10">
+  <section id="tarifas" class="px-6 py-20 relative z-10 hidden">
     <div class="max-w-7xl mx-auto">
 
       <div class="text-center mb-16">
@@ -1257,7 +1630,7 @@
             </h2>
 
             <p class="text-2xl var(--primary) font-bold">
-              ¿Necesitas dinero extra?
+              "Ayuda y gana dinero Extra"
             </p>
 
             <p class="text-xl text-gray-300 leading-relaxed">
@@ -1288,7 +1661,7 @@
                 class="flex items-start gap-4 p-4 bg-white/80 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">✅</div>
                 <div>
-                  <h4 class="font-bold text-gray-900 mb-1">Entre 18 y 35 años</h4>
+                  <h4 class="font-bold text-gray-900 mb-1">Entre 18 y 65 años</h4>
                   <p class="text-sm text-gray-400">Rango de edad para postular</p>
                 </div>
               </div>
@@ -1324,7 +1697,8 @@
                 class="flex items-start gap-4 p-4 bg-white/80 rounded-xl border border-primary/20 hover:border-primary/50 transition">
                 <div class="text-3xl">🧠</div>
                 <div>
-                  <h4 class="font-bold text-gray-900 mb-1">Capacitación en el trato humano y protocolos de servicios</h4>
+                  <h4 class="font-bold text-gray-900 mb-1">Capacitación en el trato humano y protocolos de servicios
+                  </h4>
                   <p class="text-sm text-gray-400">Método de selección elaborado en conjunto con psicóloga laboral</p>
                 </div>
               </div>
@@ -1376,30 +1750,56 @@
 
       <div class="space-y-6">
 
-        <!-- FAQ 1 -->
+        <!-- FAQ 1: ¿Ayuditas es cuidado de adultos mayores? -->
         <div class="glass-card">
-          <h3 class="text-2xl font-bold mb-3 var(--primary)">¿Ayudan a empresas a mover cosas o en tareas puntuales?</h3>
+          <h3 class="text-2xl font-bold mb-3 var(--primary)">❓ ¿Ayuditas es cuidado de adultos mayores?</h3>
+          <p class="text-gray-300 leading-relaxed font-bold mb-2">No.</p>
           <p class="text-gray-300 leading-relaxed">
-            Sí. Apoyamos a empresas y equipos con traslados ligeros, gestiones rápidas y tareas puntuales, adaptándonos
-            a la necesidad del día para que todo avance sin fricción.
+            Ayuditas ofrece acompañamiento humano no clínico. No realizamos cuidados de salud ni reemplazamos decisiones
+            personales. Acompañamos y apoyamos en tareas cotidianas como compras, trámites, organización en casa, ayuda
+            digital o salidas simples, siempre respetando la autonomía de la persona.
           </p>
         </div>
 
-        <!-- FAQ 2 -->
+        <!-- FAQ 2: ¿Quiénes son los ayudantes? -->
         <div class="glass-card">
-          <h3 class="text-2xl font-bold mb-3 var(--primary)">¿Una vez terminada la Ayudita estoy listo?</h3>
+          <h3 class="text-2xl font-bold mb-3 var(--primary)">❓ ¿Quiénes son los ayudantes y cómo garantizan la
+            confianza?</h3>
           <p class="text-gray-300 leading-relaxed">
-            Aún falta el cierre formal: ayudante y ayudado se evalúan mutuamente y se registra una foto de la ayuda
-            realizada o una foto en conjunto para dejar constancia del servicio.
+            Nuestros ayudantes son personas entrevistadas y seleccionadas, capacitadas en trato respetuoso, con
+            protocolos desarrollados junto a una terapeuta ocupacional.
+            Antes de confirmar un servicio, puedes conocer al ayudante asignado, y todo se coordina con información
+            clara y transparente.
           </p>
         </div>
 
-        <!-- FAQ 3 -->
+        <!-- FAQ 3: ¿Cómo se cobra el servicio? -->
         <div class="glass-card">
-          <h3 class="text-2xl font-bold mb-3 var(--primary)">¿Qué tipo de tareas puedo solicitar?</h3>
+          <h3 class="text-2xl font-bold mb-3 var(--primary)">❓ ¿Cómo se cobra el servicio y cuánto debo pagar?</h3>
           <p class="text-gray-300 leading-relaxed">
-            Desde mandados y compras hasta apoyo logístico ligero, siempre que sean tareas claras, rápidas y seguras
-            que podamos coordinar con eficiencia.
+            En <span class="font-bold">Ayuditas</span>, tú tienes el control total del presupuesto. El usuario propone
+            el precio que quiere pagar y puede elegir entre dos modalidades:
+            <br><br>
+            <span class="font-bold var(--primary)">1. Precio Fijo:</span> Propones un monto total por la tarea
+            solicitada, independientemente de cuánto tiempo tome realizarla. Ideal para trámites o recados concretos.
+            <br><br>
+            <span class="font-bold var(--primary)">2. Precio por Tiempo:</span> Defines un valor por hora o por minuto.
+            En este caso, el cobro es <span class="font-bold">100% proporcional</span> al tiempo real utilizado (si el
+            apoyo dura 31 minutos, pagas solo ese proporcional).
+            <br><br>
+            Tú decides la modalidad que más te acomoda y el ayudante elige si acepta la misión. ¡Transparencia y
+            libertad total!
+          </p>
+        </div>
+
+        <!-- FAQ 4: ¿Qué pasa si el ayudante entra al domicilio? -->
+        <div class="glass-card">
+          <h3 class="text-2xl font-bold mb-3 var(--primary)">❓ ¿Qué pasa si el ayudante entra al domicilio?</h3>
+          <p class="text-gray-300 leading-relaxed">
+            El ingreso al domicilio siempre se realiza con consentimiento previo y solo para el apoyo acordado. Los
+            ayudantes siguen protocolos claros de respeto, privacidad y trato digno, y no intervienen en decisiones
+            personales ni de salud. Todo el servicio se coordina de forma transparente, y puedes conocer al ayudante
+            antes de confirmar.
           </p>
         </div>
 
@@ -1430,6 +1830,10 @@
       <div class="pt-8">
         <a href="https://wa.me/56982550861" target="_blank">
           <button class="cta-button text-2xl">
+            <svg class="w-8 h-8 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12.031 6.172c-2.32 0-4.519.903-6.16 2.544-1.64 1.64-2.543 3.838-2.543 6.158 0 1.29.28 2.532.836 3.67l-1.052 3.85 3.938-1.033c1.087.59 2.3.901 3.535.901 2.321 0 4.519-.903 6.161-2.544s2.544-3.838 2.544-6.158c0-2.32-.904-4.519-2.544-6.161-1.641-1.64-3.839-2.543-6.16-2.543zm5.424 10.95c-.71 1.631-2.1 2.754-3.864 3.012-.41.059-.83.088-1.25.088-1.127 0-2.235-.213-3.256-.62l-.24-.096-2.338.613.623-2.28-.106-.17c-.496-.789-.757-1.693-.757-2.617 0-1.921.748-3.727 2.106-5.085s3.164-2.106 5.085-2.106c1.921 0 3.727.748 5.084 2.106s2.106 3.164 2.106 5.085c0 .924-.261 1.828-.756 2.618l-.106.17-.624 2.279 2.338-.613-.24.096c-1.021.407-2.129.62-3.256.62zm-.537-2.937c-.36-.18-.72-.36-.91-.45-.19-.09-.33-.14-.47.05-.14.19-.54.67-.67.81-.13.14-.26.16-.49.05-.23-.11-.98-.36-1.87-1.15-.69-.61-1.16-1.37-1.3-1.61-.14-.24-.01-.37.1-.48.1-.1.23-.27.35-.4.12-.13.16-.23.23-.38.07-.15.03-.28-.02-.38-.05-.1-.47-1.14-.64-1.55-.17-.41-.34-.35-.47-.35-.12 0-.27-.01-.42-.01s-.39.06-.59.28c-.2.22-.76.74-.76 1.81 0 1.07.78 2.1 0.89 2.25.11.15 1.53 2.34 3.7 3.28.52.22.92.35 1.24.45s.6.09.83.05c.26-.04.79-.32.91-.63.12-.31.12-.58.09-.63-.03-.05-.13-.08-.34-.14zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z" />
+            </svg>
             <span>💬 Enviar WhatsApp</span>
           </button>
         </a>
@@ -1523,7 +1927,12 @@
           <h3 class="text-gray-900 font-bold text-xl">Contacto</h3>
           <ul class="flex flex-col gap-4">
             <li class="flex items-start gap-3">
-              <span class="var(--primary) mt-1">📱</span>
+              <span class="var(--primary) mt-1">
+                <svg class="w-5 h-5 mt-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+              </span>
               <div class="text-gray-400">
                 <p class="text-gray-900 font-medium">+56 9 8255 0861</p>
                 <p class="text-xs">WhatsApp Business</p>
@@ -1576,7 +1985,10 @@
 
   <!-- WhatsApp floating button -->
   <a href="https://wa.me/56982550861" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
-    <span>💬</span>
+    <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
   </a>
 
   <!-- JavaScript for particles and scroll effects -->
@@ -1665,13 +2077,31 @@
 
     // Servicios toggle
     const toggleServicesBtn = document.getElementById('toggle-services');
-    const extraServices = document.getElementById('servicios-extra');
+    const extraServicesCards = document.querySelectorAll('.extra-service');
 
-    if (toggleServicesBtn && extraServices) {
+    if (toggleServicesBtn) {
       toggleServicesBtn.addEventListener('click', () => {
-        const isHidden = extraServices.classList.toggle('hidden');
-        toggleServicesBtn.textContent = isHidden ? 'Ver más' : 'Ver menos';
-        toggleServicesBtn.setAttribute('aria-expanded', String(!isHidden));
+        const isExpanded = toggleServicesBtn.getAttribute('aria-expanded') === 'true';
+        const newState = !isExpanded;
+
+        // Cambiar estado de las cartas con una pequeña transición
+        extraServicesCards.forEach(card => {
+          if (newState) {
+            card.classList.remove('hidden');
+            // Forzar un reflujo para que la animación funcione (opcional)
+            setTimeout(() => card.style.opacity = '1', 10);
+          } else {
+            card.style.opacity = '0';
+            setTimeout(() => card.classList.add('hidden'), 300);
+          }
+        });
+
+        // Actualizar botón
+        toggleServicesBtn.setAttribute('aria-expanded', String(newState));
+        const btnText = toggleServicesBtn.querySelector('span');
+        if (btnText) {
+          btnText.textContent = newState ? 'Mostrar menos' : 'Ver todos los servicios';
+        }
       });
     }
 
@@ -1685,25 +2115,87 @@
 
     if (priceInput && priceMinus && pricePlus && continueBtn) {
       let currentPrice = 15000;
+      let currentMode = 'fixed'; // 'fixed' o 'time'
+      let currentTimeUnit = 'hour'; // 'hour' o 'minute'
       const formatter = new Intl.NumberFormat('es-CL');
+
+      const modeFixedBtn = document.getElementById('mode-fixed');
+      const modeTimeBtn = document.getElementById('mode-time');
+      const unitSelector = document.getElementById('unit-selector');
+      const unitHourBtn = document.getElementById('unit-hour');
+      const unitMinuteBtn = document.getElementById('unit-minute');
+      const priceLabel = document.getElementById('price-label');
+      const priceSuffix = document.getElementById('price-suffix');
+      const priceInfo = document.getElementById('price-info');
+
+      const updateTimeUnit = (unit) => {
+        currentTimeUnit = unit;
+        if (unit === 'hour') {
+          unitHourBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-black shadow-md transition-all';
+          unitMinuteBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-white/50 text-gray-500 hover:bg-white transition-all';
+          priceSuffix.textContent = 'por hora';
+          currentPrice = 18000; // Sugerencia base por hora
+        } else {
+          unitMinuteBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-black shadow-md transition-all';
+          unitHourBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-white/50 text-gray-500 hover:bg-white transition-all';
+          priceSuffix.textContent = 'por minuto';
+          currentPrice = 300; // Sugerencia base por minuto
+        }
+        updateDisplay();
+      };
+
+      const updateMode = (mode) => {
+        currentMode = mode;
+        if (mode === 'fixed') {
+          modeFixedBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-black shadow-lg';
+          modeTimeBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white/50';
+          priceLabel.textContent = 'Monto total';
+          priceSuffix.classList.add('hidden');
+          unitSelector.classList.add('hidden');
+          priceInfo.textContent = 'Monto fijo total acordado por la misión.';
+          if (currentPrice < 5000) currentPrice = 15000;
+        } else {
+          modeTimeBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-black shadow-lg';
+          modeFixedBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white/50';
+          priceLabel.textContent = 'Monto por tiempo';
+          priceSuffix.classList.remove('hidden');
+          unitSelector.classList.remove('hidden');
+          priceInfo.textContent = 'Cobro proporcional según el tiempo real utilizado.';
+          updateTimeUnit('hour'); // Default a hora al entrar en modo tiempo
+        }
+        updateDisplay();
+      };
+
+      if (modeFixedBtn) modeFixedBtn.addEventListener('click', () => updateMode('fixed'));
+      if (modeTimeBtn) modeTimeBtn.addEventListener('click', () => updateMode('time'));
+      if (unitHourBtn) unitHourBtn.addEventListener('click', () => updateTimeUnit('hour'));
+      if (unitMinuteBtn) unitMinuteBtn.addEventListener('click', () => updateTimeUnit('minute'));
 
       const updateDisplay = () => {
         priceInput.value = formatter.format(currentPrice);
       };
 
-      const clampPrice = (value) => Math.max(5000, Math.min(200000, value));
+      const clampPrice = (value) => {
+        if (currentMode === 'fixed') return Math.max(5000, Math.min(200000, value));
+        if (currentTimeUnit === 'hour') return Math.max(5000, Math.min(100000, value));
+        return Math.max(100, Math.min(5000, value)); // Por minuto
+      };
 
       const parsePrice = (val) => {
         return parseInt(val.replace(/\D/g, '')) || 0;
       };
 
       priceMinus.addEventListener('click', () => {
-        currentPrice = clampPrice(currentPrice - 1000);
+        let step = 1000;
+        if (currentMode === 'time' && currentTimeUnit === 'minute') step = 50;
+        currentPrice = clampPrice(currentPrice - step);
         updateDisplay();
       });
 
       pricePlus.addEventListener('click', () => {
-        currentPrice = clampPrice(currentPrice + 1000);
+        let step = 1000;
+        if (currentMode === 'time' && currentTimeUnit === 'minute') step = 50;
+        currentPrice = clampPrice(currentPrice + step);
         updateDisplay();
       });
 
@@ -1712,7 +2204,6 @@
         updateDisplay();
       });
 
-      // Also update on keyup for immediate feedback if desired, or just on blur/change
       priceInput.addEventListener('blur', () => {
         currentPrice = clampPrice(parsePrice(priceInput.value));
         updateDisplay();
@@ -1722,7 +2213,7 @@
 
       continueBtn.addEventListener('click', () => {
         const description = helpRequest ? encodeURIComponent(helpRequest.value.trim()) : '';
-        const url = `publica-ayudita.html?price=${currentPrice}${description ? `&desc=${description}` : ''}`;
+        const url = `publica-ayudita.html?price=${currentPrice}&mode=${currentMode}&unit=${currentTimeUnit}${description ? `&desc=${description}` : ''}`;
         window.location.href = url;
       });
     }
@@ -1732,6 +2223,76 @@
         helpCount.textContent = helpRequest.value.length;
       });
     }
+    // Intersection Observer for Entrance Animations
+    const initAnimations = () => {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+
+            // If it's a grid, animate children with stagger
+            if (entry.target.classList.contains('stagger-container')) {
+              const items = entry.target.querySelectorAll('.stagger-item');
+              items.forEach((item, index) => {
+                setTimeout(() => {
+                  item.classList.add('active');
+                }, index * 100);
+              });
+            }
+          }
+        });
+      }, observerOptions);
+
+      // Add reveal classes dynamically
+      const heroContent = document.querySelector('.hero-content');
+      if (heroContent) heroContent.classList.add('reveal');
+
+      // Sections reveal with alternating directions
+      document.querySelectorAll('section').forEach((section, index) => {
+        if (index % 2 === 0) section.classList.add('reveal-left');
+        else section.classList.add('reveal-right');
+      });
+
+      // Cards stagger with mixed directions
+      const servicesGrid = document.getElementById('services-grid');
+      if (servicesGrid) {
+        servicesGrid.classList.add('stagger-container');
+        servicesGrid.querySelectorAll('.glass-card').forEach((card, index) => {
+          card.classList.add('stagger-item');
+          if (index % 3 === 0) card.classList.add('reveal-left');
+          else if (index % 3 === 1) card.classList.add('reveal-scale');
+          else card.classList.add('reveal-right');
+        });
+      }
+
+      const faqGrid = document.querySelector('.space-y-6');
+      if (faqGrid) {
+        faqGrid.classList.add('stagger-container');
+        faqGrid.querySelectorAll('.glass-card').forEach((card, index) => {
+          card.classList.add('stagger-item');
+          card.classList.add(index % 2 === 0 ? 'reveal-left' : 'reveal-right');
+        });
+      }
+
+      // Start observing everything with reveal classes
+      document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-zoom, .stagger-container').forEach(el => {
+        revealObserver.observe(el);
+      });
+
+      // Fallback: If after 2 seconds things are still hidden, show them
+      setTimeout(() => {
+        document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-zoom, .stagger-item').forEach(el => {
+          el.classList.add('active');
+        });
+      }, 2000);
+    };
+
+    document.addEventListener('DOMContentLoaded', initAnimations);
   </script>
 </body>
 
