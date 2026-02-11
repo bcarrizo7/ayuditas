@@ -671,8 +671,175 @@
       }
     }
 
+    /* Carousel / Slider Styles */
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-card {
+      flex: 0 0 75%;
+      max-width: 300px;
+      scroll-snap-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .carousel-card {
+        flex: 0 0 380px;
+        max-width: 380px;
+      }
+    }
+
+    /* Fade edges on mobile to hint more content */
+    .carousel-wrapper::before,
+    .carousel-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .carousel-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.9), transparent);
+    }
+
+    .carousel-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+    }
+
+    @media (min-width: 768px) {
+
+      .carousel-wrapper::before,
+      .carousel-wrapper::after {
+        display: none;
+      }
+    }
+
+    .nav-btn {
+      background: white;
+      color: var(--primary);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 20;
+      border: 2px solid rgba(240, 84, 20, 0.15);
+      cursor: pointer;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 8px 20px rgba(240, 84, 20, 0.3);
+    }
+
+    /* Carousel dot indicators */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding-top: 16px;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(240, 84, 20, 0.2);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--primary);
+      transform: scale(1.3);
+    }
+
+    /* Video section styles */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+      border: 8px solid white;
+    }
+
+    .video-overlay-play {
+      position: absolute;
+      top: 50%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s;
+      z-index: 5;
+    }
+
+    .video-overlay-play:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow: 0 0 40px rgba(240, 84, 20, 0.5);
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
+      .video-overlay-play {
+        width: 56px;
+        height: 56px;
+      }
+
+      .video-overlay-play svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .video-container .absolute.top-4 {
+        top: -2px;
+        left: -2px;
+      }
+
+      /* Carousel cards: only title, no subtitle on mobile */
+      .carousel-card .absolute.inset-x-0 p.text-sm {
+        display: none;
+      }
+
+      .carousel-card .absolute.inset-x-0 {
+        padding: 0.75rem 1rem;
+      }
+
+      .carousel-card .absolute.inset-x-0 p.font-bold {
+        font-size: 0.9rem;
+      }
+
       .cta-button {
         padding: 1rem 2rem;
         font-size: 1rem;
@@ -1174,7 +1341,7 @@
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 pt-4 hero-cta-anim">
-            <a href="#solicitar">
+            <a href="#planes">
               <button class="cta-button pulse-btn">
                 <span>Pide tu Ayudita ahora!</span>
                 <span>→</span>
@@ -1185,7 +1352,7 @@
           <!-- Stats -->
           <div class="grid grid-cols-3 gap-4 pt-8 hero-stats-anim">
             <div class="stat-box">
-              <div class="stat-number">1+</div>
+              <div class="stat-number">4+</div>
               <p class="text-gray-400 text-sm font-medium">Clientes</p>
             </div>
             <div class="stat-box">
@@ -1454,6 +1621,41 @@
 
   <div class="divider"></div>
 
+  <!-- VIDEO TESTIMONIAL SECTION -->
+  <section class="px-6 py-20 relative z-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <h2 class="text-4xl md:text-6xl font-black leading-tight mb-4">
+          <span class="gradient-text">¿Qué es Ayuditas?</span>
+        </h2>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+          Escucha de qué se trata nuestro servicio y cómo estamos cambiando vidas 🧡
+        </p>
+      </div>
+
+      <div class="reveal-scale">
+        <div class="video-container group">
+          <video id="main-video" class="w-full h-full object-cover" preload="metadata">
+            <source src="./assets/videos/abuela que es ayuditas.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+          </video>
+          <div id="video-play-btn" class="video-overlay-play">
+            <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <!-- Decorative accents -->
+          <div
+            class="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full text-xs font-bold text-primary shadow-lg z-10">
+            🎬 Testimonio Real
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- VECINOS AYUDANDO VECINOS SECTION -->
   <section class="px-6 py-20 relative z-10 bg-gradient-to-b from-white via-orange-50/30 to-white">
     <div class="max-w-7xl mx-auto">
@@ -1461,60 +1663,292 @@
       <!-- Title -->
       <div class="text-center mb-12 reveal">
         <h2 class="text-4xl md:text-6xl font-black leading-tight mb-4">
-          <span class="gradient-text">Somos vecinos ayudando vecinos</span>
+          <span class="gradient-text">Momentos Ayuditas</span>
         </h2>
         <p class="text-lg text-gray-500 max-w-2xl mx-auto">
-          Momentos reales de personas reales, construyendo una comunidad más cercana y solidaria 💛
+          Personas reales, ayuda real. Construimos una comunidad más cercana y solidaria 💛
         </p>
       </div>
 
-      <!-- Photo Gallery Grid -->
-      <div class="grid grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto reveal-scale">
+      <!-- Photo Carousel -->
+      <div class="relative max-w-6xl mx-auto reveal-scale">
 
-        <!-- Photo 1 - Acompañamiento -->
-        <div
-          class="relative overflow-hidden rounded-3xl group hover-pro aspect-[3/4] border-4 border-primary ring-1 ring-primary/20"
-          style="box-shadow: 0 25px 50px -12px rgba(255, 107, 53, 0.4), 0 10px 20px -5px rgba(255, 107, 53, 0.2);">
-          <img src="./assets/images/ayuditas, acompañamiento a adulto mayor.jfif"
-            alt="Ayuditas - Acompañamiento a adulto mayor"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div class="absolute bottom-6 left-6 text-white">
-              <p class="font-bold text-lg">Acompañamiento cercano</p>
-              <p class="text-sm opacity-90">Presencia y paciencia</p>
+        <div class="carousel-wrapper">
+          <!-- Navigation Buttons (inside, on the edges) -->
+          <button id="prev-photo" class="nav-btn absolute left-3 top-1/2 -translate-y-1/2 hidden md:flex"
+            aria-label="Previous" style="z-index: 20;">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button id="next-photo" class="nav-btn absolute right-3 top-1/2 -translate-y-1/2 hidden md:flex"
+            aria-label="Next" style="z-index: 20;">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <!-- Carousel Track -->
+          <div id="photo-carousel"
+            class="carousel-container flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory px-8 md:px-4 py-4">
+
+            <!-- Photo 1 - Acompañamiento -->
+            <div
+              class="carousel-card relative overflow-hidden rounded-3xl group hover-pro aspect-[3/4] border-4 border-primary ring-1 ring-primary/20 snap-center shadow-xl">
+              <img src="./assets/images/ayuditas, acompañamiento a adulto mayor.jfif"
+                alt="Ayuditas - Acompañamiento a adulto mayor"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                <p class="font-bold text-lg text-white">Acompañamiento cercano</p>
+                <p class="text-sm text-white/90">Presencia y paciencia</p>
+              </div>
             </div>
+
+            <!-- Photo 2 - Tecnología -->
+            <div
+              class="carousel-card relative overflow-hidden rounded-3xl group hover-pro aspect-[3/4] border-4 border-secondary ring-1 ring-secondary/20 snap-center shadow-xl">
+              <img src="./assets/images/abuelos ayuda television .jpg" alt="Ayuditas - Ayuda con tecnología"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                <p class="font-bold text-lg text-white">Apoyo con tecnología</p>
+                <p class="text-sm text-white/90">Simple y paciente</p>
+              </div>
+            </div>
+
+            <!-- Photo 3 - Momentos Felices -->
+            <div
+              class="carousel-card relative overflow-hidden rounded-3xl group hover-pro aspect-[3/4] border-4 border-secondary ring-1 ring-secondary/20 snap-center shadow-xl">
+              <img src="./assets/images/paseo de perros en ayuditas.png" alt="Ayuditas - Paseo de mascotas"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                <p class="font-bold text-lg text-white">Momentos Felices</p>
+                <p class="text-sm text-white/90">Conectando vecinos</p>
+              </div>
+            </div>
+
+            <!-- Photo 4 - Cuidado de mascotas -->
+            <div
+              class="carousel-card relative overflow-hidden rounded-3xl group hover-pro aspect-[3/4] border-4 border-primary ring-1 ring-primary/20 snap-center shadow-xl">
+              <img src="./assets/images/paseando perro 1.jpeg" alt="Ayuditas - Paseando mascota"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                <p class="font-bold text-lg text-white">Cuidado de mascotas</p>
+                <p class="text-sm text-white/90">Paseos con cariño</p>
+              </div>
+            </div>
+
           </div>
-          <!-- Decorative corner accent -->
-          <div class="absolute top-0 right-0 w-20 h-20 bg-primary/20 rounded-full blur-2xl"></div>
         </div>
 
-        <!-- Photo 2 - Tecnología -->
-        <div
-          class="relative overflow-hidden rounded-3xl group hover-pro aspect-[3/4] border-4 border-secondary ring-1 ring-secondary/20"
-          style="box-shadow: 0 25px 50px -12px rgba(52, 211, 153, 0.4), 0 10px 20px -5px rgba(52, 211, 153, 0.2);">
-          <img src="./assets/images/abuelos ayuda television .jpg" alt="Ayuditas - Ayuda con tecnología"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div class="absolute bottom-6 left-6 text-white">
-              <p class="font-bold text-lg">Apoyo con tecnología</p>
-              <p class="text-sm opacity-90">Simple y paciente</p>
-            </div>
-          </div>
-          <!-- Decorative corner accent -->
-          <div class="absolute top-0 left-0 w-20 h-20 bg-secondary/20 rounded-full blur-2xl"></div>
+        <!-- Dot indicators -->
+        <div class="carousel-dots" id="carousel-dots">
+          <button class="carousel-dot active" data-index="0" aria-label="Foto 1"></button>
+          <button class="carousel-dot" data-index="1" aria-label="Foto 2"></button>
+          <button class="carousel-dot" data-index="2" aria-label="Foto 3"></button>
+          <button class="carousel-dot" data-index="3" aria-label="Foto 4"></button>
         </div>
-
       </div>
 
       <!-- Bottom CTA -->
-      <div class="text-center mt-12 reveal">
-        <p class="text-gray-600 mb-4">
+      <div class="text-center mt-6 reveal">
+        <p class="text-gray-600">
           Cada ayudita cuenta una historia de <span class="font-bold text-primary">cercanía y confianza</span>
         </p>
       </div>
 
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICIOS SECTION -->
+  <section id="servicios" class="px-6 py-20 relative z-10">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="text-5xl md:text-7xl font-black">
+          <span class="gradient-text">Nuestros Servicios</span>
+        </h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Asistencia personalizada diseñada para simplificar tu vida y la de tus seres queridos 💛
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+        <!-- Servicio 1: Adulto Mayor -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">👴</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Acompañamiento Adulto Mayor
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Trámites y compras</li>
+            <li class="flex items-center gap-2"><span>•</span> Horas médicas (no clínico)</li>
+            <li class="flex items-center gap-2"><span>•</span> Gestiones digitales simples</li>
+            <li class="flex items-center gap-2"><span>•</span> Compañía y apoyo cotidiano</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 2: Compras y Trámites -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">🛍️</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Compras y Trámites Simples
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Supermercados y farmacias</li>
+            <li class="flex items-center gap-2"><span>•</span> Pago de cuentas y filas</li>
+            <li class="flex items-center gap-2"><span>•</span> Retiro de documentos</li>
+            <li class="flex items-center gap-2"><span>•</span> Sin poderes ni firmas</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 3: Familia -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">👨‍👩‍👧‍👦</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Apoyo a la Familia
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Traslados y acompañamientos</li>
+            <li class="flex items-center gap-2"><span>•</span> Apoyo en eventos familiares</li>
+            <li class="flex items-center gap-2"><span>•</span> Orden y preparación básica</li>
+            <li class="flex items-center gap-2"><span>•</span> Gestiones y recados del hogar</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 4: Mascotas (Ahora siempre visible) -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">🐶</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Apoyo con Mascotas
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Paseos cortos y compañía</li>
+            <li class="flex items-center gap-2"><span>•</span> Compra de alimento</li>
+            <li class="flex items-center gap-2"><span>•</span> Traslados a veterinaria</li>
+            <li class="flex items-center gap-2"><span>•</span> Rutinas básicas de cuidado</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 5: Hogar -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">🧹</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Ayuda en el Hogar
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Orden y limpieza ligera</li>
+            <li class="flex items-center gap-2"><span>•</span> Organización de espacios</li>
+            <li class="flex items-center gap-2"><span>•</span> Tareas domésticas pequeñas</li>
+            <li class="flex items-center gap-2"><span>•</span> Pequeños mandados del hogar</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 6: Ayuda Tecnológica -->
+        <div class="glass-card group service-card items-start text-left">
+          <div class="service-icon">📱</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Ayuda Tecnológica
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Uso básico de celular, computador o televisión</li>
+            <li class="flex items-center gap-2"><span>•</span> Instalación y explicación de apps simples</li>
+            <li class="flex items-center gap-2"><span>•</span> Apoyo para trámites digitales</li>
+            <li class="flex items-center gap-2"><span>•</span> Siempre con paciencia y lenguaje claro</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 7: Ayuda Tecnológica Avanzada -->
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">💻</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Ayuda Tecnológica Avanzada
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Configuración de televisores y computadores</li>
+            <li class="flex items-center gap-2"><span>•</span> Ayuda con aparatos tecnológicos</li>
+            <li class="flex items-center gap-2"><span>•</span> Creación de páginas web simples</li>
+            <li class="flex items-center gap-2"><span>•</span> Impresión 3D para uso tecnológico y/o regalos</li>
+          </ul>
+        </div>
+
+        <!-- Servicios Extra (Ocultos inicialmente) -->
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">🎓</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Apoyo a Estudiantes
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Profesores particulares básicos</li>
+            <li class="flex items-center gap-2"><span>•</span> Tutores para universitarios</li>
+            <li class="flex items-center gap-2"><span>•</span> Apoyo en ramos específicos</li>
+            <li class="flex items-center gap-2"><span>•</span> Mentoría académica</li>
+          </ul>
+        </div>
+
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">📦</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Mudanzas Ligeras
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Orden y embalaje rápido</li>
+            <li class="flex items-center gap-2"><span>•</span> Traslado de cajas pequeñas</li>
+            <li class="flex items-center gap-2"><span>•</span> Armado y desarmado simple</li>
+            <li class="flex items-center gap-2"><span>•</span> Apoyo en cambios de oficina</li>
+          </ul>
+        </div>
+
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">🏋️</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Entrenamiento Deportivo
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Ejercicio para adultos mayores</li>
+            <li class="flex items-center gap-2"><span>•</span> Rutinas personalizadas</li>
+            <li class="flex items-center gap-2"><span>•</span> Acompañamiento en caminatas</li>
+            <li class="flex items-center gap-2"><span>•</span> Mejora del estado físico</li>
+          </ul>
+        </div>
+
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">🎉</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Apoyo en Eventos
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Montaje y desmontaje</li>
+            <li class="flex items-center gap-2"><span>•</span> Atención a invitados</li>
+            <li class="flex items-center gap-2"><span>•</span> Logística y compras</li>
+            <li class="flex items-center gap-2"><span>•</span> Orden y limpieza ligera</li>
+          </ul>
+        </div>
+
+        <div class="glass-card group service-card items-start text-left hidden extra-service">
+          <div class="service-icon">⚡</div>
+          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
+            Recados Exprés
+          </h3>
+          <ul class="text-gray-400 space-y-2 text-sm">
+            <li class="flex items-center gap-2"><span>•</span> Entregas pequeñas</li>
+            <li class="flex items-center gap-2"><span>•</span> Retiro y devolución</li>
+            <li class="flex items-center gap-2"><span>•</span> Compras de último minuto</li>
+            <li class="flex items-center gap-2"><span>•</span> Gestiones rápidas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <button id="toggle-services" class="cta-button text-lg group" type="button" aria-expanded="false">
+          <span>Ver todos los servicios</span>
+          <svg class="w-5 h-5 transition-transform duration-300 group-aria-expanded:rotate-180" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -1580,7 +2014,7 @@
               <label class="block text-sm text-gray-400 font-semibold">¿Qué necesitas que hagamos?</label>
               <textarea id="help-request" rows="3" maxlength="160"
                 class="w-full bg-white/90 border border-primary/30 rounded-2xl p-4 text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary"
-                placeholder="Ej: Comprar un regalo y entregarlo en Providencia"></textarea>
+                placeholder=""></textarea>
               <div class="text-right text-xs text-gray-500"><span id="help-count">0</span>/160</div>
             </div>
 
@@ -1638,198 +2072,6 @@
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- SERVICIOS SECTION -->
-  <section id="servicios" class="px-6 py-20 relative z-10">
-    <div class="max-w-7xl mx-auto">
-
-      <div class="text-center mb-16 space-y-4">
-        <h2 class="text-5xl md:text-7xl font-black">
-          <span class="gradient-text">Nuestros Servicios</span>
-        </h2>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-          Asistencia personalizada diseñada para simplificar tu vida y la de tus seres queridos 💛
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
-        <!-- Servicio 1: Adulto Mayor -->
-        <div class="glass-card group service-card items-start text-left">
-          <div class="service-icon">👴</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Acompañamiento Adulto Mayor
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Trámites y compras</li>
-            <li class="flex items-center gap-2"><span>•</span> Horas médicas (no clínico)</li>
-            <li class="flex items-center gap-2"><span>•</span> Gestiones digitales simples</li>
-            <li class="flex items-center gap-2"><span>•</span> Compañía y apoyo cotidiano</li>
-          </ul>
-        </div>
-
-        <!-- Servicio 2: Compras y Trámites -->
-        <div class="glass-card group service-card items-start text-left">
-          <div class="service-icon">🛍️</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Compras y Trámites Simples
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Supermercados y farmacias</li>
-            <li class="flex items-center gap-2"><span>•</span> Pago de cuentas y filas</li>
-            <li class="flex items-center gap-2"><span>•</span> Retiro de documentos</li>
-            <li class="flex items-center gap-2"><span>•</span> Sin poderes ni firmas</li>
-          </ul>
-        </div>
-
-        <!-- Servicio 3: Familia y Niños -->
-        <div class="glass-card group service-card items-start text-left">
-          <div class="service-icon">👨‍👩‍👧‍👦</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Apoyo a la Familia y Niños
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Traslados y acompañamientos</li>
-            <li class="flex items-center gap-2"><span>•</span> Cuidado puntual de niños</li>
-            <li class="flex items-center gap-2"><span>•</span> Apoyo en eventos familiares</li>
-            <li class="flex items-center gap-2"><span>•</span> Orden y preparación básica</li>
-          </ul>
-        </div>
-
-        <!-- Servicio 4: Mascotas (Ahora siempre visible) -->
-        <div class="glass-card group service-card items-start text-left">
-          <div class="service-icon">🐶</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Apoyo con Mascotas
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Paseos cortos y compañía</li>
-            <li class="flex items-center gap-2"><span>•</span> Compra de alimento</li>
-            <li class="flex items-center gap-2"><span>•</span> Traslados a veterinaria</li>
-            <li class="flex items-center gap-2"><span>•</span> Rutinas básicas de cuidado</li>
-          </ul>
-        </div>
-
-        <!-- Servicio 5: Hogar -->
-        <div class="glass-card group service-card items-start text-left">
-          <div class="service-icon">🧹</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Ayuda en el Hogar
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Orden y limpieza ligera</li>
-            <li class="flex items-center gap-2"><span>•</span> Organización de espacios</li>
-            <li class="flex items-center gap-2"><span>•</span> Tareas domésticas pequeñas</li>
-            <li class="flex items-center gap-2"><span>•</span> Pequeños mandados del hogar</li>
-          </ul>
-        </div>
-
-        <!-- Servicio 6: Empresas y Asilos -->
-        <div class="glass-card group service-card items-start text-left">
-          <div class="service-icon">🏢</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Operativo Empresas y Asilos
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Refuerzo presencial puntual</li>
-            <li class="flex items-center gap-2"><span>•</span> Apoyo en eventos y logística</li>
-            <li class="flex items-center gap-2"><span>•</span> Tareas presenciales básicas</li>
-            <li class="flex items-center gap-2"><span>•</span> Logística simple y asilos</li>
-          </ul>
-        </div>
-
-        <!-- Servicios Extra (Ocultos inicialmente) -->
-        <div class="glass-card group service-card items-start text-left hidden extra-service">
-          <div class="service-icon">🎓</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Apoyo a Estudiantes
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Profesores particulares básicos</li>
-            <li class="flex items-center gap-2"><span>•</span> Tutores para universitarios</li>
-            <li class="flex items-center gap-2"><span>•</span> Apoyo en ramos específicos</li>
-            <li class="flex items-center gap-2"><span>•</span> Mentoría académica</li>
-          </ul>
-        </div>
-
-        <div class="glass-card group service-card items-start text-left hidden extra-service">
-          <div class="service-icon">📦</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Mudanzas Ligeras
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Orden y embalaje rápido</li>
-            <li class="flex items-center gap-2"><span>•</span> Traslado de cajas pequeñas</li>
-            <li class="flex items-center gap-2"><span>•</span> Armado y desarmado simple</li>
-            <li class="flex items-center gap-2"><span>•</span> Apoyo en cambios de oficina</li>
-          </ul>
-        </div>
-
-        <div class="glass-card group service-card items-start text-left hidden extra-service">
-          <div class="service-icon">🤝</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Acompañamientos Puntuales
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Citas, trámites o eventos</li>
-            <li class="flex items-center gap-2"><span>•</span> Esperas y apoyo en filas</li>
-            <li class="flex items-center gap-2"><span>•</span> Traslados cortos</li>
-            <li class="flex items-center gap-2"><span>•</span> Seguimiento y seguridad</li>
-          </ul>
-        </div>
-
-        <div class="glass-card group service-card items-start text-left hidden extra-service">
-          <div class="service-icon">💻</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Soporte Digital Básico
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Configurar apps y cuentas</li>
-            <li class="flex items-center gap-2"><span>•</span> Pagos y trámites online</li>
-            <li class="flex items-center gap-2"><span>•</span> Videollamadas y correo</li>
-            <li class="flex items-center gap-2"><span>•</span> Guías paso a paso</li>
-          </ul>
-        </div>
-
-        <div class="glass-card group service-card items-start text-left hidden extra-service">
-          <div class="service-icon">🎉</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Apoyo en Eventos
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Montaje y desmontaje</li>
-            <li class="flex items-center gap-2"><span>•</span> Atención a invitados</li>
-            <li class="flex items-center gap-2"><span>•</span> Logística y compras</li>
-            <li class="flex items-center gap-2"><span>•</span> Orden y limpieza ligera</li>
-          </ul>
-        </div>
-
-        <div class="glass-card group service-card items-start text-left hidden extra-service">
-          <div class="service-icon">⚡</div>
-          <h3 class="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary transition">
-            Recados Exprés
-          </h3>
-          <ul class="text-gray-400 space-y-2 text-sm">
-            <li class="flex items-center gap-2"><span>•</span> Entregas pequeñas</li>
-            <li class="flex items-center gap-2"><span>•</span> Retiro y devolución</li>
-            <li class="flex items-center gap-2"><span>•</span> Compras de último minuto</li>
-            <li class="flex items-center gap-2"><span>•</span> Gestiones rápidas</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="text-center mt-12">
-        <button id="toggle-services" class="cta-button text-lg group" type="button" aria-expanded="false">
-          <span>Ver todos los servicios</span>
-          <svg class="w-5 h-5 transition-transform duration-300 group-aria-expanded:rotate-180" fill="none"
-            stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
       </div>
     </div>
   </section>
@@ -2066,8 +2308,8 @@
           </p>
         </div>
 
-        <!-- FAQ 3: ¿Cómo se cobra el servicio? -->
-        <div class="glass-card">
+        <!-- FAQ 3: ¿Cómo se cobra el servicio? (OCULTO) -->
+        <div class="glass-card" style="display: none;">
           <h3 class="text-2xl font-bold mb-3 var(--primary)">❓ ¿Cómo se cobra el servicio y cuánto debo pagar?</h3>
           <p class="text-gray-300 leading-relaxed">
             En <span class="font-bold">Ayuditas</span>, tú tienes el control total del presupuesto. El usuario propone
@@ -2112,49 +2354,13 @@
       </div>
 
       <h2 class="text-5xl md:text-7xl font-black leading-tight">
-        <span class="gradient-text glow-text">La Mejor Ayuda Personalizada de Chile</span>
+        <span class="gradient-text glow-text">Ayuda real, cuando más la necesitas</span>
       </h2>
 
       <p class="text-2xl text-gray-300 max-w-2xl mx-auto">
-        Delegamos tus trámites y mandados cotidianos.<br />
         <span class="var(--primary) font-bold">Asistencia personalizada, confiable y profesional.</span>
       </p>
 
-      <div class="pt-8">
-        <a href="https://wa.me/56982550861" target="_blank">
-          <button class="cta-button text-2xl">
-            <svg class="w-8 h-8 mr-2" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M12.031 6.172c-2.32 0-4.519.903-6.16 2.544-1.64 1.64-2.543 3.838-2.543 6.158 0 1.29.28 2.532.836 3.67l-1.052 3.85 3.938-1.033c1.087.59 2.3.901 3.535.901 2.321 0 4.519-.903 6.161-2.544s2.544-3.838 2.544-6.158c0-2.32-.904-4.519-2.544-6.161-1.641-1.64-3.839-2.543-6.16-2.543zm5.424 10.95c-.71 1.631-2.1 2.754-3.864 3.012-.41.059-.83.088-1.25.088-1.127 0-2.235-.213-3.256-.62l-.24-.096-2.338.613.623-2.28-.106-.17c-.496-.789-.757-1.693-.757-2.617 0-1.921.748-3.727 2.106-5.085s3.164-2.106 5.085-2.106c1.921 0 3.727.748 5.084 2.106s2.106 3.164 2.106 5.085c0 .924-.261 1.828-.756 2.618l-.106.17-.624 2.279 2.338-.613-.24.096c-1.021.407-2.129.62-3.256.62zm-.537-2.937c-.36-.18-.72-.36-.91-.45-.19-.09-.33-.14-.47.05-.14.19-.54.67-.67.81-.13.14-.26.16-.49.05-.23-.11-.98-.36-1.87-1.15-.69-.61-1.16-1.37-1.3-1.61-.14-.24-.01-.37.1-.48.1-.1.23-.27.35-.4.12-.13.16-.23.23-.38.07-.15.03-.28-.02-.38-.05-.1-.47-1.14-.64-1.55-.17-.41-.34-.35-.47-.35-.12 0-.27-.01-.42-.01s-.39.06-.59.28c-.2.22-.76.74-.76 1.81 0 1.07.78 2.1 0.89 2.25.11.15 1.53 2.34 3.7 3.28.52.22.92.35 1.24.45s.6.09.83.05c.26-.04.79-.32.91-.63.12-.31.12-.58.09-.63-.03-.05-.13-.08-.34-.14zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z" />
-            </svg>
-            <span>💬 Enviar WhatsApp</span>
-          </button>
-        </a>
-      </div>
-
-      <p class="text-gray-500 text-sm pt-4">
-        ⚡ Respuesta en menos de 5 minutos • 🌙 Servicio 24/7
-      </p>
-
-      <!-- Trust badges -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12 max-w-3xl mx-auto">
-        <div class="glass-card text-center p-4">
-          <div class="text-2xl mb-2">✅</div>
-          <p class="text-sm text-gray-400">Personal Verificado</p>
-        </div>
-        <div class="glass-card text-center p-4">
-          <div class="text-2xl mb-2">💳</div>
-          <p class="text-sm text-gray-400">Pago Seguro</p>
-        </div>
-        <div class="glass-card text-center p-4">
-          <div class="text-2xl mb-2">🏆</div>
-          <p class="text-sm text-gray-400">Mejor Calificado</p>
-        </div>
-        <div class="glass-card text-center p-4">
-          <div class="text-2xl mb-2">💯</div>
-          <p class="text-sm text-gray-400">Garantía Total</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -2516,6 +2722,90 @@
         helpCount.textContent = helpRequest.value.length;
       });
     }
+
+    // Typewriter effect for placeholder examples
+    (function initTypewriter() {
+      const textarea = document.getElementById('help-request');
+      if (!textarea) return;
+
+      const examples = [
+        'Ej. Acompañar a mi mamá a un trámite',
+        'Ej. Hacer compras y apoyar en casa después',
+        'Ej. Ir a buscar una orden médica y pasar a comprar remedios'
+      ];
+
+      let exampleIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let isPaused = false;
+      let typewriterActive = true;
+
+      const TYPING_SPEED = 55;    // ms per character typing
+      const DELETING_SPEED = 30;  // ms per character deleting
+      const PAUSE_AFTER_TYPE = 2000; // pause after full phrase
+      const PAUSE_AFTER_DELETE = 400; // pause before next phrase
+
+      function typeStep() {
+        if (!typewriterActive) return;
+
+        const currentText = examples[exampleIndex];
+
+        if (!isDeleting) {
+          // Typing
+          charIndex++;
+          textarea.setAttribute('placeholder', currentText.substring(0, charIndex));
+
+          if (charIndex === currentText.length) {
+            // Finished typing, pause then start deleting
+            isPaused = true;
+            setTimeout(() => {
+              isPaused = false;
+              isDeleting = true;
+              typeStep();
+            }, PAUSE_AFTER_TYPE);
+            return;
+          }
+
+          setTimeout(typeStep, TYPING_SPEED);
+        } else {
+          // Deleting
+          charIndex--;
+          textarea.setAttribute('placeholder', currentText.substring(0, charIndex));
+
+          if (charIndex === 0) {
+            // Finished deleting, move to next example
+            isDeleting = false;
+            exampleIndex = (exampleIndex + 1) % examples.length;
+            setTimeout(typeStep, PAUSE_AFTER_DELETE);
+            return;
+          }
+
+          setTimeout(typeStep, DELETING_SPEED);
+        }
+      }
+
+      // Start the typewriter
+      typeStep();
+
+      // Stop typewriter when user focuses on textarea
+      textarea.addEventListener('focus', () => {
+        if (textarea.value.length === 0) {
+          typewriterActive = false;
+          textarea.setAttribute('placeholder', examples[exampleIndex]);
+        }
+      });
+
+      // Resume typewriter when user leaves and textarea is empty
+      textarea.addEventListener('blur', () => {
+        if (textarea.value.length === 0) {
+          typewriterActive = true;
+          charIndex = 0;
+          isDeleting = false;
+          exampleIndex = 0;
+          typeStep();
+        }
+      });
+    })();
     // Intersection Observer for Entrance Animations
     const initAnimations = () => {
       const observerOptions = {
@@ -2569,6 +2859,83 @@
         faqGrid.querySelectorAll('.glass-card').forEach((card, index) => {
           card.classList.add('stagger-item');
           card.classList.add(index % 2 === 0 ? 'reveal-left' : 'reveal-right');
+        });
+      }
+
+      // Carousel logic
+      const carousel = document.getElementById('photo-carousel');
+      const prevBtn = document.getElementById('prev-photo');
+      const nextBtn = document.getElementById('next-photo');
+      const dots = document.querySelectorAll('.carousel-dot');
+      const cards = carousel ? carousel.querySelectorAll('.carousel-card') : [];
+
+      function updateDots() {
+        if (!carousel || cards.length === 0) return;
+        const scrollLeft = carousel.scrollLeft;
+        const cardWidth = cards[0].offsetWidth + 20; // card width + gap
+        const activeIndex = Math.round(scrollLeft / cardWidth);
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === activeIndex);
+        });
+      }
+
+      if (carousel) {
+        carousel.addEventListener('scroll', updateDots);
+      }
+
+      if (carousel && prevBtn && nextBtn) {
+        const scrollAmount = () => {
+          if (cards.length > 0) return cards[0].offsetWidth + 20;
+          return 400;
+        };
+        prevBtn.addEventListener('click', () => {
+          carousel.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+        });
+        nextBtn.addEventListener('click', () => {
+          carousel.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+        });
+      }
+
+      // Dot click navigation
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const index = parseInt(dot.dataset.index);
+          if (carousel && cards[index]) {
+            const cardWidth = cards[0].offsetWidth + 20;
+            carousel.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Video logic
+      const video = document.getElementById('main-video');
+      const playBtn = document.getElementById('video-play-btn');
+
+      if (video && playBtn) {
+        playBtn.addEventListener('click', () => {
+          if (video.paused) {
+            video.play();
+            playBtn.style.opacity = '0';
+            playBtn.style.pointerEvents = 'none';
+          }
+        });
+
+        video.addEventListener('click', () => {
+          if (!video.paused) {
+            video.pause();
+            playBtn.style.opacity = '1';
+            playBtn.style.pointerEvents = 'auto';
+          }
+        });
+
+        video.addEventListener('pause', () => {
+          playBtn.style.opacity = '1';
+          playBtn.style.pointerEvents = 'auto';
+        });
+
+        video.addEventListener('ended', () => {
+          playBtn.style.opacity = '1';
+          playBtn.style.pointerEvents = 'auto';
         });
       }
 
