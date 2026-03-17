@@ -11,9 +11,9 @@
       theme: {
         extend: {
           colors: {
-            primary: '#F05414',
-            secondary: '#82C1B9',
-            dark: '#0A0F12',
+            primary: '#FF845E',
+            secondary: '#7CBBAF',
+            dark: '#2D3436',
           }
         }
       }
@@ -28,9 +28,10 @@
 
   <style>
     :root {
-      --primary: #F05414;
-      --secondary: #82C1B9;
-      --dark: #0A0F12;
+      --primary: #FF845E;
+      --secondary: #7CBBAF;
+      --dark: #2D3436;
+      --soft-bg: #FFFBF8;
     }
 
     * {
@@ -41,8 +42,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #0A0F12;
+      background: var(--soft-bg);
+      color: var(--dark);
       overflow-x: hidden;
     }
 
@@ -61,7 +62,7 @@
       height: 100%;
       z-index: 0;
       pointer-events: none;
-      background: radial-gradient(circle at 50% 50%, #f5f5f5 0%, #ffffff 100%);
+      background: radial-gradient(circle at 50% 50%, #fffcf9 0%, #fffbf8 100%);
       overflow: hidden;
     }
 
@@ -118,8 +119,8 @@
 
     /* Glowing text effect */
     .glow-text {
-      text-shadow: 0 0 20px rgba(255, 90, 0, 0.4),
-        0 0 40px rgba(255, 90, 0, 0.2);
+      text-shadow: 0 0 20px rgba(255, 132, 94, 0.3),
+        0 0 40px rgba(255, 132, 94, 0.15);
     }
 
     /* Neon border effect */
@@ -407,9 +408,9 @@
       animation: gradient-shift 3s ease infinite;
     }
 
-    /* Hero Title Specific - Two-tone Orange for Elegance */
+    /* Hero Title Specific - Sophisticated Mango/Peach */
     .hero-title-gradient {
-      background: linear-gradient(135deg, #F05414 0%, #FF8B5B 100%);
+      background: linear-gradient(135deg, #FF845E 0%, #FFA885 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -436,9 +437,9 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: silver-shine 3s ease-in-out infinite;
-      text-shadow: 0 10px 20px rgba(240, 84, 20, 0.2),
-        0 10px 30px rgba(130, 193, 185, 0.2);
-      filter: drop-shadow(0 8px 16px rgba(130, 193, 185, 0.2));
+      text-shadow: 0 10px 20px rgba(255, 132, 94, 0.15),
+        0 10px 30px rgba(124, 187, 175, 0.15);
+      filter: drop-shadow(0 8px 16px rgba(124, 187, 175, 0.15));
     }
 
     @keyframes silver-shine {
@@ -479,19 +480,19 @@
 
       0%,
       100% {
-        box-shadow: 0 0 20px rgba(255, 139, 91, 0.4),
-          0 0 40px rgba(255, 139, 91, 0.2);
+        box-shadow: 0 0 20px rgba(255, 132, 94, 0.3),
+          0 0 40px rgba(255, 132, 94, 0.15);
       }
 
       50% {
-        box-shadow: 0 0 30px rgba(255, 139, 91, 0.6),
-          0 0 60px rgba(255, 139, 91, 0.4);
+        box-shadow: 0 0 30px rgba(255, 132, 94, 0.45),
+          0 0 60px rgba(255, 132, 94, 0.3);
       }
     }
 
     /* CTA Button */
     .cta-button {
-      background: linear-gradient(135deg, var(--primary) 0%, #D44410 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, #FF6D3D 100%);
       color: white;
       padding: 1.2rem 3rem;
       border-radius: 50px;
@@ -501,7 +502,7 @@
       align-items: center;
       gap: 0.5rem;
       transition: all 0.3s;
-      box-shadow: 0 10px 40px rgba(255, 90, 0, 0.3);
+      box-shadow: 0 10px 40px rgba(255, 132, 94, 0.25);
       position: relative;
       overflow: hidden;
       border: none;
@@ -528,7 +529,7 @@
 
     .cta-button:hover {
       transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 50px rgba(255, 90, 0, 0.4);
+      box-shadow: 0 15px 50px rgba(255, 132, 94, 0.3);
     }
 
     .cta-button span {
@@ -573,7 +574,7 @@
       justify-content: center;
       font-size: 2.8rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 10px 25px rgba(240, 84, 20, 0.1);
+      box-shadow: 0 10px 25px rgba(255, 132, 94, 0.1);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
@@ -597,8 +598,8 @@
 
     /* Stats counter */
     .stat-box {
-      background: linear-gradient(135deg, rgba(255, 90, 0, 0.1), rgba(130, 193, 185, 0.1));
-      border: 1px solid rgba(255, 90, 0, 0.3);
+      background: linear-gradient(135deg, rgba(255, 132, 94, 0.08), rgba(124, 187, 175, 0.08));
+      border: 1px solid rgba(255, 132, 94, 0.2);
       border-radius: 20px;
       padding: 1.5rem;
       text-align: center;
@@ -608,7 +609,7 @@
     .stat-box:hover {
       transform: translateY(-5px);
       border-color: var(--primary);
-      background: linear-gradient(135deg, rgba(255, 90, 0, 0.2), rgba(130, 193, 185, 0.2));
+      background: linear-gradient(135deg, rgba(255, 132, 94, 0.15), rgba(124, 187, 175, 0.15));
     }
 
     .stat-number {
@@ -647,7 +648,7 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      filter: drop-shadow(0 0 10px rgba(255, 139, 91, 0.3));
+      filter: drop-shadow(0 0 10px rgba(255, 132, 94, 0.2));
     }
 
     /* Scroll indicator */
@@ -1104,8 +1105,8 @@
       width: 65%;
       max-width: 300px;
       border-radius: 32px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-      border: 4px solid rgba(255, 139, 91, 0.6);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      border: 4px solid rgba(255, 145, 110, 0.4);
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -1318,7 +1319,21 @@
   </div>
 
   <!-- HERO SECTION -->
-  <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12">
+  <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
+    <!-- Fondo Pro: Nebulosas en los costados y centro blanco -->
+    <div class="absolute inset-0 pointer-events-none" style="z-index: 0; overflow: hidden;">
+      <!-- Lado Naranjo/Durazno (Primary) -->
+      <div class="absolute top-[20%] md:top-1/2 left-[-30%] md:left-[-15%] -translate-y-1/2 w-[400px] md:w-[800px] h-[400px] md:h-[800px] rounded-full blur-[90px] md:blur-[120px] opacity-50 md:opacity-40" 
+           style="background: #FF845E;"></div>
+      
+      <!-- Lado Azul/Verde Sabia (Secondary) -->
+      <div class="absolute bottom-[20%] md:bottom-auto md:top-1/2 right-[-30%] md:right-[-15%] translate-y-1/2 md:-translate-y-1/2 w-[400px] md:w-[800px] h-[400px] md:h-[800px] rounded-full blur-[90px] md:blur-[120px] opacity-50 md:opacity-40" 
+           style="background: #7CBBAF;"></div>
+           
+      <!-- Centro Blanco Luminoso -->
+      <div class="absolute inset-0" 
+           style="background: radial-gradient(circle at 50% 50%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 50%, transparent 100%);"></div>
+    </div>
     <div class="max-w-7xl mx-auto w-full">
       <div class="grid md:grid-cols-2 gap-12 items-center">
 
@@ -1369,15 +1384,17 @@
           <!-- Stats -->
           <div class="grid grid-cols-3 gap-4 pt-8 hero-stats-anim">
             <div class="stat-box">
-              <div class="stat-number">4+</div>
+              <div class="stat-number text-3xl md:text-4xl">6+</div>
               <p class="text-gray-400 text-sm font-medium">Clientes</p>
             </div>
             <div class="stat-box">
-              <div class="stat-number">24/7</div>
-              <p class="text-gray-400 text-sm font-medium">Disponible</p>
+              <div class="stat-number whitespace-nowrap text-3xl md:text-4xl">
+                8-22<span class="text-xs md:text-sm font-black uppercase ml-0.5">hrs</span>
+              </div>
+              <p class="text-gray-400 text-sm font-medium">Horario</p>
             </div>
             <div class="stat-box">
-              <div class="stat-number">100%</div>
+              <div class="stat-number text-3xl md:text-4xl">100%</div>
               <p class="text-gray-400 text-sm font-medium">Confiable</p>
             </div>
           </div>
@@ -1412,160 +1429,165 @@
   </section>
 
   <!-- PLANES DE AYUDA SECTION -->
-  <section id="planes" class="px-6 py-20 relative z-10">
-    <div class="max-w-7xl mx-auto">
+  <section id="planes" class="relative z-10 pt-14 pb-12 px-6 overflow-hidden scroll-mt-14">
 
-      <!-- Header -->
-      <div class="text-center mb-16 space-y-6 reveal">
-        <span
-          class="inline-block bg-secondary/20 border border-secondary/40 text-secondary px-4 py-2 rounded-full text-sm font-semibold">
-          Acompañamiento humano, simple y de confianza 🧡
-        </span>
-        <h2 class="text-4xl md:text-6xl font-black leading-tight">
+    <!-- Fondo decorativo sutil -->
+    <div class="absolute inset-0 pointer-events-none"
+      style="background: radial-gradient(ellipse 80% 70% at 50% 0%, rgba(255,132,94,0.06) 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 90% 100%, rgba(124,187,175,0.08) 0%, transparent 65%);">
+    </div>
+
+    <div class="max-w-4xl mx-auto relative">
+
+      <!-- Header compacto -->
+      <div class="text-center mb-8 reveal">
+
+        <h2 class="text-4xl md:text-6xl font-black leading-tight tracking-tight mb-3">
           <span class="gradient-text">Planes de Ayuda</span>
         </h2>
-        <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-          Apoyamos a <span class="font-bold text-primary">adultos mayores</span> y personas con poco tiempo en tareas
-          cotidianas que no requieren cuidado clínico, pero sí <span class="font-bold text-secondary">presencia,
-            paciencia y buen trato</span>.
+        <p class="text-base text-gray-500 max-w-2xl mx-auto leading-relaxed">
+          Apoyamos a <span class="font-bold text-primary">adultos mayores</span> y personas con poco tiempo. Con <span
+            class="font-bold text-secondary">presencia, paciencia y buen trato</span>.
         </p>
       </div>
 
-      <!-- Planes Cards -->
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
+      <!-- MAIN PRICING CARD — ancha, horizontal en desktop -->
+      <div class="reveal-scale mb-5">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100"
+          style="background: linear-gradient(145deg, #ffffff 0%, #fff9f7 100%);">
 
-        <!-- Ayudita Simple -->
-        <div class="glass-card p-6 relative overflow-hidden hover-pro reveal-left group">
-          <div
-            class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
-          </div>
+          <!-- Top accent bar degradado -->
+    <div class="h-1.5 w-full" style="background: linear-gradient(90deg, #FF845E 0%, #FFA885 50%, #7CBBAF 100%);">
+    </div>
 
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-4xl">✨</span>
-            <div>
-              <h3 class="text-2xl font-bold text-gray-900 group-hover:text-primary transition">Ayudita Simple</h3>
-              <p class="text-sm text-gray-500">30–60 minutos</p>
-            </div>
-          </div>
+          <div class="p-6 md:p-8">
+            <div class="flex flex-col gap-6">
 
-          <p class="text-gray-600 mb-4 text-sm">
-            Apoyo puntual para resolver una necesidad concreta en poco tiempo.
-          </p>
-
-          <div class="mb-4">
-            <p class="text-xs font-semibold text-gray-700 mb-2">Incluye:</p>
-            <div class="grid grid-cols-2 gap-2 text-xs text-gray-600">
-              <span class="flex items-center gap-1">🛒 Compras simples</span>
-              <span class="flex items-center gap-1">🧾 Diligencias</span>
-              <span class="flex items-center gap-1">🧹 Apoyo en casa</span>
-              <span class="flex items-center gap-1">📱 Tecnología</span>
-            </div>
-          </div>
-
-          <div class="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-3 border border-primary/20 mb-4">
-            <div class="flex items-center justify-between flex-wrap gap-3">
-              <div>
-                <p class="text-2xl font-black text-primary">$15.000</p>
-                <p class="text-xs text-gray-500">Valor normal</p>
+              <!-- Title + Badges -->
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <p class="text-xs font-black uppercase tracking-[0.25em] text-primary mb-1">Una sola tarifa · Sin
+                    sorpresas</p>
+                  <h3 class="text-3xl font-black text-gray-900 leading-tight">Tu Ayudita 🧡</h3>
+                  <p class="text-gray-400 text-sm mt-1">Elige el tiempo que necesitas</p>
+                </div>
+                <div class="flex flex-nowrap gap-2">
+                  <span
+                    class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap shadow-sm">🔒
+                    100% confiable</span>
+                  <span
+                    class="inline-flex items-center gap-1.5 bg-purple-50 border border-purple-100 text-purple-700 text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap shadow-sm">🧑‍🎓
+                    Ayudantes verificados</span>
+                </div>
               </div>
-              <div class="text-right">
-                <p class="text-xl font-bold text-secondary">$10.000</p>
-                <p class="text-xs text-gray-500 flex items-center gap-1 justify-end">
-                  <span>🧡</span> Primera vez
-                </p>
+
+              <!-- PRECIOS — Protagonistas -->
+              <div class="grid sm:grid-cols-2 gap-4">
+                <!-- Tier 1 -->
+                <div
+                  class="relative rounded-2xl p-6 border-2 border-primary/20 overflow-hidden transition-all duration-300 hover:border-primary hover:shadow-xl hover:-translate-y-1 cursor-default"
+                  style="background: linear-gradient(145deg, #fff5f0, #fff9f7);">
+                  <div class="absolute top-0 right-0 w-28 h-28 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"
+                    style="background: rgba(255,132,94,0.15);"></div>
+                  <p class="text-xs font-black uppercase tracking-[0.2em] text-primary/70 mb-4">Hasta 60 minutos</p>
+                  <div class="flex items-end gap-1 mb-2">
+                    <span class="text-5xl font-black text-primary leading-none">$15</span>
+                    <span class="text-4xl font-black text-primary/70 mb-0.5">.000</span>
+                  </div>
+                  <p class="text-sm text-gray-500 font-medium italic text-nowrap">Gestiones simples en una visita</p>
+                </div>
+
+                <!-- Tier 2 -->
+                <div
+                  class="relative rounded-2xl p-6 border-2 border-teal-400/50 overflow-hidden transition-all duration-300 hover:border-teal-500 hover:shadow-xl hover:-translate-y-1 cursor-default"
+                  style="background: linear-gradient(145deg, #e6f5f3, #eef9f7);">
+                  <div
+                    class="absolute top-3 right-3 bg-teal-600 text-white text-xs font-black px-2.5 py-1 rounded-full tracking-wide uppercase shadow">
+                    Más elegido</div>
+                  <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-700 mb-4">Hasta 90 minutos</p>
+                  <div class="flex items-end gap-1 mb-2">
+                    <span class="text-5xl font-black text-teal-700 leading-none">$20</span>
+                    <span class="text-4xl font-black text-teal-600/80 mb-0.5">.000</span>
+                  </div>
+                  <p class="text-sm text-teal-800/70 font-medium italic text-nowrap">Todo lo que necesitas con calma</p>
+                </div>
               </div>
-            </div>
-            <p class="text-xs text-gray-500 mt-2 pt-2 border-t border-gray-200">
-              ➡️ Posibilidad de extender a Estándar
-            </p>
-          </div>
 
-          <a href="https://wa.me/56982550861?text=Hola!%20Me%20interesa%20una%20Ayudita%20Simple%20✨" target="_blank"
-            class="block">
-            <button
-              class="w-full bg-gradient-to-r from-primary to-orange-600 text-white py-3 px-4 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
-              <span>📱</span>
-              <span>Escríbenos por WhatsApp</span>
-            </button>
-          </a>
-        </div>
-
-        <!-- Ayudita Estándar -->
-        <div class="glass-card p-6 relative overflow-hidden hover-pro reveal-right group border-2 border-secondary/30">
-          <div
-            class="absolute top-0 left-0 w-32 h-32 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2">
-          </div>
-          <div
-            class="absolute top-1 right-2 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
-            Popular
-          </div>
-
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-4xl">🌿</span>
-            <div>
-              <h3 class="text-2xl font-bold text-gray-900 group-hover:text-secondary transition">Ayudita Estándar</h3>
-              <p class="text-sm text-gray-500">60–90 minutos</p>
-            </div>
-          </div>
-
-          <p class="text-gray-600 mb-4 text-sm">
-            Acompañamiento completo para tareas que requieren más tiempo y paciencia.
-          </p>
-
-          <div class="mb-4">
-            <p class="text-xs font-semibold text-gray-700 mb-2">Incluye:</p>
-            <div class="grid grid-cols-2 gap-2 text-xs text-gray-600">
-              <span class="flex items-center gap-1">🏡 Compañía</span>
-              <span class="flex items-center gap-1">🧾 Trámites</span>
-              <span class="flex items-center gap-1">🛒 Compras</span>
-              <span class="flex items-center gap-1">🚶‍♀️ Traslados</span>
-            </div>
-          </div>
-
-          <div class="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-2xl p-3 border border-secondary/20 mb-4">
-            <div class="flex items-center justify-between flex-wrap gap-3">
-              <div>
-                <p class="text-2xl font-black text-secondary">$25.000</p>
-                <p class="text-xs text-gray-500">Valor normal</p>
+              <!-- Fila con Tiempo adicional y Traslado (Optimización) -->
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="flex items-center gap-4 bg-gray-50 rounded-2xl p-4 border border-gray-200">
+                  <div
+                    class="flex-shrink-0 w-10 h-10 rounded-xl bg-gray-200 flex items-center justify-center text-xl shadow-sm">
+                    ⏱️</div>
+                  <div>
+                    <p class="text-xs font-black text-gray-500 uppercase tracking-widest leading-none mb-1">Tiempo
+                      adicional</p>
+                    <p class="text-xl font-black text-gray-900">$8.000 <span
+                        class="text-sm font-semibold text-gray-600">/ 30 min extra</span></p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 rounded-2xl p-4 border-2 border-primary/20 shadow-sm"
+                  style="background: linear-gradient(135deg, #FFF9F6, #FFF2EE);">
+                  <div
+                    class="flex-shrink-0 w-10 h-10 bg-primary/25 rounded-xl flex items-center justify-center text-xl shadow">
+                    🚗</div>
+                  <div>
+                    <p class="font-black text-primary text-xs uppercase tracking-wider leading-none mb-1">⚠️
+                      Costo de traslado aparte</p>
+                    <p class="text-gray-600 text-sm font-medium leading-tight">Micro/Bip!, Uber,
+                      taxi u otro medio según corresponda</p>
+                  </div>
+                </div>
               </div>
-              <div class="text-right">
-                <p class="text-xl font-bold text-primary">$20.000</p>
-                <p class="text-xs text-gray-500 flex items-center gap-1 justify-end">
-                  <span>🧡</span> Primera vez
-                </p>
+
+              <!-- Info Boxes -->
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div
+                  class="flex items-start gap-3 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl p-3.5 border border-primary/10">
+                  <span class="text-lg flex-shrink-0">🗂️</span>
+                  <p class="text-sm text-gray-800 leading-snug">
+                    <span class="font-bold text-gray-950">Una visita, varios trámites.</span><br>
+                    Realiza distintas gestiones en el tiempo contratado.
+                  </p>
+                </div>
+                <div class="flex items-start gap-3 bg-white rounded-xl p-3.5 border border-gray-100 shadow-sm">
+                  <span class="text-lg flex-shrink-0">🧮</span>
+                  <p class="text-sm text-gray-800 leading-snug">
+                    <span class="font-bold text-gray-950">Costo total:</span> Se calcula según el <span
+                      class="font-semibold text-primary">tiempo de servicio</span> + el <span
+                      class="font-semibold text-secondary">costo de traslado</span>.
+                  </p>
+                </div>
               </div>
+
+              <!-- CTA WhatsApp -->
+              <a href="https://wa.me/56982550861?text=Hola!%20Me%20interesa%20una%20Ayudita%20🧡" target="_blank"
+                class="block">
+                <button
+                  class="w-full py-4 px-6 rounded-2xl font-black text-lg text-white transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl flex items-center justify-center gap-3"
+                  style="background: linear-gradient(135deg, #FF845E 0%, #FF6D3D 100%); box-shadow: 0 8px 32px rgba(255,132,94,0.25);">
+                  <span class="text-2xl">💬</span>
+                  <span>¡Pedir Ayudita por WhatsApp!</span>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </a>
+
             </div>
-            <p class="text-xs text-gray-500 mt-2 pt-2 border-t border-gray-200">
-              ➕ $8.000 cada 30 min adicionales
-            </p>
           </div>
-
-          <a href="https://wa.me/56982550861?text=Hola!%20Necesito%20una%20Ayudita%20Estándar%20🌿" target="_blank"
-            class="block">
-            <button
-              class="w-full bg-gradient-to-r from-secondary to-teal-600 text-white py-3 px-4 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
-              <span>💬</span>
-              <span>Pide tu Ayudita ahora</span>
-            </button>
-          </a>
-        </div>
-      </div>
-
-      <!-- Nota sobre locomoción -->
-      <div class="max-w-md mx-auto mb-12 reveal">
-        <div
-          class="bg-gray-50/50 border border-gray-200 rounded-2xl p-4 flex items-center justify-center gap-3 text-gray-500">
-          <span class="text-xl">🚌</span>
-          <p class="text-sm font-medium italic">
-            La locomoción se cobra aparte (Micro/Bip!, Uber, etc.)
-          </p>
         </div>
       </div>
 
-      <!-- SECCIÓN TEMPORALMENTE OCULTA
+
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN TEMPORALMENTE OCULTA
       Cómo Funciona + Confianza (Combinado)
       <div class="mb-16 reveal">
-        <div class="glass-card p-8 md:p-10 bg-gradient-to-br from-white to-orange-50/30">
+        <div class="glass-card p-8 md:p-10 bg-gradient-to-br from-white to-primary/5">
           <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-center">
             ¿Cómo funciona <span class="text-primary">Ayuditas</span>?
           </h3>
@@ -1608,21 +1630,21 @@
       FIN SECCIÓN OCULTA -->
 
 
-      <!-- CTA Final -->
-      <div class="text-center mt-12 reveal">
-        <p class="text-lg md:text-xl text-gray-600 mb-6">
-          Si tú o un familiar necesitan apoyo humano, simple y bien hecho,<br>
-          <span class="font-bold text-gray-800">estamos para ayudar.</span>
-        </p>
-        <a href="#solicitar">
-          <button class="cta-button pulse-btn">
-            <span>📲 Cuéntanos qué necesitas</span>
-            <span>→</span>
-          </button>
-        </a>
-      </div>
+  <!-- CTA Final -->
+  <div class="text-center mt-12 reveal">
+    <p class="text-lg md:text-xl text-gray-600 mb-6">
+      Si tú o un familiar necesitan apoyo humano, simple y bien hecho,<br>
+      <span class="font-bold text-gray-800">estamos para ayudar.</span>
+    </p>
+    <a href="#solicitar">
+      <button class="cta-button pulse-btn">
+        <span>📲 Cuéntanos qué necesitas</span>
+        <span>→</span>
+      </button>
+    </a>
+  </div>
 
-    </div>
+  </div>
   </section>
 
   <div class="divider"></div>
@@ -1663,7 +1685,7 @@
   <div class="divider"></div>
 
   <!-- VECINOS AYUDANDO VECINOS SECTION -->
-  <section class="px-6 py-20 relative z-10 bg-gradient-to-b from-white via-orange-50/30 to-white">
+  <section class="px-6 py-20 relative z-10 bg-gradient-to-b from-transparent via-primary/5 to-transparent">
     <div class="max-w-7xl mx-auto">
 
       <!-- Title -->
@@ -2143,7 +2165,7 @@
     <div class="max-w-6xl mx-auto">
 
       <div class="glass-card"
-        style="background: linear-gradient(135deg, rgba(255, 90, 0, 0.1), rgba(245, 197, 66, 0.05)); border: 2px solid rgba(255, 90, 0, 0.3);">
+        style="background: linear-gradient(135deg, rgba(255, 132, 94, 0.08), rgba(124, 187, 175, 0.05)); border: 2px solid rgba(255, 132, 94, 0.2);">
         <div class="grid md:grid-cols-2 gap-12 items-center">
 
           <!-- Left content -->
