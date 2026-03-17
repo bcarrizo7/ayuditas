@@ -12,9 +12,9 @@
       theme: {
         extend: {
           colors: {
-            primary: '#FF8B5B',
-            secondary: '#82C1B9',
-            dark: '#0A0F12',
+            primary: '#FF845E',
+            secondary: '#7CBBAF',
+            dark: '#2D3436',
           }
         }
       }
@@ -28,15 +28,16 @@
   <link rel="icon" type="image/png" href="./assets/images/Logo%20ayuditas%20sin%20fondo.png">
   <style>
     :root {
-      --primary: #FF8B5B;
-      --secondary: #82C1B9;
-      --dark: #0A0F12;
+      --primary: #FF845E;
+      --secondary: #7CBBAF;
+      --dark: #2D3436;
+      --soft-bg: #FFFBF8;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--dark);
-      color: white;
+      background: var(--soft-bg);
+      color: var(--dark);
     }
 
     h1,
@@ -53,28 +54,30 @@
     }
 
     .glass-card {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(130, 193, 185, 0.2);
+      border: 1px solid rgba(124, 187, 175, 0.2);
       border-radius: 24px;
       padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
     .chip-button {
-      border: 1px solid rgba(130, 193, 185, 0.3);
-      background: rgba(130, 193, 185, 0.05);
-      color: var(--secondary);
+      border: 1px solid rgba(124, 187, 175, 0.3);
+      background: rgba(124, 187, 175, 0.05);
+      color: #5C8D87;
     }
 
     .chip-button.active {
-      background: linear-gradient(135deg, var(--primary), #FF7A45);
+      background: var(--primary);
       color: white;
       border-color: transparent;
       font-weight: 800;
+      box-shadow: 0 5px 15px rgba(255, 132, 94, 0.3);
     }
 
     .cta-button {
-      background: linear-gradient(135deg, var(--primary), #FF7A45);
+      background: var(--primary);
       color: white;
       padding: 1rem 1.5rem;
       border-radius: 9999px;
@@ -84,21 +87,21 @@
       justify-content: center;
       gap: 0.5rem;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 15px 35px rgba(255, 139, 91, 0.25);
+      box-shadow: 0 10px 25px rgba(255, 132, 94, 0.25);
     }
 
     .cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 20px 45px rgba(255, 139, 91, 0.35);
+      box-shadow: 0 15px 30px rgba(255, 132, 94, 0.35);
     }
 
     @layer utilities {
       .text-gray-400 {
-        color: #cbd5e1 !important;
+        color: #6b7280 !important; /* Tailwind gray-500 for better visibility */
       }
 
       .text-gray-500 {
-        color: #94a3b8 !important;
+        color: #4b5563 !important; /* Tailwind gray-600 for labels */
       }
     }
 
@@ -174,8 +177,8 @@
     }
 
     .glass-card:focus-within {
-      border-color: rgba(130, 193, 185, 0.5);
-      box-shadow: 0 0 30px rgba(130, 193, 185, 0.1);
+      border-color: rgba(124, 187, 175, 0.5);
+      box-shadow: 0 0 30px rgba(124, 187, 175, 0.1);
     }
 
     .chip-button {
@@ -209,11 +212,11 @@
 
     <div class="glass-card space-y-6">
       <div class="space-y-2">
-        <label class="text-sm text-gray-400 font-semibold">En pocas palabras, ¿qué necesitas?</label>
+        <label class="text-sm text-gray-500 font-semibold">En pocas palabras, ¿qué necesitas?</label>
         <textarea id="task-desc" rows="3" maxlength="200"
-          class="w-full bg-black/40 border border-primary/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+          class="w-full bg-white/50 border border-primary/20 rounded-2xl p-4 text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary"
           placeholder="Ej: Necesito que me ayuden a trasladar cajas y comprar embalaje"></textarea>
-        <div class="text-right text-xs text-gray-500"><span id="desc-count">0</span>/200</div>
+        <div class="text-right text-xs text-gray-400"><span id="desc-count">0</span>/200</div>
       </div>
 
       <div class="space-y-4">
@@ -232,16 +235,16 @@
         <!-- Sub-selector de Unidad (Solo visible en Por Tiempo) -->
         <div id="unit-selector" class="hidden flex justify-center gap-4 mb-4">
           <button type="button" id="unit-hour"
-            class="text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-black shadow-md transition-all">Por
+            class="text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-white shadow-md transition-all">Por
             Hora</button>
           <button type="button" id="unit-minute"
-            class="text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-white/10 text-gray-500 hover:bg-white transition-all">Por
+            class="text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-secondary/10 text-secondary hover:bg-white transition-all">Por
             Minuto</button>
         </div>
 
-        <div class="flex items-center justify-between bg-black/40 border border-primary/30 rounded-2xl p-4">
+        <div class="flex items-center justify-between bg-white/50 border border-primary/20 rounded-2xl p-4">
           <button id="price2-minus"
-            class="w-12 h-12 rounded-full bg-white/10 text-2xl font-bold text-white hover:bg-white/20 transition-colors">-</button>
+            class="w-12 h-12 rounded-full bg-white/80 text-2xl font-bold text-gray-900 hover:bg-white transition-colors">-</button>
           <div class="text-center">
             <p id="price-label" class="text-gray-400 text-sm">Monto total</p>
             <div class="flex items-center justify-center text-3xl font-black text-primary">
@@ -253,7 +256,7 @@
               hora</p>
           </div>
           <button id="price2-plus"
-            class="w-12 h-12 rounded-full bg-primary text-black text-2xl font-black hover:bg-secondary transition-colors">+</button>
+            class="w-12 h-12 rounded-full bg-primary text-white text-2xl font-black hover:bg-secondary transition-colors">+</button>
         </div>
         <p id="price-info" class="text-xs text-gray-500 text-center italic">Monto fijo acordado por la misión.</p>
       </div>
@@ -273,12 +276,12 @@
           <div id="date-wrapper" class="hidden">
             <label class="text-xs text-gray-500 mb-2 block uppercase tracking-wider font-bold">Selecciona fecha</label>
             <input id="date-input" type="date"
-              class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:ring-2 focus:ring-secondary outline-none" />
+              class="w-full bg-white/50 border border-primary/20 rounded-2xl p-3 text-gray-900 focus:ring-2 focus:ring-secondary outline-none" />
           </div>
           <div id="time-wrapper">
             <label class="text-xs text-gray-500 mb-2 block uppercase tracking-wider font-bold">¿A qué hora?</label>
             <input id="time-input" type="time"
-              class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:ring-2 focus:ring-secondary outline-none" />
+              class="w-full bg-white/50 border border-primary/20 rounded-2xl p-3 text-gray-900 focus:ring-2 focus:ring-secondary outline-none" />
           </div>
         </div>
       </div>
@@ -287,10 +290,10 @@
         <label class="text-sm text-gray-400 font-semibold">¿Dónde será la ayudita?</label>
         <div class="flex flex-col gap-3">
           <input id="address-input" type="text"
-            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+            class="w-full bg-white/50 border border-primary/20 rounded-2xl p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary"
             placeholder="Ingresa la dirección o puntos de referencia">
           <button id="share-location"
-            class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-primary text-black font-bold hover:bg-secondary w-full sm:w-auto">
+            class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-primary text-white font-bold hover:bg-secondary w-full sm:w-auto">
             📍 Compartir mi ubicación
           </button>
           <p id="location-status" class="text-xs text-gray-500"></p>
@@ -298,9 +301,9 @@
       </div>
 
       <div class="space-y-2">
-        <label class="text-sm text-gray-400 font-semibold">Detalles adicionales (opcional)</label>
+        <label class="text-sm text-gray-500 font-semibold">Detalles adicionales (opcional)</label>
         <textarea id="details-input" rows="3" maxlength="300"
-          class="w-full bg-black/40 border border-primary/30 rounded-2xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+          class="w-full bg-white/50 border border-primary/20 rounded-2xl p-4 text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary"
           placeholder="Incluye horarios, accesos o datos que faciliten la coordinación"></textarea>
         <div class="text-right text-xs text-gray-500"><span id="details-count">0</span>/300</div>
       </div>
@@ -308,34 +311,34 @@
       <!-- Datos Personales -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/10">
         <div class="space-y-2">
-          <label class="text-sm text-gray-400 font-semibold">Nombre</label>
+          <label class="text-sm text-gray-500 font-semibold">Nombre</label>
           <input id="nombre-input" type="text"
-            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+            class="w-full bg-white/50 border border-primary/20 rounded-2xl p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary"
             placeholder="Tu nombre">
         </div>
         <div class="space-y-2">
-          <label class="text-sm text-gray-400 font-semibold">Apellido Paterno</label>
+          <label class="text-sm text-gray-500 font-semibold">Apellido Paterno</label>
           <input id="apellido-p-input" type="text"
-            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+            class="w-full bg-white/50 border border-primary/20 rounded-2xl p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary"
             placeholder="Tu apellido paterno">
         </div>
         <div class="space-y-2">
-          <label class="text-sm text-gray-400 font-semibold">Apellido Materno</label>
+          <label class="text-sm text-gray-500 font-semibold">Apellido Materno</label>
           <input id="apellido-m-input" type="text"
-            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+            class="w-full bg-white/50 border border-primary/20 rounded-2xl p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary"
             placeholder="Tu apellido materno">
         </div>
         <div class="space-y-2">
-          <label class="text-sm text-gray-400 font-semibold">RUT</label>
+          <label class="text-sm text-gray-500 font-semibold">RUT</label>
           <input id="rut-input" type="text"
-            class="w-full bg-black/40 border border-primary/30 rounded-2xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
+            class="w-full bg-white/50 border border-primary/20 rounded-2xl p-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary"
             placeholder="12.345.678-9">
         </div>
       </div>
 
       <div class="pt-2">
         <button id="submit-request"
-          class="cta-button w-full justify-center text-lg bg-gradient-to-r from-primary to-secondary text-black font-extrabold">
+          class="cta-button w-full justify-center text-lg bg-primary text-white font-extrabold shadow-xl hover:shadow-2xl transition-all">
           <span>Continuar</span>
         </button>
         <p id="submit-status" class="text-xs text-gray-500 text-center mt-2"></p>
@@ -385,12 +388,12 @@
     const updateTimeUnit = (unit) => {
       currentTimeUnit = unit;
       if (unit === 'hour') {
-        unitHourBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-black shadow-md transition-all';
-        unitMinuteBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-white/10 text-gray-500 hover:bg-white transition-all';
+        unitHourBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-white shadow-md transition-all';
+        unitMinuteBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-secondary/10 text-secondary hover:bg-white transition-all';
         priceSuffix.textContent = 'por hora';
       } else {
-        unitMinuteBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-black shadow-md transition-all';
-        unitHourBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-white/10 text-gray-500 hover:bg-white transition-all';
+        unitMinuteBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-primary text-white shadow-md transition-all';
+        unitHourBtn.className = 'text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full bg-secondary/10 text-secondary hover:bg-white transition-all';
         priceSuffix.textContent = 'por minuto';
       }
       updateDisplay();
@@ -399,14 +402,14 @@
     const updateMode = (mode) => {
       currentMode = mode;
       if (mode === 'fixed') {
-        modeFixedBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-black shadow-lg';
+        modeFixedBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-white shadow-lg';
         modeTimeBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white/10';
         priceLabel.textContent = 'Monto total';
         priceSuffix.classList.add('hidden');
         unitSelector.classList.add('hidden');
         priceInfo.textContent = 'Monto fijo acordado por la misión.';
       } else {
-        modeTimeBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-black shadow-lg';
+        modeTimeBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 bg-primary text-white shadow-lg';
         modeFixedBtn.className = 'flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all duration-300 text-gray-500 hover:bg-white/10';
         priceLabel.textContent = 'Monto por tiempo';
         priceSuffix.classList.remove('hidden');
